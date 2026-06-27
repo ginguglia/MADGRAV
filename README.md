@@ -85,6 +85,36 @@ MADGRAV_ROOT=$(pwd) SM_ALLOW_CPU=1 python check_install.py
 Checks every vendored asset is present and the core module closure imports. It does **not** run the
 pipeline, fetch data, or require strain.
 
+## Quick demo
+
+Recover **GW190521** (the intermediate-mass black-hole binary) end-to-end from a small bundled
+256 s strain segment using the vendored weights — **no GWOSC fetch, ~2 min on a GPU**:
+
+```bash
+git clone <repo> && cd madgrav
+conda env create -f environment.yml && conda activate madgrav
+export MADGRAV_ROOT=$(pwd)
+bash demo/run_demo.sh
+```
+
+This whitens the bundled segment with a **local ±64 s Welch ASD**, runs the CAE σ stream, and scores the
+loudest net-σ trigger with the HM/LM CNN glitch-gate. Expected result: the GW190521 merger window fires
+**net σ ≈ 7.7** and the CNN keeps it (**HM ≈ 0.99, LM ≈ 0.95 > 0.5**) → `RECOVERED`. The bundled segment
+lives in `demo/strain/` (~8 MB, keys: `strain`, `gps_start`, `fs`); its provenance / regeneration recipe
+is `demo/make_demo_segment.py`.
+
+`DEV` selects the device — any free GPU (default `cuda:0`) or, as a last resort, CPU:
+```bash
+DEV=cuda:2 bash demo/run_demo.sh                # another GPU
+DEV=cpu SM_ALLOW_CPU=1 bash demo/run_demo.sh    # CPU: slower, NOT byte-identical to the frozen GPU calibration
+```
+
+**Cross-run caveat** (as documented in `search_mode/recover_gw190521.py`): the whitening uses a **local
+±64 s O3 ASD** computed from this segment, but the **learned weights (CAE, 5-seed glitch arm, HM/LM CNNs)
+remain O4a-trained**. Only those weights are cross-run; the result is a single-segment RECOVERY test
+(net-σ trigger kept by the CNN gate), **not** a FAR measurement — one short segment has no time-slide
+livetime.
+
 ## Notes
 
 - The frozen weights (CAE, glitch arm, HM/LM CNNs) are **calibration-locked**. The **GPU forward pass is the
