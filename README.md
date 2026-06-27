@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/madgrav-logo.png" alt="MADGRAV" width="480">
+  <img src="assets/madgrav-2.png" alt="MADGRAV" width="480">
 </p>
 # MADGRAV
 
