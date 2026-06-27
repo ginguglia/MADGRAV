@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/madgrav-logo.png" alt="MADGRAV" width="480">
+</p>
 # MADGRAV
 
 **M**ultilevel **A**nomaly **D**etection for **GRAV**itational-wave science — a portable, cluster-deployable
