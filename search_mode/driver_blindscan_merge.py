@@ -33,15 +33,16 @@ NSHARD=int(os.environ["SM_NSHARD"])
 
 # ---- PRE-REGISTRATION HOLD (2026-06-23) ----------------------------------------------------------
 # The merge currently computes the OR-veto statistic (best_far=min(far_cnn,far_net)) at the contaminated
-# floor 4.5. Per PREREGISTRATION_o3a_o4a.md it MUST NOT produce a quotable result until: (1) the per-arm
+# floor 4.5. Per the pre-registration it MUST NOT produce a quotable result until: (1) the per-arm
 # branch is ported in from driver_blindscan.py (BLOCKER 1/2), (2) the floor is re-derived blind as L*
 # (BLOCKER 3), (3) detection decided on UL90 (BLOCKER 4), (4) hard-fail on missing shards (BLOCKER 6).
-# This guard makes the auto-merge at the end of run_o3a_perarm_1gpu.sh DEFER cleanly instead of unblinding
+# This guard makes the auto-merge DEFER cleanly instead of unblinding
 # a wrong-statistic result. Run intentionally with SM_MERGE_OK=1 only after the fixes land.
 if os.environ.get("SM_MERGE_OK")!="1":
     print("[merge] PRE-REGISTRATION HOLD: merge deferred (set SM_MERGE_OK=1 to run). "
-          "Shards are preserved in "+SHARD_DIR+"; see PREREGISTRATION_o3a_o4a.md. "
-          "Do NOT run until per-arm port + blind floor L* + UL90 detection + shard-count guard are in.",flush=True)
+          "Shards are preserved in "+SHARD_DIR+". "
+          "Run only once the pre-registered conditions are met: per-arm branch ported, blind floor L* "
+          "re-derived, detection decided on the 90% Poisson UL, and a hard-fail on missing shards.",flush=True)
     sys.exit(0)
 # --------------------------------------------------------------------------------------------------
 

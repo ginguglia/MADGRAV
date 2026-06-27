@@ -21,7 +21,7 @@ SC=os.path.join(MADGRAV_ROOT,"spectrogram_cascade")
 LRD=os.path.join(MADGRAV_ROOT,"lr_cascade")
 O4A=os.environ.get("SM_PREP",os.path.join(MADGRAV_ROOT,"data","o3a_search_prep"))
 STR=os.environ.get("SM_STRAIN","search_mode/strain"); OUT="search_mode/streams_o4a"; os.makedirs(OUT,exist_ok=True)
-SEG=json.load(open(os.environ.get("SM_SEGJSON_EV","search_mode/segments.json")))
+SEG=json.load(open(os.environ.get("SM_SEGJSON_EV","search_mode/o3a_segments_event.json")))
 FS=4096; WIN=4.0; WN=int(WIN*FS); STRIDE=0.25; DEV=os.environ.get("SM_DEV","cuda:1")   # box convention: default cuda:1; override via SM_DEV
 EVENTS=json.load(open(os.environ["SM_EVENTSJSON"])) if os.environ.get("SM_EVENTSJSON") else {"GW231028_153006":1382542224.3,"GW231123_135430":1384782888.7}
 _pool=None

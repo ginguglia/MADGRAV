@@ -16,7 +16,7 @@ for _p in ("search_mode","improved","spectrogram_cascade"):
     _ap=os.path.join(MADGRAV_ROOT,_p)
     if _ap not in sys.path: sys.path.insert(0,_ap)
 import driver_streams as DS
-DS.DEV=os.environ.get("BLIND_DEV","cuda:3")
+DS.DEV=os.environ.get("BLIND_DEV","cuda:1")
 import driver_search_multi as M
 
 # mirror driver_blindscan module constants (kept in sync; bit-identical)

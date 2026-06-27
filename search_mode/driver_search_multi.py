@@ -20,7 +20,7 @@ for _p in ("search_mode","improved","spectrogram_cascade"):
     if _ap not in sys.path: sys.path.insert(0,_ap)
 import driver_streams as DS
 from massive_pipeline import MassiveEventPipeline
-SEG=json.load(open(os.environ.get("SM_BGJSON","search_mode/bg_segments.json")))
+SEG=json.load(open(os.environ.get("SM_BGJSON","search_mode/o3a_bg_segments_56.json")))
 S_O4A="search_mode/streams_o4a"; S_BG=os.environ.get("SM_STREAMS","search_mode/streams_bg"); STRAIN=os.environ.get("SM_STRAIN","search_mode/strain")
 INJ=os.environ.get("SM_INJ","search_mode/inj_out"); OUT=os.environ.get("SM_OUT","search_mode/search_out")
 cal=json.load(open("spectrogram_cascade/massive_calibration_BA.json")); TCOH=cal["tcoh"]; LAGSAMP=int(cal["lag_samples"])

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use MADGRAV, please cite the paper in 'preferred-citation' below."
+title: "MADGRAV: Multilevel Anomaly Detection for GRAVitational-wave science"
+abstract: >-
+  A portable, cluster-deployable blind gravitational-wave search: a frozen convolutional
+  autoencoder front end, an LR / glitch-arm cascade, high-mass and low-mass CNN specialists
+  with coherence, and a time-slide-calibrated false-alarm rate.
+authors:
+  - family-names: Inguglia
+    given-names: Gianluca
+  - family-names: Haigh
+    given-names: Huw
+  - family-names: Vitulová
+    given-names: Kristýna
+  - family-names: Dupletsa
+    given-names: Ulyana
+repository-code: "https://github.com/ginguglia/MADGRAV"
+type: software
+preferred-citation:
+  type: article
+  title: "Towards an anomaly detection pipeline for gravitational waves at the Einstein telescope"
+  authors:
+    - family-names: Inguglia
+      given-names: Gianluca
+    - family-names: Haigh
+      given-names: Huw
+    - family-names: Vitulová
+      given-names: Kristýna
+    - family-names: Dupletsa
+      given-names: Ulyana
+  journal: "Physics Letters B"
+  volume: 874
+  start: 140272
+  year: 2026
+  doi: "10.1016/j.physletb.2026.140272"

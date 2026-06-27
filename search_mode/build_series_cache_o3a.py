@@ -7,7 +7,7 @@ ROOT=os.environ.get("MADGRAV_ROOT") or os.path.abspath(os.path.dirname(__file__)
 os.environ.update(dict(SM_PREP=f"{ROOT}/data/o3a_search_prep", SM_STRAIN=f"{SM}/strain_o3a",
     SM_STREAMS=f"{SM}/streams_o3a", SM_INJ=f"{SM}/inj_out_o3a", SM_OUT=f"{SM}/search_out_o3a_f45"))
 os.environ.setdefault("SM_DEV","cuda:1")
-os.environ.setdefault("SM_BGJSON", f"{SM}/o3a_bg_segments.json")   # override via env (e.g. the 56-seg list)
+os.environ.setdefault("SM_BGJSON", f"{SM}/o3a_bg_segments_56.json")   # override via env for a different segment set
 import sys; sys.path.insert(0,"search_mode"); sys.path.insert(0,"improved")
 import driver_search_multi as M
 ta=time.time(); log=lambda s: print(f"[{(time.time()-ta)/60:5.1f}m] {s}",flush=True)

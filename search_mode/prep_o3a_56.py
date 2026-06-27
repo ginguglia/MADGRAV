@@ -1,11 +1,19 @@
 """Prep the 56-segment O3a blind-search config: (1) CAT2+HWInj veto mask for batch-2 segs (same DQ
 convention as q_cat2_o3a.py), (2) merge batch-1+batch-2 veto masks -> veto_mask_o3a_56.json,
 (3) merge batch-1+batch-2 segment lists -> o3a_bg_segments_56.json. Runs alongside the fetch (DQ only)."""
-import json,time
+import os,sys,json,time
 from gwpy.segments import DataQualityFlag, SegmentList, Segment
-B1=json.load(open("search_mode/o3a_bg_segments.json"))
-B2=json.load(open("search_mode/o3a_bg_segments_batch2.json"))
-V1=json.load(open("search_mode/veto_mask_o3a.json"))
+
+# Provenance-only: this script regenerates the merged 56-seg config from the batch-1/batch-2 inputs.
+# Those inputs are NOT vendored; the MERGED outputs (o3a_bg_segments_56.json, veto_mask_o3a_56.json)
+# already ship, so the public package never needs to run this. Exit cleanly if the inputs are absent.
+_IN=["search_mode/o3a_bg_segments.json","search_mode/o3a_bg_segments_batch2.json","search_mode/veto_mask_o3a.json"]
+if not all(os.path.exists(p) for p in _IN):
+    print("[prep_o3a_56] batch-1/batch-2 inputs not vendored; the merged 56-seg JSONs are pre-built "
+          "(o3a_bg_segments_56.json / veto_mask_o3a_56.json). Nothing to do.",flush=True); sys.exit(0)
+B1=json.load(open(_IN[0]))
+B2=json.load(open(_IN[1]))
+V1=json.load(open(_IN[2]))
 def segname(a,nm): return nm if nm else f"seg_{int(round(a))}"
 def fr(flag,t0,t1,tries=8):
     delay=15

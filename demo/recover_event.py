@@ -1,16 +1,18 @@
 """MADGRAV self-contained RECOVERY demo -- recover GW190521 (the IMBH) from a small bundled segment.
 
-Generalized, de-hardcoded version of search_mode/recover_gw190521.py. Reads a ~256 s strain
-segment that ships INSIDE the package (demo/strain/{EV}_{det}.npz, ~8 MB), computes a LOCAL
-+/-64s Welch ASD from that segment, injects it into the shared MassiveEventPipeline, runs the
+Self-contained, de-hardcoded recovery demo. Reads a ~256 s strain
+segment that ships INSIDE the package (demo/strain/{EV}_{det}.npz, ~8 MB), computes a
+whole-segment Welch ASD (4 s / 2 s) from that segment, injects it into the shared MassiveEventPipeline, runs the
 per-detector CAE sigma stream @1s stride, clusters net=(sH+sL)/sqrt2 > 4 triggers, and scores
 the top ones with the vendored HM/LM CNN glitch-gate. No GWOSC fetch; ~2 min on a GPU.
 
 NO FAR (one short segment has no lag livetime) -- this asks only: does the event window produce
 a net>4 trigger that the CNN glitch-gate (>0.5) KEEPS (RECOVER)?
 
-WHITENING: local +/-64s Welch ASD from THIS segment (matches the retrospective convention that
-fired GW190521). CROSS-RUN CAVEAT: only the LEARNED weights (CAE, 5-seed glitch arm, HM/LM CNNs)
+WHITENING: whole-segment Welch ASD (4 s / 2 s) over THIS 256 s segment -- the signal is in-band in
+the PSD estimate, which mildly self-suppresses the event (conservative for a recovery test). Matches
+the retrospective O3 convention that fired GW190521. CROSS-RUN CAVEAT: only the LEARNED weights
+(CAE, 5-seed glitch arm, HM/LM CNNs)
 remain O4a-trained applied here to local-ASD O3 data -- documented, expected, intentional.
 
 Run:

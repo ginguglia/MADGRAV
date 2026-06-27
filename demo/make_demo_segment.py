@@ -21,7 +21,9 @@ EV = "GW190521"
 MERGER = 1242442967.4
 HALF_S = 128.0                      # half-window in seconds -> 256 s total
 
-SRC_DIR = "/scratch/ginguglia/GW/orchestrated-pipeline/search_mode/strain_o3a"
+# Source strain dir used to regenerate the bundled demo segment (provenance only; the demo ships
+# the pre-built segment in demo/strain/, so a user never needs to run this). Override via SM_STRAIN.
+SRC_DIR = os.environ.get("SM_STRAIN", os.path.join(os.environ.get("MADGRAV_ROOT", "."), "search_mode/strain_o3a"))
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "strain")
 
 

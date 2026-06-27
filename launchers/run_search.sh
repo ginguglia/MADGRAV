@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # MADGRAV blind GW search -- portable single-node runner (NO systemd dependency).
 # Runs SM_NSHARD sequential shards of driver_blindscan.py, then the merge.
-# Science knobs are BYTE-IDENTICAL to the accepted O3a 56-seg per-arm run
-# (run_o3a_56_perarm_1gpu.sh): floor 4.5 / net-sigma 4.0 / per-arm / blind-floor / COH_CEIL 0.85.
+# Science knobs are the accepted O3a 56-seg per-arm config:
+# floor 4.5 / net-sigma 4.0 / per-arm / blind-floor / COH_CEIL 0.85.
 # Resumable: a shard whose shard_${k}.npz exists is skipped.
 set -uo pipefail
 

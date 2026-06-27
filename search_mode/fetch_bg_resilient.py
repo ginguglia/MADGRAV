@@ -11,8 +11,8 @@ from gwpy.timeseries import TimeSeries
 SHARD=int(os.environ.get("SHARD","0")); NSHARD=int(os.environ.get("NSHARD","1"))
 MAXPASS=int(os.environ.get("MAXPASS","200"))         # outer passes before giving up for the night
 CHUNK_TRIES=int(os.environ.get("CHUNK_TRIES","10"))  # per-chunk attempts within a pass
-BG_JSON=os.environ.get("BG_JSON","search_mode/bg_segments.json")
-OUT=os.environ.get("STRAIN_OUT","search_mode/strain")
+BG_JSON=os.environ.get("BG_JSON",os.environ.get("SM_BGJSON","search_mode/o3a_bg_segments_56.json"))
+OUT=os.environ.get("STRAIN_OUT",os.environ.get("SM_STRAIN","search_mode/strain_o3a"))
 SEG=json.load(open(BG_JSON)); os.makedirs(OUT,exist_ok=True)
 FS=4096; CHUNK=4096.0
 def segname(a,nm): return nm if nm else f"seg_{int(round(a))}"

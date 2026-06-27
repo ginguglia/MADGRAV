@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # MADGRAV merge -- portable (NO systemd / NO RAM-watchdog wrapper).
 # Merges the SM_NSHARD shard_*.npz into blindscan.json/detections.json/survivors_bg.json.
-# Science env BYTE-IDENTICAL to run_o3a_56_merge_capped.sh (floor 4.5 / net-sigma 4.0 / per-arm / COH_CEIL 0.85).
+# Science env matches the accepted O3a 56-seg config (floor 4.5 / net-sigma 4.0 / per-arm / COH_CEIL 0.85).
 set -uo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

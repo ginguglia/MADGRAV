@@ -8,7 +8,7 @@ This script trains a baseline CAE jointly for reconstruction and classification:
 - Joint noise reconstruction + signal/noise classification from epoch 1
 - MDC evaluation with thresholds derived from validation noise
 
-It is intended to be run from /scratch/ginguglia/GW/codex-agent.
+Run from the MADGRAV package root (set MADGRAV_ROOT first).
 """
 
 import argparse
@@ -99,7 +99,6 @@ class Config:
     epochs: int = 20
     weaksup_es_patience: int = 10
     n_files: int = 50
-    bottleneck: int = 128
     num_workers: int = 0
     output_dir: str = os.path.join(os.getcwd(), "outputs_best_baseline")
     dataset_mode: str = "synthetic"
@@ -217,13 +216,11 @@ class BaselineCAE(nn.Module):
 
 
 def set_seed(seed):
+    # Pin all sources of randomness to the given seed for reproducible training.
     torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
-    # BUG003 fix: pin all sources of randomness for reproducible training
-    torch.manual_seed(SEED)
-    torch.cuda.manual_seed_all(SEED)
-    np.random.seed(SEED)
-    random.seed(SEED)
+    random.seed(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 

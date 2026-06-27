@@ -6,13 +6,17 @@
 # DO NOT add ml4gw -- its whitening changes the coherence statistic and the results.
 name: madgrav
 channels:
+  - conda-forge
   - pytorch
   - nvidia
-  - conda-forge
 dependencies:
   - python=3.10
-  - pytorch            # pin e.g. pytorch=2.* + the matching cudatoolkit/pytorch-cuda for your cluster GPUs
-  - pytorch-cuda       # (use cudatoolkit instead on older stacks) -- match the training build
+  # Frozen-weights training/calibration build: torch 1.12.1.post201, CUDA 11.2, cuDNN 8.9.0.7.
+  # The GPU forward pass is the calibrated path; a different torch/CUDA build can shift it and break
+  # the frozen FAR calibration. If this exact build is unavailable on your cluster, match it as
+  # closely as your GPUs allow and re-validate the demo (GW190521 -> net sigma ~7.7) before trusting FARs.
+  - pytorch=1.12.1
+  - cudatoolkit=11.2
   - numpy
   - scipy
   - pandas

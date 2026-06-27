@@ -40,7 +40,7 @@ def _morph_one(qt, wl):   # ROI morphology [chirpslope, verticality, eccentricit
 
 O4A=DS.O4A; LRD=DS.LRD; SC=DS.SC; FS=4096; WN=4*FS; STRIDE=0.25; STEP=int(STRIDE*FS); DEV=os.environ.get("SM_DEV","cuda:1")
 STR=os.environ.get("SM_STRAIN","search_mode/strain"); OUT=os.environ.get("SM_INJ","search_mode/inj_out"); os.makedirs(OUT,exist_ok=True)
-SEG=json.load(open(os.environ.get("SM_SEGJSON_EV","search_mode/segments.json"))); EVENTS=DS.EVENTS
+SEG=json.load(open(os.environ.get("SM_SEGJSON_EV","search_mode/o3a_segments_event.json"))); EVENTS=DS.EVENTS
 BANK_SIG=os.environ.get("SM_BANK_SIG",os.path.join(MADGRAV_ROOT,"data","o1_o3_signal_bank_projected_2s_x10"))
 BANK_UM=os.environ.get("SM_BANK_UM",os.path.join(MADGRAV_ROOT,"bank","ultramassive_bank"))
 NET_SNR_GRID=[8.,10.,12.,15.,20.,25.]

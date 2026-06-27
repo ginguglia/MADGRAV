@@ -3,8 +3,8 @@ import os, json, time
 import numpy as np
 from gwpy.timeseries import TimeSeries
 
-SEG = json.load(open("search_mode/segments.json"))
-OUT = "search_mode/strain"; os.makedirs(OUT, exist_ok=True)
+SEG = json.load(open(os.environ.get("SM_SEGJSON_EV", "search_mode/o3a_segments_event.json")))
+OUT = os.environ.get("SM_STRAIN", "search_mode/strain_o3a"); os.makedirs(OUT, exist_ok=True)
 FS = 4096; CHUNK = 4096.0  # seconds per fetch chunk
 
 for name, d in SEG.items():

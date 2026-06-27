@@ -8,7 +8,7 @@ STAGE 2 (HM CNN 20-140 veto):      for CANDIDATE triggers (top by loglr + known-
                                    demotion-only 2-detector CNN veto to the trigger + its louder survivors
                                    (same band-matching cascade_cnn_far uses) -> per-trigger FAR_CNN (20-140).
 Cross-fit preserved: a fold-g foreground trigger is FAR'd ONLY against fold-g background (common loglr scale).
--> search_out/blindscan.json   Runs on cuda:3 (targeted job holds cuda:1).
+-> search_out/blindscan.json   Device via BLIND_DEV (default cuda:1; resolved by _resolve_dev, degrades gracefully).
 """
 import os,sys,json,time
 from collections import Counter

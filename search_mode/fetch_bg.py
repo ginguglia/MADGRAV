@@ -2,7 +2,8 @@
 import os,json,time
 import numpy as np
 from gwpy.timeseries import TimeSeries
-SEG=json.load(open("search_mode/bg_segments.json")); OUT="search_mode/strain"; os.makedirs(OUT,exist_ok=True)
+SEG=json.load(open(os.environ.get("SM_BGJSON","search_mode/o3a_bg_segments_56.json")))
+OUT=os.environ.get("SM_STRAIN","search_mode/strain_o3a"); os.makedirs(OUT,exist_ok=True)
 FS=4096; CHUNK=4096.0
 def segname(a,nm): return nm if nm else f"seg_{int(round(a))}"
 for a,b,d,nm in SEG["segments"]:
