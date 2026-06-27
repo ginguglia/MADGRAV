@@ -1,0 +1,19 @@
+# ---- big data + run outputs (NEVER committed) ----
+search_mode/strain_*/
+search_mode/streams_*/
+search_mode/inj_out_*/
+search_mode/*-fast/
+**/_seriescache/
+search_mode/search_out*/
+search_mode/_*_shards/
+
+# ---- logs / python cruft ----
+*.log
+__pycache__/
+*.pyc
+
+# ---- NOTE: committed assets are NOT ignored ----
+# The small vendored weights/calibration/PSD files ARE tracked:
+#   search_mode/*.pt, search_mode/*.json, lr_cascade/p1v42/*.pt,
+#   spectrogram_cascade/*.json, assets/models/*.pt, data/o3a_search_prep/*.npz
+# (none of the patterns above match those paths).

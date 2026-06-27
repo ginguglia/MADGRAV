@@ -1,0 +1,25 @@
+# MADGRAV conda environment.
+# IMPORTANT: pin torch + CUDA to match the version the frozen weights were trained/calibrated with.
+#   The CNN/CAE/glitch-arm weights are calibration-locked; a different torch/CUDA build can shift the
+#   GPU forward pass and break the frozen FAR calibration. The GPU forward is the calibrated path
+#   (CPU is NOT byte-identical -- allowed only for install checks via SM_ALLOW_CPU=1).
+# DO NOT add ml4gw -- its whitening changes the coherence statistic and the results.
+name: madgrav
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch            # pin e.g. pytorch=2.* + the matching cudatoolkit/pytorch-cuda for your cluster GPUs
+  - pytorch-cuda       # (use cudatoolkit instead on older stacks) -- match the training build
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - gwpy
+  - gwosc
+  - astropy
+  - h5py
+  - matplotlib
+  - pip
