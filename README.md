@@ -33,6 +33,7 @@ madgrav/
   spectrogram_cascade/  # massive_pipeline.py + massive_calibration_BA.json
   improved/             # improved_pipeline.py, prepare_o1_data.py, utilities.py (vendored)
   lr_cascade/p1v42/     # arm_deploy_seed0..4.pt (5-seed glitch arm)
+  lr_cascade/           # post-processing: p_astro (FGMC) + VT/sensitivity scripts (see below)
   assets/models/        # baseline_cae_weaksup_best.pt (frozen CAE)
   data/o3a_search_prep/ # reference_psd_H1.npz, reference_psd_L1.npz (run-matched ASD)
   launchers/            # run_search.sh, slurm_search.sbatch, run_merge.sh
@@ -86,6 +87,35 @@ Edit the `#SBATCH` placeholders (`--partition`, `--account`, `--time`, `--mem`, 
 
 Knobs (env): `MADGRAV_PY` (python), `BLIND_DEV` (GPU, default `cuda:1`; the device logic degrades gracefully
 and allows CPU only with `SM_ALLOW_CPU=1`), `SM_NSHARD`, `SM_HOST_MEM_GB`.
+
+## Post-processing: p_astro and VT / sensitivity
+
+These run *after* a search + background build; they consume the run products (LR model, time-slide
+background, segment tables, the injection campaign) under `lr_cascade/p4`, `lr_cascade/p0`,
+`lr_cascade/p1*`, plus the XPHM injection banks (`bank/`) and the prepared per-run strain
+(`data/<run>_prepared_4s_crop2s`, O3a via `MADGRAV_O3A_PREP`). These products are **not vendored** —
+point `MADGRAV_ROOT` at a tree that already contains them, or regenerate them. The scripts resolve all
+paths off `MADGRAV_ROOT`, so `export MADGRAV_ROOT=/path/to/orchestrated-pipeline` reruns them against an
+existing analysis unchanged.
+
+**p_astro (self-calibrating FGMC):**
+```bash
+# stage 1 — importance-sampling injection campaign through the frozen pipeline (per run, GPU)
+P7_RUN=O4a P7_DEVICE=cuda:1 python lr_cascade/pastro_campaign.py   # -> p4/pastro_inj_O4a.npz
+# stage 2 — fit rates, evaluate per-event p_astro (also yields the efficiency table)
+python lr_cascade/pastro_fgmc.py                                   # -> p4/pastro_results.json
+python lr_cascade/plot_pastro_calibration.py                       # -> fig_pastro_calibration.pdf
+```
+`pastro_campaign.py` imports `p7_lib.py` (vendored alongside) and `improved/improved_pipeline.py`.
+
+**VT / sensitive volume (reuses the same injection campaign):**
+```bash
+python lr_cascade/vt_vs_mass.py        # efficiency(Mtot) at FAR<=1/yr  -> p4/vt_vs_mass_O3a.json/.npz
+python lr_cascade/vt_absolute.py       # horizons + V_sens (Gpc^3) + sensitive distance (Mpc)
+python lr_cascade/vt_vs_far_panels.py  # V_sens vs FAR panels
+python lr_cascade/vt_comoving_overlay.py  # comoving V_sens overlay vs published benchmark
+python lr_cascade/vt_plot.py           # efficiency-vs-mass support figure
+```
 
 ## Verify
 
