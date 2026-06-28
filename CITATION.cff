@@ -8,12 +8,7 @@ abstract: >-
 authors:
   - family-names: Inguglia
     given-names: Gianluca
-  - family-names: Haigh
-    given-names: Huw
-  - family-names: Vitulová
-    given-names: Kristýna
-  - family-names: Dupletsa
-    given-names: Ulyana
+
 repository-code: "https://github.com/ginguglia/MADGRAV"
 type: software
 preferred-citation:
