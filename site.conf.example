@@ -1,0 +1,38 @@
+# ============================================================================
+# MADGRAV site configuration — COPY THIS to site.conf and edit for your system.
+#   cp site.conf.example site.conf   &&   $EDITOR site.conf
+# site.conf is git-ignored: your paths, SLURM account, and email stay private.
+# Every value is 'export'ed so it propagates to the SLURM jobs (--export=ALL).
+# The launcher (run_chain.sh) refuses to run until the required values are set.
+# ============================================================================
+
+# ---- paths (REQUIRED) ------------------------------------------------------
+export MADGRAV_ROOT=/path/to/MADGRAV          # this repo's root (absolute)
+export SCRATCH=/path/to/big_fast_storage      # holds strain_<run>_full, streams, cache, search_out_* (100s of GB)
+export PYTHON=/path/to/venv/bin/python        # python with the MADGRAV deps installed
+
+# ---- frozen model asset (REQUIRED) ----------------------------------------
+# The held-out logistic-regression model used as the blind statistic for every run.
+export FROZEN_MODEL=$MADGRAV_ROOT/data/o3a_frozen_lr_off200.npz
+
+# ---- SLURM site (REQUIRED to submit) --------------------------------------
+export SLURM_ACCOUNT=your_account
+export PARTITION_GPU=your_gpu_partition       # H100/A100 partition for streams/prune/cnn/merge/fg/inject
+export QOS_GPU=your_gpu_qos
+export PARTITION_CPU=your_cpu_partition       # for prep + series-cache
+export QOS_CPU=your_cpu_qos
+
+# ---- notifications (OPTIONAL) ---------------------------------------------
+# Leave NOTIFY_EMAIL empty  ->  results are written to <out>/SUMMARY.txt and the job log ONLY (no email).
+# Set it to receive the same content by email. Two delivery modes:
+#   smtp-auth : normal authenticated SMTP (works anywhere) — set HOST/PORT/USER/PASS.
+#   direct-mx : raw port-25 straight to the recipient's MX host(s) in SMTP_HOST, no auth
+#               (only works where outbound :25 is allowed and the MX accepts your IP).
+export NOTIFY_EMAIL=
+export NOTIFY_FROM=madgrav@localhost
+export SMTP_MODE=smtp-auth                     # smtp-auth | direct-mx
+export SMTP_HOST=                              # smtp-auth: one host;  direct-mx: comma-separated MX hosts
+export SMTP_PORT=587
+export SMTP_USER=
+export SMTP_PASS=
+export SMTP_HELO=localhost

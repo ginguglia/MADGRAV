@@ -1,0 +1,34 @@
+# ---- big data + run outputs (NEVER committed) ----
+search_mode/strain_*/
+search_mode/streams_*/
+search_mode/inj_out_*/
+search_mode/*-fast/
+**/_seriescache/
+search_mode/search_out*/
+search_mode/_*_shards/
+
+# ---- logs / python cruft ----
+*.log
+*.out
+*.nohup
+__pycache__/
+*.pyc
+*.png
+
+# ---- large signal banks (multi-GB, live on disk not git) ----
+data/o1_o3_signal_bank_projected_2s_x10/
+data/ultramassive_bank/
+search_mode/parfar/logs/
+
+# ---- NOTE: committed assets are NOT ignored ----
+# The small vendored weights/calibration/PSD files ARE tracked:
+#   search_mode/*.pt, search_mode/*.json, lr_cascade/p1v42/*.pt,
+#   spectrogram_cascade/*.json, assets/models/*.pt, data/o3a_search_prep/*.npz
+# (none of the patterns above match those paths).
+
+# site-specific config (paths, SLURM account, email) — never commit
+site.conf
+
+# run-artifact job-id dotfiles (never publish)
+launchers/.*_jid*
+launchers/.smoke_jid

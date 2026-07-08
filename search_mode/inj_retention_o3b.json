@@ -1,0 +1,65 @@
+[
+  {
+    "snr": 6.0,
+    "n": 40,
+    "recovered": 28,
+    "retained": 26,
+    "retention": 0.9285714285714286,
+    "med_dcnn": -0.003992050886154175,
+    "min_cnn_loc": 0.00039628459489904344
+  },
+  {
+    "snr": 7.0,
+    "n": 40,
+    "recovered": 31,
+    "retained": 28,
+    "retention": 0.9032258064516129,
+    "med_dcnn": -0.0001875758171081543,
+    "min_cnn_loc": 0.0006531482213176787
+  },
+  {
+    "snr": 8.0,
+    "n": 40,
+    "recovered": 35,
+    "retained": 34,
+    "retention": 0.9714285714285714,
+    "med_dcnn": -9.21487808227539e-05,
+    "min_cnn_loc": 0.4901631474494934
+  },
+  {
+    "snr": 10.0,
+    "n": 40,
+    "recovered": 36,
+    "retained": 35,
+    "retention": 0.9722222222222222,
+    "med_dcnn": -5.125999450683594e-06,
+    "min_cnn_loc": 0.015400636941194534
+  },
+  {
+    "snr": 12.0,
+    "n": 40,
+    "recovered": 38,
+    "retained": 37,
+    "retention": 0.9736842105263158,
+    "med_dcnn": -1.1920928955078125e-07,
+    "min_cnn_loc": 0.001016104593873024
+  },
+  {
+    "snr": 15.0,
+    "n": 40,
+    "recovered": 38,
+    "retained": 37,
+    "retention": 0.9736842105263158,
+    "med_dcnn": -3.4570693969726562e-06,
+    "min_cnn_loc": 0.4672781825065613
+  },
+  {
+    "snr": 20.0,
+    "n": 40,
+    "recovered": 37,
+    "retained": 37,
+    "retention": 1.0,
+    "med_dcnn": 0.0,
+    "min_cnn_loc": 0.9919244647026062
+  }
+]
