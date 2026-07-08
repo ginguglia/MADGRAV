@@ -216,7 +216,7 @@ If you use this software, please cite the paper (a `CITATION.cff` is included, s
 **“Cite this repository”** button exports the entry below):
 
 ```bibtex
-@article{Inguglia2026MADGRAV,
+@article{Inguglia:2025cig,
   title   = {Towards an anomaly detection pipeline for gravitational waves at the Einstein telescope},
   author  = {Inguglia, Gianluca and Haigh, Huw and Vitulov\'a, Krist\'yna and Dupletsa, Ulyana},
   journal = {Physics Letters B},
