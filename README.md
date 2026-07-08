@@ -195,7 +195,6 @@ time-slide livetime.
 - The frozen weights (CAE, glitch arm, HM/LM CNNs) are **calibration-locked**. The **GPU forward pass is the
   calibrated path**; CPU forward is **not** byte-identical, so a production / FAR run must run on GPU
   (`SM_ALLOW_CPU=1` is for install checks only).
-- Do **not** add `ml4gw` — it changes the coherence statistic and the results.
 - Whitening uses the run-matched reference ASD in `data/o3a_search_prep/`.
 - The vendored weights (CAE `assets/models/baseline_cae_weaksup_best.pt`, 5-seed glitch arm
   `lr_cascade/p1v42/`, HM/LM CNNs `search_mode/{hm,lm}_native_seed0.pt`) and the BA calibration
