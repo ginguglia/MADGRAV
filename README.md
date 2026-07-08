@@ -4,7 +4,7 @@
 
 # MADGRAV
 
-**M**ultilevel **A**nomaly **D**etection for **GRAV**itational-wave science — a portable, cluster-deployable
+**M**ultilevel **A**nomaly **D**etection for **GRAV**itational-wave searches — a portable, cluster-deployable
 (SLURM) blind gravitational-wave search.
 
 Developed by **G. Inguglia et al.**
