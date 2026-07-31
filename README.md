@@ -11,7 +11,7 @@ Developed by **G. Inguglia et al.**
 
 ## Overview
 
-MADGRAV is a multilevel anomaly-detection search: a frozen convolutional autoencoder (CAE) front end →
+MADGRAV is a multilevel anomaly-detection search for gravitational waves: a frozen convolutional autoencoder (CAE) front end →
 LR / glitch-arm cascade → CNN (high-mass + low-mass specialists) + coherence → time-slide-calibrated FAR.
 The CAE is trained in two stages — an **unsupervised** reconstruction pass that learns the detector-noise
 manifold, then a **weak-supervision** margin fine-tune on simulated signals — so the deployed front end is a
