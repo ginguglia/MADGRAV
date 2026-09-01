@@ -1,0 +1,11 @@
+# big data and run outputs never belong in git
+scratch/
+*.npz
+!data/o3a_search_prep/reference_psd_*.npz
+!demo/strain/*.npz
+__pycache__/
+*.pyc
+*.log
+*.out
+*.bak*
+site.conf

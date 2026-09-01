@@ -1,0 +1,4840 @@
+{
+ "far_threshold_yr": 1.0,
+ "events": [
+  {
+   "name": "GW190403_051519",
+   "gps": 1238303737.0,
+   "mtot": 106.6,
+   "snr": 8.0,
+   "far_min": 7.7,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.448092323641017e-07
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190408_181802",
+   "gps": 1238782700.0,
+   "mtot": 43.4,
+   "snr": 14.7,
+   "far_min": 1e-05,
+   "cwb_far": 0.000948231176,
+   "pipe_far_hz": {
+    "PyCBC-broad": 7.978107400443214e-12,
+    "GstLAL": 6.754302776947525e-23,
+    "PyCBC-BBH": 3.764923907362726e-12
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190412_053044",
+   "gps": 1239082262.0,
+   "mtot": 36.8,
+   "snr": 18.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.000948231176,
+   "pipe_far_hz": {
+    "PyCBC-broad": 3.63191109010196e-12,
+    "GstLAL": 6.100412182800211e-35,
+    "PyCBC-BBH": 3.764923907362726e-12
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190413_052954",
+   "gps": 1239168612.0,
+   "mtot": 58.0,
+   "snr": 8.5,
+   "far_min": 0.82,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 5.388824500711328e-06,
+    "PyCBC-BBH": 2.59400570570155e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190413_134308",
+   "gps": 1239198206.0,
+   "mtot": 81.3,
+   "snr": 8.9,
+   "far_min": 0.18,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 6.606673746881477e-07,
+    "GstLAL": 1.244637957791538e-06,
+    "PyCBC-BBH": 5.723554817785548e-09
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "GstLAL": false,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190421_213856",
+   "gps": 1239917954.0,
+   "mtot": 73.6,
+   "snr": 10.5,
+   "far_min": 0.0028,
+   "cwb_far": 0.301736872,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.876130427063559e-07,
+    "GstLAL": 8.960224376202052e-11,
+    "PyCBC-BBH": 4.505497527321795e-10
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190426_190642",
+   "gps": 1240340820.0,
+   "mtot": 182.3,
+   "snr": 9.6,
+   "far_min": 4.1,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.292923567374512e-07
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190503_185404",
+   "gps": 1240944862.0,
+   "mtot": 69.4,
+   "snr": 12.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.001801413408,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.219545914384301e-09,
+    "GstLAL": 7.407730556785277e-14,
+    "PyCBC-BBH": 8.118201561064047e-11
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190512_180714",
+   "gps": 1241719652.0,
+   "mtot": 35.8,
+   "snr": 12.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.877739276,
+   "pipe_far_hz": {
+    "PyCBC-broad": 3.489681229012874e-12,
+    "GstLAL": 2.44603239005186e-19,
+    "PyCBC-BBH": 3.442688372465713e-12
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190513_205428",
+   "gps": 1241816086.0,
+   "mtot": 54.4,
+   "snr": 12.3,
+   "far_min": 1.3000000000000001e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 5.956873073865902e-07,
+    "GstLAL": 4.206292566370738e-13,
+    "PyCBC-BBH": 1.400586282420563e-09
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190514_065416",
+   "gps": 1241852074.0,
+   "mtot": 69.3,
+   "snr": 8.4,
+   "far_min": 2.8,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "GstLAL": 1.410212920377987e-05,
+    "PyCBC-BBH": 8.719707463685079e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190517_055101",
+   "gps": 1242107479.0,
+   "mtot": 64.1,
+   "snr": 10.3,
+   "far_min": 0.00035,
+   "cwb_far": 0.0065305147,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.996388978441417e-10,
+    "GstLAL": 1.435596447566848e-10,
+    "PyCBC-BBH": 1.095706442318955e-11
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190519_153544",
+   "gps": 1242315362.0,
+   "mtot": 105.6,
+   "snr": 12.4,
+   "far_min": 1e-05,
+   "cwb_far": 0.0003061174626,
+   "pipe_far_hz": {
+    "PyCBC-broad": 3.177683971418941e-12,
+    "GstLAL": 6.99452591659198e-14,
+    "PyCBC-BBH": 3.442688372465713e-12
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190521_030229",
+   "gps": 1242442967.0,
+   "mtot": 153.1,
+   "snr": 13.6,
+   "far_min": 0.0013,
+   "cwb_far": 0.0002039635028,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.405586404387696e-08,
+    "GstLAL": 6.24846072347468e-09,
+    "PyCBC-BBH": 4.255066696757318e-11
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190521_074359",
+   "gps": 1242459857.0,
+   "mtot": 76.3,
+   "snr": 22.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.00010203915420000001,
+   "pipe_far_hz": {
+    "PyCBC-broad": 5.599923864331128e-13,
+    "GstLAL": 1.59516851737191e-40,
+    "PyCBC-BBH": 7.254935904555353e-13
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190527_092055",
+   "gps": 1242984073.0,
+   "mtot": 58.1,
+   "snr": 8.7,
+   "far_min": 0.23,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "GstLAL": 7.241098693381055e-09,
+    "PyCBC-BBH": 5.941067012240379e-07
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": true,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190602_175927",
+   "gps": 1243533585.0,
+   "mtot": 115.6,
+   "snr": 12.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.015438987699999998,
+   "pipe_far_hz": {
+    "PyCBC-broad": 9.08589166579365e-09,
+    "GstLAL": 3.459978134684163e-15,
+    "PyCBC-BBH": 4.031652861130407e-10
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190701_203306",
+   "gps": 1246048404.0,
+   "mtot": 94.3,
+   "snr": 11.7,
+   "far_min": 0.0057,
+   "cwb_far": 0.554088412,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.029217547300484e-09,
+    "GstLAL": 1.808704223486925e-10,
+    "PyCBC-BBH": 1.787551872329468e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190706_222641",
+   "gps": 1246487219.0,
+   "mtot": 112.6,
+   "snr": 12.5,
+   "far_min": 5e-05,
+   "cwb_far": 0.00101711769,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.186739258226572e-11,
+    "GstLAL": 1.584135400496321e-12,
+    "PyCBC-BBH": 1.087026451916602e-08
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190707_093326",
+   "gps": 1246527224.0,
+   "mtot": 20.1,
+   "snr": 13.2,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 3.075873170441965e-13,
+    "GstLAL": 8.496209787641894e-23,
+    "PyCBC-BBH": 5.881070016714428e-13
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190719_215514",
+   "gps": 1247608532.0,
+   "mtot": 57.2,
+   "snr": 8.0,
+   "far_min": 0.63,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.997528550837492e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190720_000836",
+   "gps": 1247616534.0,
+   "mtot": 21.8,
+   "snr": 11.5,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 4.338412592875544e-12,
+    "GstLAL": 1.401661310972912e-15,
+    "PyCBC-BBH": 2.457144860114014e-12
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190727_060333",
+   "gps": 1248242631.0,
+   "mtot": 68.8,
+   "snr": 12.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0878265994,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.78777672283048e-10,
+    "GstLAL": 8.659659455177212e-18,
+    "PyCBC-BBH": 6.422559975694786e-12
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190728_064510",
+   "gps": 1248331528.0,
+   "mtot": 20.7,
+   "snr": 13.4,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.61164435409708e-12,
+    "GstLAL": 1.718638153195978e-23,
+    "PyCBC-BBH": 2.457144860114014e-12
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190731_140936",
+   "gps": 1248617394.0,
+   "mtot": 70.7,
+   "snr": 8.5,
+   "far_min": 0.33,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "GstLAL": 1.060105731845551e-08,
+    "PyCBC-BBH": 5.876885532021038e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": true,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190803_022701",
+   "gps": 1248834439.0,
+   "mtot": 65.0,
+   "snr": 9.1,
+   "far_min": 0.073,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.553430139949093e-06,
+    "GstLAL": 2.319227097412944e-09,
+    "PyCBC-BBH": 1.243519398241035e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190805_211137",
+   "gps": 1249074715.0,
+   "mtot": 76.7,
+   "snr": 8.3,
+   "far_min": 0.63,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.986945315565477e-08
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190828_063405",
+   "gps": 1251009263.0,
+   "mtot": 57.2,
+   "snr": 15.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.0009581852,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.695861336995501e-12,
+    "GstLAL": 1.590156025763827e-34,
+    "PyCBC-BBH": 2.20240361516316e-12
+   },
+   "run": "o3a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190828_065509",
+   "gps": 1251010527.0,
+   "mtot": 34.3,
+   "snr": 11.1,
+   "far_min": 3.5000000000000004e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 8.74398706670649e-12,
+    "GstLAL": 1.102575356599653e-12,
+    "PyCBC-BBH": 3.523825465490365e-12
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190915_235702",
+   "gps": 1252627040.0,
+   "mtot": 57.2,
+   "snr": 13.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.001022075778,
+   "pipe_far_hz": {
+    "PyCBC-broad": 2.166561666618149e-11,
+    "GstLAL": 2.467592435398271e-13,
+    "PyCBC-BBH": 2.20240361516316e-12
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW190916_200658",
+   "gps": 1252699636.0,
+   "mtot": 68.0,
+   "snr": 7.9,
+   "far_min": 4.7,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "GstLAL": 3.84463492931237e-07,
+    "PyCBC-BBH": 1.504338810799056e-07
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190926_050336",
+   "gps": 1253509434.0,
+   "mtot": 61.9,
+   "snr": 9.0,
+   "far_min": 1.1,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "GstLAL": 3.639308136256463e-08,
+    "PyCBC-BBH": 2.741298038036575e-06
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190929_012149",
+   "gps": 1253755327.0,
+   "mtot": 93.3,
+   "snr": 10.1,
+   "far_min": 0.16,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 3.894301238769204e-06,
+    "GstLAL": 4.912550472056245e-09,
+    "PyCBC-BBH": 4.302839363576048e-07
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": false,
+    "GstLAL": true,
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW190930_133541",
+   "gps": 1253885759.0,
+   "mtot": 21.2,
+   "snr": 10.0,
+   "far_min": 0.012,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 5.642551384599466e-10,
+    "GstLAL": 1.357819582439434e-08,
+    "PyCBC-BBH": 3.913966963721541e-10
+   },
+   "run": "o3a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-broad": true,
+    "GstLAL": true,
+    "PyCBC-BBH": true
+   }
+  },
+  {
+   "name": "GW191103_012549",
+   "gps": 1256779567.0,
+   "mtot": 20.0,
+   "snr": 9.3,
+   "far_min": 0.46,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.452192459397778e-08,
+    "MBTA": 8.494982e-07,
+    "PyCBC-broad": 1.529612997003762e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191109_010717",
+   "gps": 1257296855.0,
+   "mtot": 112.0,
+   "snr": 15.2,
+   "far_min": 0.00018,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.482716736000989e-09,
+    "GstLAL": 3.25367477264133e-11,
+    "MBTA": 5.697955e-12,
+    "PyCBC-broad": 3.035017407222995e-09
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW191113_071753",
+   "gps": 1257664691.0,
+   "mtot": 34.5,
+   "snr": 9.2,
+   "far_min": 26.0,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 3.843581419744724e-05,
+    "MBTA": 8.173553e-07,
+    "PyCBC-broad": 0.0003490655601622314
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191126_115259",
+   "gps": 1258804397.0,
+   "mtot": 20.7,
+   "snr": 8.5,
+   "far_min": 3.2,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.013291517189353e-07,
+    "GstLAL": 2.532960934416496e-06,
+    "MBTA": 1.870463e-06,
+    "PyCBC-broad": 7.080742854006154e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191127_050227",
+   "gps": 1258866165.0,
+   "mtot": 80.0,
+   "snr": 10.3,
+   "far_min": 0.25,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.286703254476636e-07,
+    "GstLAL": 7.885262057551425e-09,
+    "MBTA": 3.850485e-08,
+    "PyCBC-broad": 6.279642339019901e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191204_110529",
+   "gps": 1259492747.0,
+   "mtot": 47.1,
+   "snr": 8.9,
+   "far_min": 3.3,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.034122840249552e-07,
+    "GstLAL": 6.663980111352975e-07,
+    "MBTA": 0.0004185515,
+    "PyCBC-broad": 3.116607389092945e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191204_171526",
+   "gps": 1259514944.0,
+   "mtot": 20.19,
+   "snr": 15.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.00087,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 3.877243360914049e-13,
+    "GstLAL": 1.11407557623957e-32,
+    "MBTA": 1.8605e-13,
+    "PyCBC-broad": 4.488215264542833e-13
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW191215_223052",
+   "gps": 1260484270.0,
+   "mtot": 43.3,
+   "snr": 10.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.12,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 8.799243398410132e-09,
+    "GstLAL": 4.052808321852368e-14,
+    "MBTA": 6.891331e-09,
+    "PyCBC-broad": 5.151531643750895e-11
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW191219_163120",
+   "gps": 1260808298.0,
+   "mtot": 32.3,
+   "snr": 8.9,
+   "far_min": 4.0,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-broad": 1.268397394541079e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW191222_033537",
+   "gps": 1261020955.0,
+   "mtot": 79.0,
+   "snr": 12.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.00089,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 3.101794688731239e-12,
+    "GstLAL": 8.768827730992947e-21,
+    "MBTA": 3.144259e-10,
+    "PyCBC-broad": 6.513875148933815e-11
+   },
+   "run": "o3b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW191230_180458",
+   "gps": 1261764316.0,
+   "mtot": 86.0,
+   "snr": 10.3,
+   "far_min": 0.13,
+   "cwb_far": 0.05,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.318151697772664e-08,
+    "GstLAL": 4.099761705088687e-09,
+    "MBTA": 2.572976e-07,
+    "PyCBC-broad": 1.657527325745139e-06
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200128_022011",
+   "gps": 1264213229.0,
+   "mtot": 75.0,
+   "snr": 9.9,
+   "far_min": 0.0043,
+   "cwb_far": 1.3,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.361084352497365e-10,
+    "GstLAL": 7.027458391740302e-10,
+    "MBTA": 1.050368e-07,
+    "PyCBC-broad": 1.99192022589376e-08
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200129_065458",
+   "gps": 1264316116.0,
+   "mtot": 63.3,
+   "snr": 26.5,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 5.377881179052469e-13,
+    "GstLAL": 9.034321189341606e-41,
+    "PyCBC-broad": 7.437313348134279e-13
+   },
+   "run": "o3b",
+   "madgrav": true,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200208_130117",
+   "gps": 1265202095.0,
+   "mtot": 65.3,
+   "snr": 10.8,
+   "far_min": 0.00031,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 9.844511689085077e-12,
+    "GstLAL": 3.043655224902116e-10,
+    "MBTA": 1.466454e-08,
+    "PyCBC-broad": 5.856108816421236e-09
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200208_222617",
+   "gps": 1265235995.0,
+   "mtot": 63.0,
+   "snr": 7.9,
+   "far_min": 4.8,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.530451179382226e-07,
+    "GstLAL": 5.177900808190061e-06,
+    "MBTA": 1.316276e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW200209_085452",
+   "gps": 1265273710.0,
+   "mtot": 62.6,
+   "snr": 10.0,
+   "far_min": 0.046,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 3.827386851303666e-08,
+    "GstLAL": 1.465134770017354e-09,
+    "MBTA": 3.864962e-07,
+    "PyCBC-broad": 1.73451071510105e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200210_092254",
+   "gps": 1265361792.0,
+   "mtot": 27.0,
+   "snr": 9.5,
+   "far_min": 1.2,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.436338371945579e-07,
+    "GstLAL": 3.948716533050898e-08,
+    "PyCBC-broad": 5.322481596951601e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200216_220804",
+   "gps": 1265926102.0,
+   "mtot": 81.0,
+   "snr": 9.4,
+   "far_min": 0.35,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.486037744521716e-07,
+    "GstLAL": 1.105726269511999e-08,
+    "MBTA": 7.605365e-05,
+    "PyCBC-broad": 3.059794350856858e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200219_094415",
+   "gps": 1266140673.0,
+   "mtot": 65.0,
+   "snr": 10.7,
+   "far_min": 0.00099,
+   "cwb_far": 0.77,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 5.203251440525157e-10,
+    "GstLAL": 3.151985733703819e-11,
+    "MBTA": 5.623981e-09,
+    "PyCBC-broad": 5.432683177316729e-08
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200220_061928",
+   "gps": 1266214786.0,
+   "mtot": 148.0,
+   "snr": 7.5,
+   "far_min": 6.8,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.160248670993181e-07
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false
+   }
+  },
+  {
+   "name": "GW200220_124850",
+   "gps": 1266238148.0,
+   "mtot": 67.0,
+   "snr": 7.8,
+   "far_min": 30.0,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 9.419183868572296e-07,
+    "GstLAL": 4.609942663494335e-06,
+    "MBTA": 5.665904e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW200224_222234",
+   "gps": 1266618172.0,
+   "mtot": 72.3,
+   "snr": 18.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.00088,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.438503300651908e-12,
+    "GstLAL": 7.695857337290962e-40,
+    "MBTA": 2.615789e-19,
+    "PyCBC-broad": 2.586727452284706e-12
+   },
+   "run": "o3b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200225_060421",
+   "gps": 1266645879.0,
+   "mtot": 33.5,
+   "snr": 12.3,
+   "far_min": 1.1e-05,
+   "cwb_far": 0.00088,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.297947603619545e-12,
+    "GstLAL": 2.513763234625319e-09,
+    "MBTA": 1.554565e-10,
+    "PyCBC-broad": 3.615504316507263e-13
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200306_093714",
+   "gps": 1267522652.0,
+   "mtot": 43.9,
+   "snr": 8.0,
+   "far_min": 24.0,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 7.448640075191784e-07,
+    "MBTA": 1.302705e-05,
+    "PyCBC-broad": 0.0001072560555648207
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200308_173609",
+   "gps": 1267724187.0,
+   "mtot": 92.0,
+   "snr": 8.0,
+   "far_min": 2.4,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 7.517013949803399e-08,
+    "GstLAL": 2.143182653069141e-05,
+    "MBTA": 0.00219614,
+    "PyCBC-broad": 2.446766300200509e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW200311_115853",
+   "gps": 1267963151.0,
+   "mtot": 61.9,
+   "snr": 17.7,
+   "far_min": 1e-05,
+   "cwb_far": 0.00082,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 2.438503300651908e-12,
+    "GstLAL": 1.327496326218361e-41,
+    "MBTA": 3.138508e-19,
+    "PyCBC-broad": 2.195241942242124e-12
+   },
+   "run": "o3b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200316_215756",
+   "gps": 1268431094.0,
+   "mtot": 21.2,
+   "snr": 10.1,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 1.839988478749928e-08,
+    "GstLAL": 2.823362675488764e-13,
+    "MBTA": 3.905514e-07,
+    "PyCBC-broad": 6.336708065229579e-09
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC-BBH": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "PyCBC-broad": true
+   }
+  },
+  {
+   "name": "GW200322_091133",
+   "gps": 1268903511.0,
+   "mtot": 50.0,
+   "snr": 7.7,
+   "far_min": 140.0,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC-BBH": 4.418663751624833e-06,
+    "MBTA": 1.440425e-05,
+    "PyCBC-broad": 4.537372577385879e-05
+   },
+   "run": "o3b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": false,
+   "pipe_1yr": {
+    "PyCBC-BBH": false,
+    "MBTA": false,
+    "PyCBC-broad": false
+   }
+  },
+  {
+   "name": "GW230601_224134",
+   "gps": 1369694512.0,
+   "mtot": 107.0,
+   "snr": 11.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 8.941579003857486e-12,
+    "GstLAL": 5.211067938674824e-18,
+    "MBTA": 2.605047e-10,
+    "cWB": 4.22371721e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230605_065343",
+   "gps": 1369983241.0,
+   "mtot": 28.6,
+   "snr": 11.1,
+   "far_min": 1e-05,
+   "cwb_far": 560.0,
+   "pipe_far_hz": {
+    "PyCBC": 4.19682543199716e-13,
+    "GstLAL": 7.165234397265315e-13,
+    "MBTA": 5.8407e-15,
+    "cWB": 1.76044932e-05
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230606_004305",
+   "gps": 1370047403.0,
+   "mtot": 63.3,
+   "snr": 10.7,
+   "far_min": 0.00041,
+   "cwb_far": 0.0067,
+   "pipe_far_hz": {
+    "PyCBC": 1.301116794489206e-11,
+    "GstLAL": 4.01515196095848e-11,
+    "MBTA": 6.152455e-08,
+    "cWB": 2.11186339e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230608_205047",
+   "gps": 1370292665.0,
+   "mtot": 79.0,
+   "snr": 10.2,
+   "far_min": 0.0011,
+   "cwb_far": 0.032,
+   "pipe_far_hz": {
+    "GstLAL": 3.603803519102792e-11,
+    "MBTA": 8.60828e-09,
+    "cWB": 1.01369443e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230609_064958",
+   "gps": 1370328616.0,
+   "mtot": 60.5,
+   "snr": 9.6,
+   "far_min": 0.0001,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 3.228934893088444e-12,
+    "GstLAL": 4.126129605250877e-12,
+    "MBTA": 1.125761e-07,
+    "cWB": 4.22371721e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230624_113103",
+   "gps": 1371641481.0,
+   "mtot": 42.6,
+   "snr": 10.0,
+   "far_min": 0.00017,
+   "cwb_far": 0.0022,
+   "pipe_far_hz": {
+    "PyCBC": 3.528990334957425e-11,
+    "GstLAL": 5.403149551592341e-12,
+    "MBTA": 5.606223e-10,
+    "cWB": 7.01588529e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230628_231200",
+   "gps": 1372029138.0,
+   "mtot": 59.2,
+   "snr": 15.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.754267197696081e-13,
+    "GstLAL": 2.76655352582163e-31,
+    "MBTA": 3.276122e-16,
+    "cWB": 3.5079473e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230630_125806",
+   "gps": 1372165104.0,
+   "mtot": 84.0,
+   "snr": 8.1,
+   "far_min": 0.048,
+   "cwb_far": 0.16,
+   "pipe_far_hz": {
+    "PyCBC": 1.528196939219517e-09,
+    "GstLAL": 7.721675103807604e-09,
+    "MBTA": 4.071251e-08,
+    "cWB": 5.1917896e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230702_185453",
+   "gps": 1372359311.0,
+   "mtot": 60.0,
+   "snr": 9.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0089,
+   "pipe_far_hz": {
+    "PyCBC": 6.334311026379964e-11,
+    "GstLAL": 1.608889791592241e-13,
+    "MBTA": 6.71789e-09,
+    "cWB": 2.8063566e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230704_021211",
+   "gps": 1372471949.0,
+   "mtot": 53.0,
+   "snr": 9.2,
+   "far_min": 0.037,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.173424263594018e-09,
+    "GstLAL": 6.291257314557791e-09,
+    "MBTA": 8.397505e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW230704_212616",
+   "gps": 1372541194.0,
+   "mtot": 140.0,
+   "snr": 8.7,
+   "far_min": 0.51,
+   "cwb_far": 43.0,
+   "pipe_far_hz": {
+    "GstLAL": 3.312814369215264e-07,
+    "MBTA": 1.627005e-08,
+    "cWB": 1.35419179e-06
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230706_104333",
+   "gps": 1372675431.0,
+   "mtot": 28.0,
+   "snr": 9.2,
+   "far_min": 0.22,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 7.825078419215095e-09,
+    "GstLAL": 7.064295140007865e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true
+   }
+  },
+  {
+   "name": "GW230707_124047",
+   "gps": 1372768865.0,
+   "mtot": 82.0,
+   "snr": 10.5,
+   "far_min": 0.00042,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.338208683736829e-11,
+    "GstLAL": 8.121423545768977e-11,
+    "MBTA": 2.266859e-09,
+    "cWB": 3.5079473e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230708_053705",
+   "gps": 1372829843.0,
+   "mtot": 51.7,
+   "snr": 8.9,
+   "far_min": 0.028,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 8.839710111672854e-10,
+    "GstLAL": 7.592113407061948e-08,
+    "MBTA": 1.704605e-06
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW230708_230935",
+   "gps": 1372892993.0,
+   "mtot": 104.0,
+   "snr": 9.4,
+   "far_min": 0.001,
+   "cwb_far": 1.2,
+   "pipe_far_hz": {
+    "PyCBC": 3.242856590633702e-11,
+    "GstLAL": 1.14848138942632e-10,
+    "MBTA": 8.171723e-09,
+    "cWB": 3.90776764e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230709_122727",
+   "gps": 1372940865.0,
+   "mtot": 74.0,
+   "snr": 10.0,
+   "far_min": 0.0009699999999999999,
+   "cwb_far": 0.071,
+   "pipe_far_hz": {
+    "PyCBC": 3.062965321073876e-11,
+    "GstLAL": 4.964223863819597e-09,
+    "MBTA": 3.692724e-07,
+    "cWB": 2.24508926e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230712_090405",
+   "gps": 1373187863.0,
+   "mtot": 45.1,
+   "snr": 8.2,
+   "far_min": 0.018,
+   "cwb_far": 0.018,
+   "pipe_far_hz": {
+    "PyCBC": 2.136062396386788e-06,
+    "GstLAL": 3.105869224569133e-06,
+    "cWB": 5.61270326e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230723_101834",
+   "gps": 1374142732.0,
+   "mtot": 27.6,
+   "snr": 10.1,
+   "far_min": 0.00022000000000000003,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 6.948179482919691e-12,
+    "GstLAL": 1.63565741924541e-10,
+    "MBTA": 1.085606e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW230729_082317",
+   "gps": 1374654215.0,
+   "mtot": 20.3,
+   "snr": 9.5,
+   "far_min": 0.17,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.49339075423331e-07,
+    "GstLAL": 5.500760800398548e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true
+   }
+  },
+  {
+   "name": "GW230803_033412",
+   "gps": 1375068870.0,
+   "mtot": 74.0,
+   "snr": 8.2,
+   "far_min": 0.044,
+   "cwb_far": 3.0,
+   "pipe_far_hz": {
+    "PyCBC": 1.398625228420161e-09,
+    "GstLAL": 9.141708652271339e-08,
+    "MBTA": 5.974624e-07,
+    "cWB": 9.48461174e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230805_034249",
+   "gps": 1375242187.0,
+   "mtot": 56.0,
+   "snr": 9.4,
+   "far_min": 0.00029,
+   "cwb_far": 7.5,
+   "pipe_far_hz": {
+    "PyCBC": 9.068955734028004e-12,
+    "GstLAL": 1.994900349307532e-10,
+    "MBTA": 2.041422e-07,
+    "cWB": 2.37186286e-07
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230806_204041",
+   "gps": 1375389659.0,
+   "mtot": 86.0,
+   "snr": 9.1,
+   "far_min": 0.0035,
+   "cwb_far": 0.0065,
+   "pipe_far_hz": {
+    "PyCBC": 1.111223713783467e-10,
+    "GstLAL": 1.116981495008016e-10,
+    "MBTA": 6.490773e-09,
+    "cWB": 2.07096119e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230811_032116",
+   "gps": 1375759294.0,
+   "mtot": 57.7,
+   "snr": 12.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 3.046137991584352e-13,
+    "GstLAL": 1.264373885118491e-26,
+    "MBTA": 2.729137e-12,
+    "cWB": 4.14192292e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230814_061920",
+   "gps": 1376029178.0,
+   "mtot": 109.0,
+   "snr": 10.2,
+   "far_min": 0.00059,
+   "cwb_far": 0.0039,
+   "pipe_far_hz": {
+    "PyCBC": 2.212323759680081e-11,
+    "GstLAL": 1.854744753600388e-11,
+    "MBTA": 1.295993e-09,
+    "cWB": 1.24257899e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230819_171910",
+   "gps": 1376500768.0,
+   "mtot": 108.0,
+   "snr": 9.0,
+   "far_min": 0.011,
+   "cwb_far": 0.011,
+   "pipe_far_hz": {
+    "PyCBC": 1.109132971447245e-07,
+    "GstLAL": 4.100185859213092e-10,
+    "cWB": 3.33848389e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230820_212515",
+   "gps": 1376601933.0,
+   "mtot": 97.0,
+   "snr": 9.1,
+   "far_min": 0.24,
+   "cwb_far": 68.0,
+   "pipe_far_hz": {
+    "PyCBC": 8.997006373527932e-09,
+    "GstLAL": 7.464765604155619e-09,
+    "MBTA": 9.411529e-09,
+    "cWB": 2.15565223e-06
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230824_033047",
+   "gps": 1376883065.0,
+   "mtot": 88.0,
+   "snr": 10.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0035,
+   "pipe_far_hz": {
+    "PyCBC": 1.355662928589255e-13,
+    "GstLAL": 1.767588662990549e-13,
+    "MBTA": 5.481961e-10,
+    "cWB": 1.11282796e-10
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230825_041334",
+   "gps": 1376972032.0,
+   "mtot": 69.0,
+   "snr": 8.7,
+   "far_min": 0.093,
+   "cwb_far": 1.3,
+   "pipe_far_hz": {
+    "PyCBC": 7.63635085999025e-09,
+    "GstLAL": 2.957429756724917e-09,
+    "MBTA": 5.852381e-08,
+    "cWB": 4.05063119e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230831_015414",
+   "gps": 1377482072.0,
+   "mtot": 73.0,
+   "snr": 8.5,
+   "far_min": 0.036,
+   "cwb_far": 27.0,
+   "pipe_far_hz": {
+    "PyCBC": 1.148739680029261e-09,
+    "GstLAL": 1.927555775329909e-08,
+    "MBTA": 4.458146e-08,
+    "cWB": 8.42768293e-07
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW230914_111401",
+   "gps": 1378725259.0,
+   "mtot": 95.0,
+   "snr": 15.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.448667132088361e-13,
+    "GstLAL": 2.042530551120447e-31,
+    "MBTA": 6.866074e-16,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230919_215712",
+   "gps": 1379195850.0,
+   "mtot": 49.0,
+   "snr": 16.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.448666249454228e-13,
+    "GstLAL": 2.294945147961527e-42,
+    "MBTA": 1.482908e-20,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230920_071124",
+   "gps": 1379229102.0,
+   "mtot": 56.1,
+   "snr": 10.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.058192998549021e-11,
+    "GstLAL": 1.838568680532072e-13,
+    "MBTA": 3.484869e-09,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230922_020344",
+   "gps": 1379383442.0,
+   "mtot": 69.7,
+   "snr": 12.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.013,
+   "pipe_far_hz": {
+    "PyCBC": 1.087427319337584e-11,
+    "GstLAL": 2.453307245555318e-23,
+    "MBTA": 1.308936e-12,
+    "cWB": 4.04951826e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230922_040658",
+   "gps": 1379390836.0,
+   "mtot": 125.0,
+   "snr": 11.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.672536184785495e-11,
+    "GstLAL": 3.751419126686229e-15,
+    "MBTA": 9.417952e-12,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230924_124453",
+   "gps": 1379594711.0,
+   "mtot": 51.7,
+   "snr": 13.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.448666288421717e-13,
+    "GstLAL": 7.36707405893614e-28,
+    "MBTA": 2.368356e-13,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230927_043729",
+   "gps": 1379824667.0,
+   "mtot": 62.2,
+   "snr": 11.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 2.973861121364278e-13,
+    "GstLAL": 1.093499237515376e-15,
+    "MBTA": 2.737252e-11,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230927_153832",
+   "gps": 1379864330.0,
+   "mtot": 38.3,
+   "snr": 19.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.615355019969629e-13,
+    "GstLAL": 9.514599045590505e-44,
+    "MBTA": 1.482908e-20,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230928_215827",
+   "gps": 1379973525.0,
+   "mtot": 85.0,
+   "snr": 9.5,
+   "far_min": 1.4e-05,
+   "cwb_far": 0.0035,
+   "pipe_far_hz": {
+    "PyCBC": 1.889665003681043e-11,
+    "GstLAL": 4.375563996216576e-13,
+    "MBTA": 4.031056e-08,
+    "cWB": 1.10441356e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW230930_110730",
+   "gps": 1380107268.0,
+   "mtot": 59.0,
+   "snr": 8.3,
+   "far_min": 0.095,
+   "cwb_far": 5.4,
+   "pipe_far_hz": {
+    "PyCBC": 3.023549504690434e-09,
+    "GstLAL": 5.369457267724508e-09,
+    "MBTA": 3.593967e-08,
+    "cWB": 1.70825271e-07
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW231001_140220",
+   "gps": 1380204158.0,
+   "mtot": 115.0,
+   "snr": 10.3,
+   "far_min": 1.5000000000000002e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 6.693789248737604e-12,
+    "GstLAL": 4.832859219500376e-13,
+    "MBTA": 5.570786e-12,
+    "cWB": 3.68137853e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231004_232346",
+   "gps": 1380497044.0,
+   "mtot": 100.0,
+   "snr": 7.9,
+   "far_min": 0.16,
+   "cwb_far": 0.16,
+   "pipe_far_hz": {
+    "GstLAL": 2.017001128058731e-07,
+    "cWB": 5.22759091e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231005_021030",
+   "gps": 1380507048.0,
+   "mtot": 131.0,
+   "snr": 9.7,
+   "far_min": 0.01,
+   "cwb_far": 0.01,
+   "pipe_far_hz": {
+    "PyCBC": 7.239390959263569e-10,
+    "GstLAL": 5.221069378633691e-09,
+    "MBTA": 5.920938e-10,
+    "cWB": 3.31323952e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231008_142521",
+   "gps": 1380810339.0,
+   "mtot": 71.0,
+   "snr": 9.3,
+   "far_min": 0.0015,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 5.410611348235404e-10,
+    "GstLAL": 4.692135455150488e-11,
+    "MBTA": 4.949156e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW231014_040532",
+   "gps": 1381291550.0,
+   "mtot": 35.8,
+   "snr": 9.0,
+   "far_min": 0.21,
+   "cwb_far": 29.0,
+   "pipe_far_hz": {
+    "PyCBC": 1.745017577016391e-08,
+    "GstLAL": 6.562048786646682e-09,
+    "MBTA": 3.850487e-08,
+    "cWB": 9.10577236e-07
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW231026_130704",
+   "gps": 1382360842.0,
+   "mtot": 55.0,
+   "snr": 8.1,
+   "far_min": 0.76,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 2.412530431258658e-08,
+    "GstLAL": 5.160140276213848e-08,
+    "MBTA": 1.085662e-05
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW231028_153006",
+   "gps": 1382542224.0,
+   "mtot": 153.0,
+   "snr": 21.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 3.03304284541444e-13,
+    "GstLAL": 9.05896768261878e-32,
+    "MBTA": 7.5712e-14,
+    "cWB": 3.86771068e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231102_071736",
+   "gps": 1382944674.0,
+   "mtot": 103.0,
+   "snr": 13.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 3.034725457585821e-13,
+    "GstLAL": 2.869777583360863e-20,
+    "MBTA": 4.731693e-17,
+    "cWB": 3.86771068e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231104_133418",
+   "gps": 1383140076.0,
+   "mtot": 21.0,
+   "snr": 11.3,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.03304484530507e-13,
+    "GstLAL": 2.61299832228763e-17,
+    "MBTA": 1.24838e-15
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW231108_125142",
+   "gps": 1383483120.0,
+   "mtot": 40.7,
+   "snr": 12.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.00021,
+   "pipe_far_hz": {
+    "PyCBC": 2.625676450315803e-13,
+    "GstLAL": 1.237282312739645e-24,
+    "MBTA": 2.371688e-12,
+    "cWB": 6.54131962e-12
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231110_040320",
+   "gps": 1383624218.0,
+   "mtot": 32.4,
+   "snr": 11.4,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 2.626164553053079e-13,
+    "GstLAL": 8.500371507932086e-19,
+    "MBTA": 2.760461e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW231113_122623",
+   "gps": 1383913601.0,
+   "mtot": 67.0,
+   "snr": 8.6,
+   "far_min": 0.063,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.996043086036808e-09,
+    "GstLAL": 2.305465578000401e-08,
+    "MBTA": 1.190762e-06
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW231113_150041",
+   "gps": 1383922859.0,
+   "mtot": 85.0,
+   "snr": 7.9,
+   "far_min": 0.5,
+   "cwb_far": 2.4,
+   "pipe_far_hz": {
+    "PyCBC": 1.595362359607943e-08,
+    "GstLAL": 1.437607766274271e-07,
+    "MBTA": 4.20061e-06,
+    "cWB": 7.52328771e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW231114_043211",
+   "gps": 1383971549.0,
+   "mtot": 31.2,
+   "snr": 10.0,
+   "far_min": 0.00012,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.965610815184454e-11,
+    "GstLAL": 3.86862363803323e-12,
+    "MBTA": 6.188748e-12
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW231118_005626",
+   "gps": 1384304204.0,
+   "mtot": 31.6,
+   "snr": 10.7,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.342365072400084e-13,
+    "GstLAL": 3.639001407870282e-13,
+    "MBTA": 3.577062e-14
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW231118_071402",
+   "gps": 1384326860.0,
+   "mtot": 73.0,
+   "snr": 9.2,
+   "far_min": 0.00022000000000000003,
+   "cwb_far": 0.078,
+   "pipe_far_hz": {
+    "PyCBC": 6.875871500272983e-12,
+    "GstLAL": 1.445091462461869e-10,
+    "MBTA": 1.581715e-08,
+    "cWB": 2.46607582e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231118_090602",
+   "gps": 1384333580.0,
+   "mtot": 20.8,
+   "snr": 10.8,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.215460444778758e-13,
+    "GstLAL": 2.52954502263331e-14,
+    "MBTA": 3.118163e-16
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW231119_075248",
+   "gps": 1384415586.0,
+   "mtot": 83.0,
+   "snr": 8.3,
+   "far_min": 0.0029,
+   "cwb_far": 22.0,
+   "pipe_far_hz": {
+    "PyCBC": 9.150760759209523e-11,
+    "GstLAL": 1.589016277531504e-08,
+    "MBTA": 5.935381e-08,
+    "cWB": 6.85889347e-07
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW231123_135430",
+   "gps": 1384782888.0,
+   "mtot": 241.0,
+   "snr": 20.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0001,
+   "pipe_far_hz": {
+    "PyCBC": 6.316828097477536e-11,
+    "GstLAL": 2.24848026010152e-15,
+    "MBTA": 4.967521e-10,
+    "cWB": 3.27065981e-12
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231127_165300",
+   "gps": 1385139198.0,
+   "mtot": 74.0,
+   "snr": 9.8,
+   "far_min": 0.01,
+   "cwb_far": 0.01,
+   "pipe_far_hz": {
+    "PyCBC": 7.42072439028365e-09,
+    "GstLAL": 9.566176496033992e-10,
+    "MBTA": 7.452943e-09,
+    "cWB": 3.27066042e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231129_081745",
+   "gps": 1385281083.0,
+   "mtot": 69.0,
+   "snr": 8.5,
+   "far_min": 0.056,
+   "cwb_far": 0.056,
+   "pipe_far_hz": {
+    "PyCBC": 1.10656119195899e-08,
+    "GstLAL": 6.885879960869875e-09,
+    "MBTA": 7.377385e-08,
+    "cWB": 1.76287818e-09
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231206_233134",
+   "gps": 1385940712.0,
+   "mtot": 62.4,
+   "snr": 11.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 5.092917463093589e-13,
+    "GstLAL": 4.500658671177397e-22,
+    "MBTA": 2.338145e-09,
+    "cWB": 3.67351397e-11
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231206_233901",
+   "gps": 1385941159.0,
+   "mtot": 66.5,
+   "snr": 20.7,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 5.091497952074328e-13,
+    "GstLAL": 3.571409724924797e-45,
+    "MBTA": 7.480168e-14,
+    "cWB": 3.67351397e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231213_111417",
+   "gps": 1386501275.0,
+   "mtot": 62.8,
+   "snr": 10.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.0046,
+   "pipe_far_hz": {
+    "PyCBC": 1.547922897652891e-12,
+    "GstLAL": 7.099655908181489e-14,
+    "MBTA": 9.265401e-10,
+    "cWB": 1.46940371e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231221_135041",
+   "gps": 1387201859.0,
+   "mtot": 76.0,
+   "snr": 8.4,
+   "far_min": 0.54,
+   "cwb_far": 0.54,
+   "pipe_far_hz": {
+    "PyCBC": 3.499522677994661e-06,
+    "GstLAL": 2.69321938307933e-07,
+    "MBTA": 1.633196e-05,
+    "cWB": 1.70448539e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231223_032836",
+   "gps": 1387337334.0,
+   "mtot": 77.0,
+   "snr": 9.4,
+   "far_min": 0.00036,
+   "cwb_far": 0.0046,
+   "pipe_far_hz": {
+    "PyCBC": 1.40512539465739e-11,
+    "GstLAL": 1.127326001064143e-11,
+    "MBTA": 4.080519e-07,
+    "cWB": 1.46940371e-10
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231226_101520",
+   "gps": 1387620938.0,
+   "mtot": 75.1,
+   "snr": 34.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.196319717996386e-13,
+    "GstLAL": 1.088785887097725e-51,
+    "MBTA": 7.480168e-14,
+    "cWB": 3.67351397e-11
+   },
+   "run": "o4a",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW231230_170116",
+   "gps": 1387990894.0,
+   "mtot": 89.0,
+   "snr": 8.0,
+   "far_min": 0.42,
+   "cwb_far": 0.42,
+   "pipe_far_hz": {
+    "GstLAL": 2.27702654260373e-06,
+    "cWB": 1.34448164e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240107_013215",
+   "gps": 1388626353.0,
+   "mtot": 89.0,
+   "snr": 9.1,
+   "far_min": 0.0094,
+   "cwb_far": 0.37,
+   "pipe_far_hz": {
+    "PyCBC": 2.989601287666765e-10,
+    "GstLAL": 7.256567696817975e-09,
+    "MBTA": 7.583848e-09,
+    "cWB": 1.16818137e-08
+   },
+   "run": "o4a",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240426_031451",
+   "gps": 1398136509.0,
+   "mtot": 88.0,
+   "snr": 9.8,
+   "far_min": 3.8e-05,
+   "cwb_far": 0.0046,
+   "pipe_far_hz": {
+    "PyCBC": 1.212771281495001e-12,
+    "GstLAL": 3.606525337348098e-11,
+    "MBTA": 6.224933e-09,
+    "cWB": 1.46530648e-10
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240501_033534",
+   "gps": 1398569752.0,
+   "mtot": 66.0,
+   "snr": 10.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.0035,
+   "pipe_far_hz": {
+    "PyCBC": 1.007653544194129e-12,
+    "GstLAL": 1.326501591760067e-13,
+    "MBTA": 9.26903e-11,
+    "cWB": 1.09897732e-10
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240505_133552",
+   "gps": 1398951370.0,
+   "mtot": 54.0,
+   "snr": 8.7,
+   "far_min": 0.13,
+   "cwb_far": 0.45,
+   "pipe_far_hz": {
+    "PyCBC": 3.085872061847698e-08,
+    "GstLAL": 3.962742027088671e-09,
+    "MBTA": 1.535245e-07,
+    "cWB": 1.41768467e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240507_041632",
+   "gps": 1399090610.0,
+   "mtot": 39.9,
+   "snr": 9.4,
+   "far_min": 0.00025,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 7.786716632327961e-12,
+    "GstLAL": 1.80048245834243e-11,
+    "MBTA": 2.690426e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240511_031507",
+   "gps": 1399432525.0,
+   "mtot": 72.6,
+   "snr": 15.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.547478519234044e-12,
+    "GstLAL": 5.057320743501226e-31,
+    "MBTA": 8.851599e-17,
+    "cWB": 4.0116927e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240512_024139",
+   "gps": 1399516917.0,
+   "mtot": 20.7,
+   "snr": 11.1,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.565113973259443e-12,
+    "GstLAL": 4.576058276759004e-14,
+    "MBTA": 1.018844e-15
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240513_183302",
+   "gps": 1399660400.0,
+   "mtot": 41.4,
+   "snr": 14.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.547473951262192e-12,
+    "GstLAL": 2.007871527358104e-27,
+    "MBTA": 6.208179e-20,
+    "cWB": 4.0116927e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240514_121713",
+   "gps": 1399724251.0,
+   "mtot": 82.7,
+   "snr": 15.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.547480409974328e-12,
+    "GstLAL": 2.000632981151497e-31,
+    "MBTA": 1.348895e-16,
+    "cWB": 4.0116927e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240515_005301",
+   "gps": 1399769599.0,
+   "mtot": 56.3,
+   "snr": 11.6,
+   "far_min": 1e-05,
+   "cwb_far": 8.1,
+   "pipe_far_hz": {
+    "PyCBC": 2.298337693634184e-11,
+    "GstLAL": 2.186711735593634e-16,
+    "MBTA": 9.901746e-08,
+    "cWB": 2.55343173e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240525_031210",
+   "gps": 1400641948.0,
+   "mtot": 52.8,
+   "snr": 9.1,
+   "far_min": 0.29,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 4.443462116174659e-08,
+    "GstLAL": 9.15171286486061e-09,
+    "MBTA": 4.600921e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW240526_093944",
+   "gps": 1400751602.0,
+   "mtot": 23.2,
+   "snr": 9.7,
+   "far_min": 0.14,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "MBTA": 4.559906e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240527_183429",
+   "gps": 1400870087.0,
+   "mtot": 84.0,
+   "snr": 9.9,
+   "far_min": 0.00017,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 5.31855939708095e-12,
+    "GstLAL": 3.805640930890767e-11,
+    "MBTA": 5.666561e-09,
+    "cWB": 4.0116927e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240527_230910",
+   "gps": 1400886568.0,
+   "mtot": 37.5,
+   "snr": 11.0,
+   "far_min": 1.4e-05,
+   "cwb_far": 1.1,
+   "pipe_far_hz": {
+    "PyCBC": 2.253721883528694e-10,
+    "GstLAL": 1.672266107573933e-09,
+    "MBTA": 4.553865e-13,
+    "cWB": 3.34969216e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240530_012417",
+   "gps": 1401067475.0,
+   "mtot": 22.6,
+   "snr": 10.8,
+   "far_min": 1e-05,
+   "cwb_far": 88.0,
+   "pipe_far_hz": {
+    "PyCBC": 2.655185183624126e-11,
+    "GstLAL": 2.575872945053503e-14,
+    "MBTA": 8.582917e-15,
+    "cWB": 2.80425556e-06
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240531_040326",
+   "gps": 1401163424.0,
+   "mtot": 34.0,
+   "snr": 8.7,
+   "far_min": 0.87,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 2.753399431116607e-08,
+    "GstLAL": 5.65699870910365e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false
+   }
+  },
+  {
+   "name": "GW240531_075248",
+   "gps": 1401177186.0,
+   "mtot": 55.6,
+   "snr": 9.2,
+   "far_min": 0.0039,
+   "cwb_far": 19.0,
+   "pipe_far_hz": {
+    "PyCBC": 1.225612801643909e-10,
+    "GstLAL": 3.807872318951016e-10,
+    "MBTA": 1.5608e-09,
+    "cWB": 6.10560459e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240601_061200",
+   "gps": 1401257538.0,
+   "mtot": 85.0,
+   "snr": 10.0,
+   "far_min": 0.082,
+   "cwb_far": 0.082,
+   "pipe_far_hz": {
+    "PyCBC": 4.276031153459304e-08,
+    "GstLAL": 6.479907513245219e-08,
+    "MBTA": 1.091031e-07,
+    "cWB": 2.60760091e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240612_081540",
+   "gps": 1402215358.0,
+   "mtot": 92.0,
+   "snr": 8.4,
+   "far_min": 0.56,
+   "cwb_far": 34.0,
+   "pipe_far_hz": {
+    "PyCBC": 2.874120286787991e-08,
+    "GstLAL": 1.620461171850371e-06,
+    "MBTA": 1.773497e-08,
+    "cWB": 1.08520849e-06
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240615_113620",
+   "gps": 1402486598.0,
+   "mtot": 60.4,
+   "snr": 25.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.552287772791468e-12,
+    "GstLAL": 2.957499751738942e-50,
+    "MBTA": 4.5396e-19,
+    "cWB": 3.68569551e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240615_160735",
+   "gps": 1402502873.0,
+   "mtot": 48.5,
+   "snr": 10.5,
+   "far_min": 2.8e-05,
+   "cwb_far": 1.6,
+   "pipe_far_hz": {
+    "PyCBC": 1.580109183221531e-12,
+    "GstLAL": 8.931091042501224e-13,
+    "MBTA": 1.944641e-11,
+    "cWB": 5.21528766e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240618_071627",
+   "gps": 1402730205.0,
+   "mtot": 105.0,
+   "snr": 8.0,
+   "far_min": 0.16,
+   "cwb_far": 0.83,
+   "pipe_far_hz": {
+    "PyCBC": 1.948177536995948e-07,
+    "GstLAL": 5.089833390945448e-09,
+    "MBTA": 8.895847e-09,
+    "cWB": 2.6316824e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240621_195059",
+   "gps": 1403034677.0,
+   "mtot": 66.0,
+   "snr": 27.2,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 8.0769265261269e-13,
+    "GstLAL": 9.320284927208453e-49,
+    "MBTA": 4.125504e-18,
+    "cWB": 3.68569551e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240621_200935",
+   "gps": 1403035793.0,
+   "mtot": 73.0,
+   "snr": 10.7,
+   "far_min": 0.0012,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 3.578444655697286e-10,
+    "GstLAL": 6.979497644462326e-11,
+    "MBTA": 3.441623e-09,
+    "cWB": 3.68569551e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240621_214041",
+   "gps": 1403041259.0,
+   "mtot": 76.0,
+   "snr": 7.9,
+   "far_min": 0.038,
+   "cwb_far": 18.0,
+   "pipe_far_hz": {
+    "PyCBC": 1.212220056490399e-09,
+    "GstLAL": 5.043179317889623e-08,
+    "MBTA": 4.987896e-08,
+    "cWB": 5.70956537e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240622_004008",
+   "gps": 1403052026.0,
+   "mtot": 30.2,
+   "snr": 12.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.37,
+   "pipe_far_hz": {
+    "PyCBC": 8.076937854846895e-13,
+    "GstLAL": 2.892241048878282e-17,
+    "MBTA": 1.482062e-20,
+    "cWB": 1.17944273e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240627_131622",
+   "gps": 1403529400.0,
+   "mtot": 20.1,
+   "snr": 9.8,
+   "far_min": 0.087,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 5.166410881521859e-09,
+    "GstLAL": 1.032432589352414e-08,
+    "MBTA": 2.772029e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240630_101703",
+   "gps": 1403777841.0,
+   "mtot": 50.2,
+   "snr": 10.2,
+   "far_min": 1.5000000000000002e-05,
+   "cwb_far": 0.058,
+   "pipe_far_hz": {
+    "PyCBC": 1.287431532116322e-12,
+    "GstLAL": 4.842105146615875e-13,
+    "MBTA": 5.262298e-11,
+    "cWB": 1.84284497e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240705_053215",
+   "gps": 1404192753.0,
+   "mtot": 81.9,
+   "snr": 14.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 2.514408960539295e-12,
+    "GstLAL": 3.473241455933183e-23,
+    "MBTA": 1.757033e-19,
+    "cWB": 4.14206315e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240824_205609",
+   "gps": 1408568187.0,
+   "mtot": 107.0,
+   "snr": 8.6,
+   "far_min": 0.25,
+   "cwb_far": 0.25,
+   "pipe_far_hz": {
+    "PyCBC": 7.743434569818219e-08,
+    "GstLAL": 9.705890885374925e-08,
+    "MBTA": 2.472287e-07,
+    "cWB": 7.8022573e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240825_055146",
+   "gps": 1408600324.0,
+   "mtot": 21.3,
+   "snr": 10.3,
+   "far_min": 2e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 8.565080430994487e-11,
+    "GstLAL": 1.148474775804714e-09,
+    "MBTA": 6.365519e-13
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240902_143306",
+   "gps": 1409322804.0,
+   "mtot": 42.7,
+   "snr": 10.6,
+   "far_min": 1e-05,
+   "cwb_far": 5.1,
+   "pipe_far_hz": {
+    "PyCBC": 4.873177743327241e-12,
+    "GstLAL": 2.32106888131838e-13,
+    "MBTA": 5.190175e-11,
+    "cWB": 1.60853238e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW240907_153833",
+   "gps": 1409758731.0,
+   "mtot": 67.0,
+   "snr": 9.7,
+   "far_min": 8e-05,
+   "cwb_far": 0.0023,
+   "pipe_far_hz": {
+    "PyCBC": 2.529364534635313e-12,
+    "GstLAL": 2.582835374544519e-10,
+    "MBTA": 8.343087e-11,
+    "cWB": 7.2649241e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240908_082628",
+   "gps": 1409819206.0,
+   "mtot": 68.0,
+   "snr": 11.1,
+   "far_min": 1.2e-05,
+   "cwb_far": 0.0069,
+   "pipe_far_hz": {
+    "PyCBC": 1.394184348054844e-12,
+    "GstLAL": 3.665301157479626e-13,
+    "MBTA": 2.5984e-11,
+    "cWB": 2.17947673e-10
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240908_125134",
+   "gps": 1409835112.0,
+   "mtot": 77.0,
+   "snr": 8.4,
+   "far_min": 0.29,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 6.12299539156189e-08,
+    "GstLAL": 9.197298828274649e-09,
+    "MBTA": 3.154122e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW240919_061559",
+   "gps": 1410761777.0,
+   "mtot": 67.8,
+   "snr": 16.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.250226506573211e-12,
+    "GstLAL": 7.612484061910621e-35,
+    "MBTA": 1.815691e-20,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240920_073424",
+   "gps": 1410852882.0,
+   "mtot": 38.2,
+   "snr": 12.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.250226507362272e-12,
+    "GstLAL": 4.088284801237279e-16,
+    "MBTA": 1.925486e-20,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240920_124024",
+   "gps": 1410871242.0,
+   "mtot": 68.8,
+   "snr": 36.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 2.324885395143406e-13,
+    "GstLAL": 7.298573544865708e-53,
+    "MBTA": 1.815691e-20,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240923_204006",
+   "gps": 1411159224.0,
+   "mtot": 79.9,
+   "snr": 11.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 2.885372614599513e-12,
+    "GstLAL": 7.632194719670137e-16,
+    "MBTA": 1.10312e-12,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240924_000316",
+   "gps": 1411171414.0,
+   "mtot": 80.0,
+   "snr": 10.4,
+   "far_min": 2e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.834882078596569e-10,
+    "GstLAL": 6.200509983410572e-13,
+    "MBTA": 2.418479e-10,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240930_035959",
+   "gps": 1411704017.0,
+   "mtot": 36.8,
+   "snr": 15.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0011,
+   "pipe_far_hz": {
+    "PyCBC": 1.250226505184209e-12,
+    "GstLAL": 7.046387779271903e-22,
+    "MBTA": 1.815691e-20,
+    "cWB": 3.63246205e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW240930_234614",
+   "gps": 1411775192.0,
+   "mtot": 58.0,
+   "snr": 11.3,
+   "far_min": 0.24,
+   "cwb_far": 0.24,
+   "pipe_far_hz": {
+    "cWB": 7.55557649e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241006_015333",
+   "gps": 1412214831.0,
+   "mtot": 44.9,
+   "snr": 16.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0016,
+   "pipe_far_hz": {
+    "PyCBC": 3.127293551070719e-12,
+    "GstLAL": 1.292690795221226e-42,
+    "MBTA": 1.393585e-20,
+    "cWB": 4.95616568e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241007_082943",
+   "gps": 1412325001.0,
+   "mtot": 63.2,
+   "snr": 9.5,
+   "far_min": 0.042,
+   "cwb_far": 0.042,
+   "pipe_far_hz": {
+    "PyCBC": 4.260812857094502e-08,
+    "GstLAL": 3.33350618379514e-08,
+    "MBTA": 2.96349e-09,
+    "cWB": 1.33816243e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": false,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241009_022835",
+   "gps": 1412476133.0,
+   "mtot": 64.0,
+   "snr": 8.4,
+   "far_min": 0.97,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.086399198039126e-08,
+    "GstLAL": 3.126178193660786e-08,
+    "MBTA": 5.787219e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW241009_084816",
+   "gps": 1412498914.0,
+   "mtot": 21.0,
+   "snr": 11.4,
+   "far_min": 1e-05,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.127296340275995e-12,
+    "GstLAL": 3.084257983521398e-14,
+    "MBTA": 8.304697e-19
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW241009_220455",
+   "gps": 1412546713.0,
+   "mtot": 58.9,
+   "snr": 10.0,
+   "far_min": 0.023,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.718181693706928e-08,
+    "GstLAL": 2.273826665694249e-09,
+    "MBTA": 7.205113e-10
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW241102_144729",
+   "gps": 1414594067.0,
+   "mtot": 75.1,
+   "snr": 11.9,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 2.217049421800462e-12,
+    "GstLAL": 2.039916575281391e-15,
+    "MBTA": 3.677731e-12,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241110_124123",
+   "gps": 1415277701.0,
+   "mtot": 24.5,
+   "snr": 10.1,
+   "far_min": 0.00063,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 2.000768683266769e-11,
+    "GstLAL": 3.246846462367773e-09,
+    "MBTA": 3.18381e-09
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW241111_111552",
+   "gps": 1415358970.0,
+   "mtot": 45.4,
+   "snr": 15.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 4.339012140291068e-13,
+    "GstLAL": 4.240348669908126e-31,
+    "MBTA": 1.385734e-16,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241114_024711",
+   "gps": 1415587649.0,
+   "mtot": 71.9,
+   "snr": 10.7,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 3.492645733231717e-12,
+    "GstLAL": 5.54667236487477e-14,
+    "MBTA": 4.419354e-08,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241116_151753",
+   "gps": 1415805491.0,
+   "mtot": 99.0,
+   "snr": 9.0,
+   "far_min": 0.0044,
+   "cwb_far": 0.025,
+   "pipe_far_hz": {
+    "PyCBC": 1.393427102348043e-10,
+    "GstLAL": 1.438149005610139e-08,
+    "MBTA": 7.389536e-10,
+    "cWB": 8.05976331e-10
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241124_024914",
+   "gps": 1416451772.0,
+   "mtot": 70.0,
+   "snr": 8.5,
+   "far_min": 0.78,
+   "cwb_far": 14.0,
+   "pipe_far_hz": {
+    "PyCBC": 2.480211522129784e-08,
+    "GstLAL": 1.74399372464878e-07,
+    "MBTA": 2.251824e-07,
+    "cWB": 4.48839771e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW241125_010116",
+   "gps": 1416531694.0,
+   "mtot": 106.0,
+   "snr": 10.0,
+   "far_min": 1.1000000000000001e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.70421383608706e-12,
+    "GstLAL": 3.391834476806034e-13,
+    "MBTA": 2.113691e-09,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241127_061008",
+   "gps": 1416723026.0,
+   "mtot": 85.3,
+   "snr": 29.8,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.690846949383332e-12,
+    "GstLAL": 3.202633013690135e-50,
+    "MBTA": 6.626654e-14,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241129_021832",
+   "gps": 1416881930.0,
+   "mtot": 53.3,
+   "snr": 16.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.690846949383332e-12,
+    "GstLAL": 1.252765266145305e-40,
+    "MBTA": 8.359716e-16,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241130_034908",
+   "gps": 1416973766.0,
+   "mtot": 54.2,
+   "snr": 13.4,
+   "far_min": 1e-05,
+   "cwb_far": 0.0013,
+   "pipe_far_hz": {
+    "PyCBC": 1.69084695204255e-12,
+    "GstLAL": 7.978450941634167e-21,
+    "MBTA": 1.393493e-17,
+    "cWB": 4.0298796e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241201_055758",
+   "gps": 1417067896.0,
+   "mtot": 80.0,
+   "snr": 8.7,
+   "far_min": 0.83,
+   "cwb_far": 7.7,
+   "pipe_far_hz": {
+    "PyCBC": 1.538395941411551e-07,
+    "GstLAL": 2.629615153834708e-08,
+    "MBTA": 8.484356e-07,
+    "cWB": 2.43006808e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW241210_060606",
+   "gps": 1417845984.0,
+   "mtot": 50.2,
+   "snr": 12.4,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.61343096490694e-12,
+    "GstLAL": 1.711891012571677e-17,
+    "MBTA": 1.637631e-13,
+    "cWB": 3.70019574e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241210_120900",
+   "gps": 1417867758.0,
+   "mtot": 64.0,
+   "snr": 8.5,
+   "far_min": 0.28,
+   "cwb_far": 1.9,
+   "pipe_far_hz": {
+    "PyCBC": 1.984423074397543e-07,
+    "GstLAL": 9.016396222203252e-09,
+    "MBTA": 1.397363e-07,
+    "cWB": 5.91637188e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": false,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW241225_082815",
+   "gps": 1419150513.0,
+   "mtot": 98.0,
+   "snr": 17.5,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.809986656545444e-13,
+    "GstLAL": 2.029750514806957e-30,
+    "MBTA": 9.357007e-13,
+    "cWB": 3.70019574e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW241229_155844",
+   "gps": 1419523142.0,
+   "mtot": 85.0,
+   "snr": 7.9,
+   "far_min": 0.083,
+   "cwb_far": 10.0,
+   "pipe_far_hz": {
+    "PyCBC": 2.644010628270556e-09,
+    "GstLAL": 7.18784125747144e-08,
+    "MBTA": 3.157523e-07,
+    "cWB": 3.30084248e-07
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false,
+    "cWB": false
+   }
+  },
+  {
+   "name": "GW241230_233618",
+   "gps": 1419636996.0,
+   "mtot": 116.0,
+   "snr": 10.4,
+   "far_min": 0.48,
+   "cwb_far": 0.96,
+   "pipe_far_hz": {
+    "GstLAL": 1.509174037312599e-08,
+    "cWB": 3.05280229e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "GstLAL": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250101_011205",
+   "gps": 1419729143.0,
+   "mtot": 50.8,
+   "snr": 9.7,
+   "far_min": 0.02,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 1.638978695066015e-08,
+    "GstLAL": 6.276924634405198e-10,
+    "MBTA": 1.120057e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true
+   }
+  },
+  {
+   "name": "GW250104_015122",
+   "gps": 1419990700.0,
+   "mtot": 80.0,
+   "snr": 11.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 4.863328947960707e-12,
+    "GstLAL": 1.185160435507466e-13,
+    "MBTA": 3.136343e-10,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250108_152221",
+   "gps": 1420384959.0,
+   "mtot": 90.0,
+   "snr": 11.2,
+   "far_min": 0.00015000000000000001,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 5.034299270244766e-11,
+    "GstLAL": 4.778376728992819e-12,
+    "MBTA": 7.673092e-12,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250109_010541",
+   "gps": 1420419959.0,
+   "mtot": 64.9,
+   "snr": 12.0,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 4.086736727088305e-10,
+    "GstLAL": 4.711331494787225e-20,
+    "MBTA": 5.618984e-11,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250114_082203",
+   "gps": 1420878141.0,
+   "mtot": 66.0,
+   "snr": 76.6,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 6.222994084666716e-13,
+    "GstLAL": 2.123530276409839e-61,
+    "MBTA": 5.718256e-16,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250116_015318",
+   "gps": 1421027616.0,
+   "mtot": 56.0,
+   "snr": 7.8,
+   "far_min": 0.12,
+   "cwb_far": null,
+   "pipe_far_hz": {
+    "PyCBC": 3.793300559663362e-09,
+    "GstLAL": 2.766599570212984e-06,
+    "MBTA": 7.603783e-06
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": false,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": false,
+    "MBTA": false
+   }
+  },
+  {
+   "name": "GW250118_023225",
+   "gps": 1421202763.0,
+   "mtot": 74.0,
+   "snr": 9.0,
+   "far_min": 0.0035,
+   "cwb_far": 0.46,
+   "pipe_far_hz": {
+    "PyCBC": 1.051167276778889e-09,
+    "GstLAL": 1.113837545884751e-10,
+    "MBTA": 5.874072e-08,
+    "cWB": 1.44945969e-08
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": false,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250118_170523",
+   "gps": 1421255141.0,
+   "mtot": 67.8,
+   "snr": 13.3,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 2.43367148525322e-13,
+    "GstLAL": 2.782647561247103e-25,
+    "MBTA": 1.615319e-14,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250119_025138",
+   "gps": 1421290316.0,
+   "mtot": 59.9,
+   "snr": 14.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.800901959429756e-12,
+    "GstLAL": 5.515163068683052e-28,
+    "MBTA": 1.351532e-15,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": true,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  },
+  {
+   "name": "GW250119_190238",
+   "gps": 1421348576.0,
+   "mtot": 21.64,
+   "snr": 20.1,
+   "far_min": 1e-05,
+   "cwb_far": 0.0012,
+   "pipe_far_hz": {
+    "PyCBC": 1.800816882840104e-12,
+    "GstLAL": 1.409145135673982e-35,
+    "MBTA": 1.805795e-20,
+    "cWB": 3.75502798e-11
+   },
+   "run": "o4b",
+   "madgrav": false,
+   "cwb_1yr": true,
+   "best_1yr": true,
+   "pipe_1yr": {
+    "PyCBC": true,
+    "GstLAL": true,
+    "MBTA": true,
+    "cWB": true
+   }
+  }
+ ],
+ "summary": {
+  "o3a": {
+   "n_events": 34,
+   "counts": {
+    "GstLAL": 25,
+    "PyCBC-BBH": 26,
+    "PyCBC-broad": 19,
+    "MADGRAV": 9,
+    "cWB_csv": 15,
+    "best_catalog": 29
+   },
+   "skipped": {
+    "no_mass": 0,
+    "below_20": 4,
+    "not_in_scanned_segments": 6
+   }
+  },
+  "o3b": {
+   "n_events": 28,
+   "counts": {
+    "GstLAL": 16,
+    "MBTA": 9,
+    "PyCBC-BBH": 14,
+    "PyCBC-broad": 11,
+    "MADGRAV": 4,
+    "cWB_csv": 9,
+    "best_catalog": 17
+   },
+   "skipped": {
+    "no_mass": 0,
+    "below_20": 5,
+    "not_in_scanned_segments": 2
+   }
+  },
+  "o4a": {
+   "n_events": 68,
+   "counts": {
+    "GstLAL": 59,
+    "MBTA": 41,
+    "PyCBC": 60,
+    "cWB": 43,
+    "MADGRAV": 13,
+    "cWB_csv": 43,
+    "best_catalog": 68
+   },
+   "skipped": {
+    "no_mass": 52,
+    "below_20": 12,
+    "not_in_scanned_segments": 8
+   }
+  },
+  "o4b": {
+   "n_events": 72,
+   "counts": {
+    "GstLAL": 61,
+    "MBTA": 55,
+    "PyCBC": 61,
+    "cWB": 46,
+    "MADGRAV": 15,
+    "cWB_csv": 46,
+    "best_catalog": 72
+   },
+   "skipped": {
+    "no_mass": 57,
+    "below_20": 17,
+    "not_in_scanned_segments": 15
+   }
+  }
+ },
+ "per_bin": [
+  {
+   "bin": "20-40",
+   "N": 40,
+   "MADGRAV": 2,
+   "cWB_csv": 9,
+   "best_catalog": 36,
+   "PyCBC-BBH": 11,
+   "PyCBC-broad": 10,
+   "PyCBC": 23,
+   "GstLAL": 33,
+   "MBTA": 23,
+   "cWB": 5
+  },
+  {
+   "bin": "40-60",
+   "N": 42,
+   "MADGRAV": 9,
+   "cWB_csv": 22,
+   "best_catalog": 39,
+   "PyCBC-BBH": 7,
+   "PyCBC-broad": 4,
+   "PyCBC": 28,
+   "GstLAL": 32,
+   "MBTA": 21,
+   "cWB": 18
+  },
+  {
+   "bin": "60-80",
+   "N": 64,
+   "MADGRAV": 15,
+   "cWB_csv": 42,
+   "best_catalog": 59,
+   "PyCBC-BBH": 14,
+   "PyCBC-broad": 10,
+   "PyCBC": 38,
+   "GstLAL": 53,
+   "MBTA": 31,
+   "cWB": 33
+  },
+  {
+   "bin": "80-100",
+   "N": 32,
+   "MADGRAV": 7,
+   "cWB_csv": 21,
+   "best_catalog": 31,
+   "PyCBC-BBH": 3,
+   "PyCBC-broad": 1,
+   "PyCBC": 22,
+   "GstLAL": 25,
+   "MBTA": 17,
+   "cWB": 19
+  },
+  {
+   "bin": "100-130",
+   "N": 17,
+   "MADGRAV": 6,
+   "cWB_csv": 15,
+   "best_catalog": 16,
+   "PyCBC-BBH": 4,
+   "PyCBC-broad": 4,
+   "PyCBC": 7,
+   "GstLAL": 14,
+   "MBTA": 9,
+   "cWB": 11
+  },
+  {
+   "bin": "130-160",
+   "N": 5,
+   "MADGRAV": 1,
+   "cWB_csv": 3,
+   "best_catalog": 4,
+   "PyCBC-BBH": 1,
+   "PyCBC-broad": 1,
+   "PyCBC": 2,
+   "GstLAL": 3,
+   "MBTA": 3,
+   "cWB": 2
+  },
+  {
+   "bin": "160-200",
+   "N": 1,
+   "MADGRAV": 0,
+   "cWB_csv": 0,
+   "best_catalog": 0,
+   "PyCBC-BBH": 0,
+   "PyCBC-broad": 0,
+   "PyCBC": 0,
+   "GstLAL": 0,
+   "MBTA": 0,
+   "cWB": 0
+  },
+  {
+   "bin": "200-260",
+   "N": 1,
+   "MADGRAV": 1,
+   "cWB_csv": 1,
+   "best_catalog": 1,
+   "PyCBC-BBH": 0,
+   "PyCBC-broad": 0,
+   "PyCBC": 1,
+   "GstLAL": 1,
+   "MBTA": 1,
+   "cWB": 1
+  },
+  {
+   "bin": "260-330",
+   "N": 0,
+   "MADGRAV": 0,
+   "cWB_csv": 0,
+   "best_catalog": 0,
+   "PyCBC-BBH": 0,
+   "PyCBC-broad": 0,
+   "PyCBC": 0,
+   "GstLAL": 0,
+   "MBTA": 0,
+   "cWB": 0
+  },
+  {
+   "bin": "330-400",
+   "N": 0,
+   "MADGRAV": 0,
+   "cWB_csv": 0,
+   "best_catalog": 0,
+   "PyCBC-BBH": 0,
+   "PyCBC-broad": 0,
+   "PyCBC": 0,
+   "GstLAL": 0,
+   "MBTA": 0,
+   "cWB": 0
+  }
+ ]
+}
