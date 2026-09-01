@@ -1,6 +1,10 @@
-# MADGRAV
+<p align="center">
+  <img src="assets/madgrav_logo.png" alt="MADGRAV" width="620">
+</p>
 
-A deep-learning search for high-mass compact binary coalescences in LIGO data.
+<p align="center">
+  <em>A deep-learning search for high-mass compact binary coalescences in LIGO data.</em>
+</p>
 
 This repository contains the pipeline configuration that produced **48 candidates above the
 detection threshold, of which 47 have a calibrated false-alarm rate below 1 yr⁻¹**, in a search
