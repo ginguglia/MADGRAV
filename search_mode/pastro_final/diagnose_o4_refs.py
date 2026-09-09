@@ -12,7 +12,7 @@ o4b_1400806212 (16.4 h, hosts no detection):
   D release run-median  : reference_psd_release_{det}.npz (step 3a)
 B/A = estimator-induced bias on good data; C/B = data/sampling residual;
 A/D = segment-vs-run + convention residual.
-Run: madgrav-venv python diagnose_o4_refs.py
+Run: python diagnose_o4_refs.py
 """
 import json
 

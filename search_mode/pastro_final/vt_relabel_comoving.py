@@ -26,7 +26,7 @@ Gates: G1 vectorized rho == compute_optimal_snr (sampled); G2 raw order ==
 inj_scored; G3 100% template match; G5 Vc(D) -> (4pi/3)D^3 in the
 Euclidean limit (<1% at 100 Mpc).
 
-Run: madgrav-venv python vt_relabel_comoving.py (env SM_RUNS to restrict)
+Run: python vt_relabel_comoving.py (env SM_RUNS to restrict)
 Out: vt_relabel_comoving.json + per-run tables on stdout.
 """
 import glob
@@ -35,11 +35,11 @@ import os
 import sys
 
 import numpy as np
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 MG = MADGRAV_ROOT
 SC = MADGRAV_SCRATCH
@@ -51,13 +51,30 @@ from gwpy.frequencyseries import FrequencySeries
 RUNS = os.environ.get("SM_RUNS", "O3a,O3b,O4a,O4b").split(",")
 # SM_VT_SUF selects the injection scoring to build VT from ("" = accepted as-run, "_x1" = trials=1).
 SUF = os.environ.get("SM_VT_SUF", "")
-RHO_TH = 5.0
-MASS_EDGES = np.array([20., 40., 60., 80., 100., 130., 160., 200., 260., 330., 400.])
+OSUF = os.environ.get("SM_VT_OUT_SUF", "") or SUF   # output naming only; inputs still use SUF
+# SM_RHO_TH: physical network-SNR threshold defining the horizon (default 5.0, the as-run
+# convention). SM_VT_OUT_SUF: output-only suffix, so a variant threshold can be written
+# beside the accepted products without overwriting them. Both added 2026-09-02.
+RHO_TH = float(os.environ.get("SM_RHO_TH", "5.0"))
+# SM_VT_MASS_EDGES overrides the source-frame bin edges (comma-separated). The default is
+# the adopted 20-400 set, so every existing product rebuilds byte-identically. The unified
+# inj_full campaign carries a low-mass stratum reaching below 20, which the default edges
+# either drop (detector-frame Mtot < 20 digitizes to bin -1) or let dilute the 20-40 bin.
+MASS_EDGES = np.array([float(x) for x in os.environ.get(
+    "SM_VT_MASS_EDGES", "20,40,60,80,100,130,160,200,260,330,400").split(",")])
 MIDS = 0.5 * (MASS_EDGES[1:] + MASS_EDGES[:-1])
 YR = 3.1557e7
 FS = 4096
 BANKS = {"sig": f"{MG}/data/o1_o3_signal_bank_projected_2s_x10",
          "um": f"{MG}/data/ultramassive_bank"}
+# A third LOW-MASS stratum (Mtot 10-22) cannot be addressed by the is_um boolean below, which
+# only distinguishes two banks. SM_BANK_LM registers it; the tag is then resolved by falling
+# back to a search over the other banks when the primary lookup misses. That fallback CANNOT
+# change any existing result: G3 already asserts unmatched == 0, i.e. today every injection
+# matches its primary tag, so the fallback is never consulted on the accepted campaigns.
+_LM = os.environ.get("SM_BANK_LM", "")
+if _LM:
+    BANKS["lm"] = _LM
 SM = f"{MG}/search_mode"
 INJ_DIRS = {"O3a": [f"{SC}/inj_out_o3a_56", f"{SM}/inj_out_o3a_lowsnr"],
             "O3b": [f"{SM}/inj_out_o3b", f"{SM}/inj_out_o3b_lowsnr"],
@@ -121,11 +138,16 @@ def comoving_machinery():
 
     def z_of_dl(dl_mpc):
         return np.interp(np.asarray(dl_mpc, float), dl_g, zg)
-    return vmax, z_of_dl
+    # J(D_L) = (dVmax/dD_L) / (4 pi D_L^2): ratio of the comoving, (1+z)-dilated volume
+    # element to the Euclidean one at that distance. -> 1 as z -> 0, ~(1+z)^-4 at low z.
+    _jg = np.gradient(vmaxz, dl_g) / (4.0 * np.pi * dl_g ** 2)
+    def jac(dl_mpc):
+        return np.interp(np.asarray(dl_mpc, float), dl_g, _jg)
+    return vmax, z_of_dl, jac
 
 
 def main():
-    vmax, z_of_dl = comoving_machinery()
+    vmax, z_of_dl, jac = comoving_machinery()
     banks = {}
     for tag, bdir in BANKS.items():
         b = ip.load_o1_signal_bank(bdir)
@@ -219,9 +241,18 @@ def main():
         c_inj = np.empty(len(um))
         drel_inj = np.empty(len(um))
         unmatched = 0
+        fellback = 0
+        others = [t for t in banks if t not in ("sig", "um")]
         for i, (m, u) in enumerate(zip(z["mtot"], um)):
             tag = "um" if u else "sig"
             g = banks[tag]["groups"].get(float(m))
+            if not g:                       # third-stratum injection: is_um cannot name it
+                for t in others:
+                    g2 = banks[t]["groups"].get(float(m))
+                    if g2:
+                        tag, g = t, g2
+                        fellback += 1
+                        break
             if not g:
                 unmatched += 1
                 c_inj[i] = drel_inj[i] = np.nan
@@ -229,9 +260,27 @@ def main():
             c_inj[i] = np.nanmean(c_ent[tag][g])
             drel_inj[i] = np.nanmean(drel_ent[tag][g])
         assert unmatched == 0 and np.all(np.isfinite(c_inj)), f"G3 FAIL {run}"
+        if fellback:
+            print(f"[{run}] G3 pass with {fellback} injections resolved to a "
+                  f"non-primary bank ({'/'.join(others)})", flush=True)
         print(f"[{run}] G3 pass", flush=True)
 
         w0 = z["w0"]
+        # SM_VT_COMOVING_PRIOR=1 (2026-09-05): the rho^-4 grid weights are uniform in
+        # EUCLIDEAN volume, but the reference volume vmax() is comoving with (1+z)
+        # dilation -- the Euclidean->comoving conversion had been applied to the volume
+        # factor only. Multiplying by J(z_i) at each injection's implied distance puts the
+        # population density in the same measure as the volume. Default off, so every
+        # adopted product rebuilds byte-identically.
+        if os.environ.get("SM_VT_COMOVING_PRIOR") == "1":
+            with np.errstate(divide="ignore", invalid="ignore"):
+                _d0 = drel_inj * RHO_TH / (z["net_snr"] * c_inj)
+            _J = jac(_d0)
+            _bad = ~np.isfinite(_J)
+            _J = np.where(_bad, 0.0, _J)
+            w0 = w0 * _J
+            print(f"[{run}] comoving prior ON: J median {np.median(_J[~_bad]):.3f}, "
+                  f"min {np.min(_J[~_bad]):.3f}, {int(_bad.sum())} zeroed", flush=True)
         det = z["det_frac"]
         kept = z["net_snr"] * c_inj >= RHO_TH
         bins_i = np.digitize(z["mtot"], MASS_EDGES) - 1
@@ -244,14 +293,14 @@ def main():
             f"{'_f40' if run in ('O3a', 'O3b') else ''}/bg_cache_{run.lower()}.npz")["seg_names"])
         T = sum(s[2] for s in segj["segments"] if s[3] in names) / YR
 
-        # ---- SOURCE-FRAME REBIN (clearing condition, 2026-08-12) ----
+        # ---- SOURCE-FRAME REBIN (clearing condition 2026-08-12) ----
         # Each injection has a definite implied luminosity distance from the
         # relabel layer, d_i = D_rel * RHO_TH / rho_phys (rho_phys = s*c), a
         # definite z_i, and hence a source-frame mass M_det/(1+z_i). Its
         # contribution - the w0 share of its truncated comoving ball,
         # normalized within its DETECTOR-frame bin cohort - is reassigned to
         # the source-frame bin. Volume moves strictly down-mass; the total is
-        # conserved; shells falling below Mtot=20 land in a reported sink.
+        # conserved; shells falling below MASS_EDGES[0] land in a reported sink.
         with np.errstate(divide="ignore", invalid="ignore"):
             d_i = drel_inj * RHO_TH / (z["net_snr"] * c_inj)
         z_i = z_of_dl(d_i)
@@ -272,13 +321,14 @@ def main():
                     vt_sink_below += v
                 else:
                     vt_src[k] += v
-        np.savez(f"{HERE}/relabel_inj_{run.lower()}{SUF}.npz",
-                 drel=drel_inj, c=c_inj, kept=kept, z=z_i, msrc=msrc,
+        np.savez(f"{HERE}/relabel_inj_{run.lower()}{OSUF}.npz",
+                 drel=drel_inj, c=c_inj, kept=kept, z=z_i, msrc=msrc, w0=w0,
                  det_bin=bins_i, src_bin=src_bins)
 
         R = dict(T_obs_yr=T, vt_comoving_gpc3yr=[],
                  vt_comoving_srcframe_gpc3yr=vt_src.tolist(),
                  vt_srcframe_below20_sink_gpc3yr=float(vt_sink_below),
+                 sink_below_mtot=float(MASS_EDGES[0]),
                  z_trunc_median=[], coverage_comoving=[],
                  c_median=[], eff_covered=[], n_inj=[], kept_frac=[])
         rows = []
@@ -341,8 +391,8 @@ def main():
                           flush=True)
         out["ratio_report_200plus"] = rep
 
-    json.dump(out, open(f"{HERE}/vt_relabel_comoving{SUF}.json", "w"), indent=1)
-    print(f"[done] -> {HERE}/vt_relabel_comoving{SUF}.json", flush=True)
+    json.dump(out, open(f"{HERE}/vt_relabel_comoving{OSUF}.json", "w"), indent=1)
+    print(f"[done] -> {HERE}/vt_relabel_comoving{OSUF}.json  (RHO_TH={RHO_TH})", flush=True)
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ term, triangulated by three independent methods (band gate, direct Sigma-p,
 P < 0.05 -> still deficient: 3d per-segment spread is the next named
 suspect, figure stays WITHHELD.
 
-Run: madgrav-venv python sigmap_corrected.py
+Run: python sigmap_corrected.py
 Outputs: sigmap_corrected.json + sigmap_corrected.txt
 """
 import json

@@ -18,12 +18,17 @@ Numerator rebuild (identical machinery, correction inserted):
   vt_comoving_srcframe_gpc3yr exactly (asserted, 1e-6).
 
 Out: gate_ratio_table_corrected.{json,txt}  (verdict = PREVIEW-PASS/FAIL)
-Run: madgrav-venv python gate_preview_corrected.py
+Run: python gate_preview_corrected.py
 """
 import json
 import sys
 
 import numpy as np
+
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
@@ -31,15 +36,9 @@ sys.path.insert(0, HERE)
 from gate_ratio_vs_matrix import (MASS_EDGES, NEFF_MIN, PIPEMAP,
                                   count_ratio_ci, pipe_hit)
 from vt_relabel_comoving import comoving_machinery
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 RHO_TH = 5.0
 NB = len(MASS_EDGES) - 1
-
 
 def rebuild_numerator(run, vmax, corr):
     rl = run.lower()
@@ -70,7 +69,6 @@ def rebuild_numerator(run, vmax, corr):
     assert dev < 1e-6, f"{run}: rebuild identity fails ({dev:.2e})"
     return vt
 
-
 def trend_test(rep3d):
     """Pre-registered (incident entry 2, 2026-08-12): the correction is
     applied ONLY if eps_random/eps_event FALLS WITH MASS in O3a AND O3b -
@@ -94,7 +92,6 @@ def trend_test(rep3d):
                         falls=bool(rho < 0 and p1 < 0.10))
     out["confirmed"] = out["o3a"]["falls"] and out["o3b"]["falls"]
     return out
-
 
 def main():
     vmax, _ = comoving_machinery()
@@ -184,7 +181,6 @@ def main():
     with open(f"{HERE}/gate_ratio_table_corrected.txt", "w") as fh:
         fh.write("\n".join(lines) + "\n")
     print("\n".join(lines))
-
 
 if __name__ == "__main__":
     main()

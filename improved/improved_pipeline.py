@@ -37,6 +37,11 @@ from gwpy.timeseries import TimeSeries
 
 
 MADGRAV_ROOT = os.environ.get("MADGRAV_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 AGENT_GW_DIR = os.path.join(MADGRAV_ROOT, "improved")   # utilities.py is vendored here
 if AGENT_GW_DIR not in sys.path:
     sys.path.insert(0, AGENT_GW_DIR)
@@ -492,6 +497,9 @@ def compute_qt_cache_dataset(cache_path, whitened, progress_label, progress_inte
     if os.path.exists(cache_path):
         cached = np.load(cache_path, mmap_mode="r")
         if cached.shape[0] == total:
+            # guard against a partially written cache: the last tile must not be all zeros
+            if float(np.abs(cached[-1]).max()) == 0.0 or float(np.abs(cached[total // 2]).max()) == 0.0:
+                raise RuntimeError(f"QT cache {cache_path} has all-zero tiles (partial/corrupt write) -- delete it and rebuild")
             print(f"Loading QT cache from {cache_path}...", flush=True)
             return NpyTensorDataset(cache_path)
         print(f"Discarding stale QT cache with shape {cached.shape} at {cache_path}", flush=True)
@@ -499,8 +507,12 @@ def compute_qt_cache_dataset(cache_path, whitened, progress_label, progress_inte
 
     print(f"Saving QT cache to {cache_path}...", flush=True)
     ensure_parent_dir(cache_path)
+    # 2026-09-07 fix: build into a private partial file and publish atomically. Previously the final .npy was
+    # preallocated in place with open_memmap (all zeros) and a concurrent job sharing the cache dir saw a
+    # correctly shaped file and "Loaded" it while it was still empty (qtcache_draw1: 99.5% zero tiles).
+    partial_path = f"{cache_path}.partial.{os.getpid()}"
     out = np.lib.format.open_memmap(
-        cache_path,
+        partial_path,
         mode="w+",
         dtype=np.float32,
         shape=(total, 1, SPEC_SIZE[0], SPEC_SIZE[1]),
@@ -511,7 +523,9 @@ def compute_qt_cache_dataset(cache_path, whitened, progress_label, progress_inte
         qts = compute_qt_images(whitened[start:stop], sample_rate=FS, crop_seconds=O1_CENTER_CROP_SECONDS)
         out[start:stop, 0] = qts
         maybe_print_qt_progress(stop, total, progress_state, progress_label, progress_interval)
+    out.flush()
     del out
+    os.replace(partial_path, cache_path)
     return NpyTensorDataset(cache_path)
 
 
@@ -1847,6 +1861,13 @@ def train_joint_model(
 ):
     if num_epochs is None:
         num_epochs = cfg.epochs
+    # SM_SELECT_AXIS: read-out used for checkpoint selection / early stopping.
+    #   "classifier" (default, production, bit-identical) or "recon" (the DEPLOYED statistic:
+    #   per-tile reconstruction error). Added 2026-09-07 for the reconstruction-axis selection test.
+    sel_axis = os.environ.get("SM_SELECT_AXIS", "classifier")
+    assert sel_axis in ("classifier", "recon"), sel_axis
+    if sel_axis != "classifier":
+        print(f"[{phase_tag}] checkpoint selection axis: {sel_axis}", flush=True)
     optimizer = optim.Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode="min", factor=0.5, patience=5, threshold=1e-3
@@ -1957,13 +1978,13 @@ def train_joint_model(
         _, val_signal_score_mean, val_signal_score_std = summarize_logits(val_signal_logits_batches)
         train_latent_sep = train_signal_score_mean - train_noise_score_mean
         val_latent_sep = val_signal_score_mean - val_noise_score_mean
-        val_noise_scores = compute_scores(model, noise_val_loader, device, score_mode="classifier").astype(np.float64)
+        val_noise_scores = compute_scores(model, noise_val_loader, device, score_mode=sel_axis).astype(np.float64)
         val_noise_mu = float(val_noise_scores.mean())
         val_noise_std = float(val_noise_scores.std())
         val_t3 = val_noise_mu + 3.0 * val_noise_std
-        val_criterion_scores = compute_scores(model, sig_val_loader, device, score_mode="classifier").astype(np.float64)
+        val_criterion_scores = compute_scores(model, sig_val_loader, device, score_mode=sel_axis).astype(np.float64)
         if val_benchmark_loader is not None:
-            val_criterion_scores = compute_scores(model, val_benchmark_loader, device, score_mode="classifier").astype(np.float64)
+            val_criterion_scores = compute_scores(model, val_benchmark_loader, device, score_mode=sel_axis).astype(np.float64)
         val_inj_n_above_3sigma = int((val_criterion_scores > val_t3).sum())
         val_inj_mean = float(val_criterion_scores.mean())
         val_sep_k1 = float(val_inj_mean - val_noise_mu)
@@ -2114,7 +2135,7 @@ def train_joint_model(
 
     best_info = {
         "epoch": best_epoch,
-        "criterion": "val_inj_n_above_3sigma",
+        "criterion": "val_inj_n_above_3sigma" + ("" if sel_axis == "classifier" else f" [axis={sel_axis}]"),
         "val_inj_n_above_3sigma": best_n_above_3sigma,
         "val_inj_mean_score": best_val_inj_mean,
         "val_noise_threshold_3sigma": best_val_t3,

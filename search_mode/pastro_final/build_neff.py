@@ -29,7 +29,9 @@ def main():
     for run in RUNS:
         ri = np.load(f"{HERE}/relabel_inj_{run.lower()}{SUF}.npz")
         zi = np.load(f"{HERE}/inj_scored_{run.lower()}{SUF}.npz")
-        w0, det = zi["w0"], zi["det_frac"]
+        # prefer the relabel layer's effective w0 (carries SM_VT_COMOVING_PRIOR); fall back
+
+        w0 = ri["w0"] if "w0" in ri.files else zi["w0"]; det = zi["det_frac"]
         db, sb, kept = ri["det_bin"], ri["src_bin"], ri["kept"]
         W = np.zeros_like(w0, dtype=float)
         for b in range(len(edges) - 1):

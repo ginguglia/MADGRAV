@@ -16,11 +16,15 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import successor_stat as S
 from successor_neff import neff_of
-import os as _os
-MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
 
 DET = os.environ.get("SUCC_DET", S.DET); MG = S.MG
 OUTDIR = os.environ.get("SUCC_OUT_DIR")   # dry-run redirection of detections_successor.json / csv (default: real locations)
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
+
 CATDIR = MADGRAV_EXTDATA + "/gwosc_eventapi"
 MERGED = f"{MG}/figures/catalog_o3o4/merged_plot_v2.csv"
 CSV_ASRUN = f"{MG}/figures/catalog_o3o4/madgrav_far_final.csv"
@@ -28,11 +32,9 @@ DET_FAR = 1.0; MATCH_S = 2.0
 AT_RISK = ["GW190828_063405", "GW190521_074359", "GW190513_205428", "GW190706_222641", "GW190727_060333", "GW190519_153544",
            "GW190408_181802", "GW190602_175927", "GW230922_040658", "GW230824_033047", "GW240514_121713", "GW241130_034908", "GW250108_152221"]
 
-
 def freeze():
     p = f"{DET}/neff_freeze.json"; fz = json.load(open(p)); fz["_md5"] = hashlib.md5(open(p, "rb").read()).hexdigest()
     return fz
-
 
 def catalog():
     """name -> list of GPS; API jsons + name-derived GPS for merged_plot_v2 names (as-run CSV: all 44 within 0.5 s)."""
@@ -56,7 +58,6 @@ def catalog():
         cat.setdefault(nm, {})["cwb"] = r.get("cwb_detected", "")
     return cat
 
-
 def match(cat, gps):
     best = None
     for nm, v in cat.items():
@@ -64,7 +65,6 @@ def match(cat, gps):
             dt = abs(g - gps)
             if dt <= MATCH_S and (best is None or dt < best[1]): best = (nm, dt)
     return best
-
 
 def cmd_prelim(runs):
     S.assert_spec(); md5 = S.module_md5(); fz = freeze()
@@ -95,7 +95,6 @@ def cmd_prelim(runs):
         json.dump(req, open(f"{DET}/fg_veto_request_{run.lower()}.json", "w"), indent=1)
         nd = sum(1 for x in out if (not x["is_glitch"]) and x["far"] is not None and x["far"] < DET_FAR)
         print(f"[fg:{run}] {len(cands)} candidates scored; {nd} with successor FAR<1/yr (pre-veto); {len(req)} veto recomputations requested -> fg_veto_request_{run.lower()}.json", flush=True)
-
 
 def cmd_final(runs):
     S.assert_spec(); md5 = S.module_md5(); fz = freeze(); cat = catalog()
@@ -150,7 +149,6 @@ def cmd_final(runs):
         for r in rows: w.writerow(r)
     json.dump(summary, open(f"{DET}/fg_summary.json", "w"), indent=1)
     print(json.dumps(summary, indent=1)); print(f"-> {outc}")
-
 
 if __name__ == "__main__":
     what = sys.argv[1]; runs = sys.argv[2:] or S.MAIN_RUNS

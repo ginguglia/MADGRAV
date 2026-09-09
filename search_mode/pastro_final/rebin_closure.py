@@ -24,14 +24,15 @@ recomputation of horizons):
 Out: rebin_closure.json + rebin_closure.txt (tables); exit 1 on any failure.
 """
 import json, sys, numpy as np
-sys.path.insert(0, MADGRAV_ROOT + "/search_mode/pastro_final")
-HERE = MADGRAV_ROOT + "/search_mode/pastro_final"
-E = np.array([20., 40., 60., 80., 100., 130., 160., 200., 260., 330., 400.]); NB = len(E) - 1
-from vt_relabel_comoving import comoving_machinery
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
+sys.path.insert(0, MADGRAV_ROOT + "/search_mode/pastro_final")
+HERE = MADGRAV_ROOT + "/search_mode/pastro_final"
+E = np.array([20., 40., 60., 80., 100., 130., 160., 200., 260., 330., 400.]); NB = len(E) - 1
+from vt_relabel_comoving import comoving_machinery
 
 vmax, z_of_dl = comoving_machinery()
 rel = json.load(open(f"{HERE}/vt_relabel_comoving.json"))

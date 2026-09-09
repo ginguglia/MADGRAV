@@ -19,7 +19,7 @@ Sources (all local under $MADGRAV_EXTDATA/gwosc_eventapi/ + scratch):
     triggers - excluding them too is conservative-safe).
 
 Output: search_mode/exclusion_2perday.json {gps: sorted unique, provenance}.
-Run: madgrav-venv python build_exclusion_2perday.py [--no-tarballs]
+Run: python build_exclusion_2perday.py [--no-tarballs]
 (--no-tarballs validates everything except the O3 archives while they
 download; the final run must include them.)
 """
@@ -31,12 +31,12 @@ import sys
 import tarfile
 
 import numpy as np
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
-
 
 EA = MADGRAV_EXTDATA + "/gwosc_eventapi"
 SC = MADGRAV_SCRATCH
@@ -46,13 +46,11 @@ FAR_2PDAY_YR = 2.0 * 365.25
 prov = {}
 gps_all = []
 
-
 def add(tag, vals):
     vals = [float(v) for v in vals if v is not None and np.isfinite(v)]
     prov[tag] = len(vals)
     gps_all.extend(vals)
     print(f"  {tag}: {len(vals)}", flush=True)
-
 
 def eventapi():
     for cat in ("GWTC-2.1-confident", "GWTC-2.1-marginal", "GWTC-2.1-auxiliary",
@@ -63,7 +61,6 @@ def eventapi():
         ev = json.load(open(p)).get("events", {})
         add(f"eventapi:{cat}", [v.get("GPS") for v in ev.values()])
 
-
 def o4_tables():
     import h5py
     for tag in ("GWTC4p0", "GWTC4p1", "GWTC5p0"):
@@ -73,7 +70,6 @@ def o4_tables():
             g = np.asarray(t["gps_time"], float)
             keep = ~np.isfinite(far) | (far <= FAR_2PDAY_YR)
             add(f"table:{tag}/search_summary", g[keep])
-
 
 def o3_tarballs():
     """The O3 search-data archives hold one LIGOLW xml (+skymap fits/json)
@@ -100,14 +96,12 @@ def o3_tarballs():
         g = g[(g > 1.2e9) & (g < 1.3e9)]
         add(f"tarball:{tag}", g)
 
-
 def ours():
     for run, sub in (("o3a", "_f40"), ("o3b", "_f40"), ("o4a", ""), ("o4b", "")):
         d = json.load(open(f"{SC}/search_out_{run}_far{sub}/detections.json"))
         if isinstance(d, dict):
             d = d.get("detections", d.get("dets", []))
         add(f"madgrav:{run}", [r["gps"] for r in d])
-
 
 def main():
     print("[exclusion] building 2/day union ...", flush=True)
@@ -125,7 +119,6 @@ def main():
     json.dump(out, open(f"{SM}/exclusion_2perday.json", "w"))
     print(f"[exclusion] {len(g)} unique times -> "
           f"{SM}/exclusion_2perday.json (final={out['final']})", flush=True)
-
 
 if __name__ == "__main__":
     main()

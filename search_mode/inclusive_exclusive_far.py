@@ -19,13 +19,13 @@ Usage: inclusive_exclusive_far.py [trials]      (default 1.0; pass the adopted f
 """
 import csv, os, sys
 import numpy as np
-sys.path.insert(0, MADGRAV_ROOT + "/search_mode")
-import successor_stat as S
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
+sys.path.insert(0, MADGRAV_ROOT + "/search_mode")
+import successor_stat as S
 
 MG = MADGRAV_ROOT
 DET = f"{MG}/details/successor_statistic"
@@ -43,7 +43,6 @@ PERRUN = __import__("json").load(open(_PR)) if _PR else None
 # The sigma_net>4 TRIGGER is unchanged; only the FAR channel set changes.
 LR_ONLY = os.environ.get("SM_LR_ONLY", "0") == "1"
 UL90 = 2.302585
-
 
 def counts(bg, cand, touch=None, netmax=None):
     """Production per-arm counting (whole-segment self-exclusion), optionally with extra pairs removed."""
@@ -70,11 +69,9 @@ def counts(bg, cand, touch=None, netmax=None):
         n_net = 10**9          # channel removed from the minimum
     return n_lr, n_net, float(F["T"])
 
-
 def far_of(n_lr, n_net, T):
     N = min(n_lr, n_net)
     return (TRIALS * N / T, TRIALS * (N + UL90) / T, N)
-
 
 def main():
     rows = [r for r in csv.DictReader(open(CSV))]
@@ -118,7 +115,6 @@ def main():
     r = fi / np.where(fe > 0, fe, np.nan)
     print(f"FAR ratio incl/excl: median {np.nanmedian(r):.2f}, max {np.nanmax(r):.2f}")
     print(f"-> {OUT}")
-
 
 if __name__ == "__main__":
     main()

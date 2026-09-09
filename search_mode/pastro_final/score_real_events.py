@@ -18,12 +18,13 @@ import sys
 import numpy as np
 import torch
 
-sys.path.insert(0, MADGRAV_ROOT + "/improved")
-import importlib.util
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
+sys.path.insert(0, MADGRAV_ROOT + "/improved")
+import importlib.util
 
 _spec = importlib.util.spec_from_file_location("ip", MADGRAV_ROOT + "/improved/improved_pipeline.py")
 ip = importlib.util.module_from_spec(_spec)
@@ -35,7 +36,6 @@ except SystemExit:
 DEV = "cuda:0" if torch.cuda.is_available() else "cpu"
 BATCH = 256
 
-
 def load_model(path):
     sd = torch.load(path, map_location="cpu")
     if isinstance(sd, dict) and "state_dict" in sd:
@@ -44,7 +44,6 @@ def load_model(path):
     m = ip.BaselineCAE(latent_channels=k)
     m.load_state_dict(sd, strict=True)
     return m.to(DEV).eval(), k
-
 
 def recon_err(model, arr):
     """Per-tile mean squared reconstruction error."""
@@ -57,7 +56,6 @@ def recon_err(model, arr):
             y = model(x)
             out[i:i + BATCH] = ((y - x) ** 2).mean(dim=(1, 2, 3)).cpu().numpy()
     return out
-
 
 def main(cache, paths):
     ev = np.load(os.path.join(cache, "event_qt.npy"), mmap_mode="r")
@@ -91,7 +89,6 @@ def main(cache, paths):
         tag = os.path.basename(os.path.dirname(os.path.dirname(p)))
         print(f"{tag:<26}{str(k):>5}   " + "".join(f"{peak.get(n, float('nan')):>14.2f}" for n in names)
               + f"{nflag:>6}/{len(names)}")
-
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2:])

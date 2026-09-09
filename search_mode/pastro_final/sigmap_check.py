@@ -26,7 +26,7 @@ Supplementary (reported, not decision inputs): stellar-bank-only sigmoid
 variant; observed-8 note (MADGRAV-and-cWB subset — the gate's 9 counts
 GW190513_205428, MADGRAV-found but cWB-missed, outside the 15).
 
-Run: madgrav-venv python sigmap_check.py
+Run: python sigmap_check.py
 Outputs: sigmap_check.json + sigmap_check.txt
 """
 import glob, json, os

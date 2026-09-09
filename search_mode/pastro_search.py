@@ -20,6 +20,11 @@ import numpy as np
 from scipy.optimize import minimize
 from scipy.stats import gaussian_kde
 
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 OUT = os.environ.get("SM_OUT", MADGRAV_SCRATCH + "/search_out_autotest")
 INJ = os.environ.get("SM_INJ", MADGRAV_SCRATCH + "/inj_out_o3a_56")
 LRM = os.environ["SM_LR_MODEL"]

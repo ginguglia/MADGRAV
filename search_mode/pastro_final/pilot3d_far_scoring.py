@@ -23,7 +23,7 @@ Deliverable per run, mass bin, and sample (random | event-hosting):
 plus the O3a-vs-O3b contrast of that ratio (in-sample vs out-of-sample).
 
 Out: pilot3d_far_{run}.npz (per-injection det_frac), pilot3d_far_report.
-{json,txt}. Run: madgrav-venv python pilot3d_far_scoring.py
+{json,txt}. Run: python pilot3d_far_scoring.py
 """
 import glob
 import json
@@ -32,21 +32,20 @@ import sys
 
 import numpy as np
 
-MG = MADGRAV_ROOT
-HERE = f"{MG}/search_mode/pastro_final"
-SM = f"{MG}/search_mode"
-sys.path.insert(0, HERE)
-import pastro_final as PF
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
+MG = MADGRAV_ROOT
+HERE = f"{MG}/search_mode/pastro_final"
+SM = f"{MG}/search_mode"
+sys.path.insert(0, HERE)
+import pastro_final as PF
 
 VT_EDGES = np.array([20., 40., 60., 80., 100., 130., 160., 200., 260., 330., 400.])
 NBIN = len(VT_EDGES) - 1
 RUNS = ("O3a", "O3b", "O4a", "O4b")
-
 
 def w0_of(snr):
     mids = (PF.SNR_GRID[1:] + PF.SNR_GRID[:-1]) / 2
@@ -56,14 +55,12 @@ def w0_of(snr):
     lut = {float(s): float(v) for s, v in zip(PF.SNR_GRID, w)}
     return np.array([lut[float(s)] for s in snr])
 
-
 def pooled_pairs():
     pairs = []
     for run in PF.RUNS:
         for d in json.load(open(f"{PF.RUNS[run]['out']}/detections.json")):
             pairs.append((d["cnn_hm"], d["cnn_lm"]))
     return np.array(pairs)
-
 
 def score_random(run, pairs):
     bg = PF.RunBG(run)
@@ -120,7 +117,6 @@ def score_random(run, pairs):
              npair=npair, n_fallback=n_fallback)
     return out, n_fallback
 
-
 def load_event_side(run):
     sc = np.load(f"{HERE}/inj_scored_{run.lower()}.npz")
     nets = []
@@ -131,7 +127,6 @@ def load_event_side(run):
     assert len(net) == len(sc["mtot"]), f"{run}: event-side order mismatch"
     return dict(det_frac=sc["det_frac"], mtot=sc["mtot"],
                 net_snr=sc["net_snr"], net=net)
-
 
 def bin_table(S):
     w = w0_of(S["net_snr"])
@@ -148,7 +143,6 @@ def bin_table(S):
         rows.append(dict(n=int(sel.sum()), det_frac_far=df, eps_trigger=et,
                          ratio=df / et if et > 0 else None))
     return rows
-
 
 def main():
     pairs = pooled_pairs()
@@ -189,7 +183,6 @@ def main():
     with open(f"{HERE}/pilot3d_far_report.txt", "w") as fh:
         fh.write("\n".join(lines) + "\n")
     print("\n".join(lines), flush=True)
-
 
 if __name__ == "__main__":
     main()

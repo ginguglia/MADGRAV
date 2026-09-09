@@ -14,17 +14,17 @@ for p in ("search_mode", "improved", "spectrogram_cascade"):
 import driver_blindscan as B
 import improved_pipeline as ip
 from gwpy.timeseries import TimeSeries
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 FS = 4096; WN = 4 * FS
 GRID = [6., 7., 8., 10., 12., 15., 20.]
 N_PER = int(os.environ.get("INJ_N", "40"))
 UM_FRAC = 0.5
 NOISE_SEG = os.environ.get("INJ_SEG", "o3b_1264297924")   # inject into this O3b segment's noise
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 STRAIN = os.environ.get("SM_STRAIN", MADGRAV_SCRATCH + "/strain_o3b_full")
 RNG = np.random.default_rng(20260706)
 
@@ -37,11 +37,9 @@ def _fake(n, d):
     return _INJ[(n, d)] if str(n).startswith("inj") else _orig(n, d)
 B._strain = _fake
 
-
 def cnn(pipe, hH, hL):
     _INJ[("inj", "H1")] = hH.astype(np.float32); _INJ[("inj", "L1")] = hL.astype(np.float32)
     return B.cnn_hm_lm("inj", 0, "inj", 0)   # _win("inj",d,0) = hX[0:WN]
-
 
 def run():
     pipe = B.cpipe()
@@ -89,7 +87,6 @@ def run():
                          med_dcnn=float(np.median(dcs)) if dcs else None, min_cnn_loc=float(min(mins)) if mins else None))
     json.dump(rows, open(os.path.join(ROOT, "search_mode", "inj_retention_o3b.json"), "w"), indent=2)
     print("\nDONE -> search_mode/inj_retention_o3b.json", flush=True)
-
 
 if __name__ == "__main__":
     run()

@@ -15,13 +15,18 @@ PSDs for O4a/O4b, under BOTH normalization conventions (decision pending):
 
 Reuses vt_search.horizons() verbatim via a monkeypatched ASD loader, so the
 bank/SNR machinery is identical to the validated VT path.
-Run: madgrav-venv python step3_horizons_release.py
+Run: python step3_horizons_release.py
 Output: step3_horizons_release.json + printed D_h summary at 330-400 Msun.
 """
 import json
 import sys
 
 import numpy as np
+
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
@@ -31,15 +36,9 @@ sys.path.insert(0, f"{MG}/improved")
 import improved_pipeline as ip
 from improved_pipeline import FrequencySeries
 import vt_search as vs
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 MATCH_BAND = (160.0, 400.0)
 orig_loader = ip.load_detector_asd_o1
-
 
 def make_loader(variant):
     def loader(prepared_dir, detector):
@@ -59,7 +58,6 @@ def make_loader(variant):
         return FrequencySeries(np.sqrt(psd), f0=float(f[0]), df=float(f[1] - f[0]))
     loader.scales = {}
     return loader
-
 
 def main():
     out = {"mass_edges": vs.MASS_EDGES.tolist(), "match_band_hz": MATCH_BAND,
@@ -87,7 +85,6 @@ def main():
     ip.load_detector_asd_o1 = orig_loader
     json.dump(out, open(f"{HERE}/step3_horizons_release.json", "w"), indent=1)
     print(f"[done] -> {HERE}/step3_horizons_release.json")
-
 
 if __name__ == "__main__":
     main()

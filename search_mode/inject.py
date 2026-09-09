@@ -9,6 +9,11 @@ Run: python inject.py --event NAME
 import os,sys,json,time,argparse
 import numpy as np, torch
 MADGRAV_ROOT = os.environ.get("MADGRAV_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 for _p in ("search_mode","improved","spectrogram_cascade"):
     _ap=os.path.join(MADGRAV_ROOT,_p)
     if _ap not in sys.path: sys.path.insert(0,_ap)
@@ -43,8 +48,19 @@ STR=os.environ.get("SM_STRAIN","search_mode/strain"); OUT=os.environ.get("SM_INJ
 SEG=json.load(open(os.environ.get("SM_SEGJSON_EV","search_mode/o3a_segments_event.json"))); EVENTS=DS.EVENTS
 BANK_SIG=os.environ.get("SM_BANK_SIG",os.path.join(MADGRAV_ROOT,"data","o1_o3_signal_bank_projected_2s_x10"))
 BANK_UM=os.environ.get("SM_BANK_UM",os.path.join(MADGRAV_ROOT,"bank","ultramassive_bank"))
+# SM_BANK_LM -> a THIRD low-mass stratum (Mtot 10-22), drawn with probability SM_LM_FRAC.
+# Its bank CSVs carry optimal_snr_full_ref / snr_full_over_crop, so with SM_INJ_SNR_FULL=1 the
+# amplitude is scaled to the target FULL-SIGNAL network SNR (the quantity the catalog quotes)
+# instead of the SNR retained by the stored 2 s crop. At Mtot 10-22 the crop holds only ~90%
+# of the signal (measured ratio median 1.110), so the two differ; above Mtot 20 they do not
+# (0.997). The ratio was computed against reference_psd_fixed2 from o4a_search_prep, which is
+# EXACTLY the PSD this script normalises against under SM_INJ_NORM_FIXED=1, so the conversion
+# is exact rather than approximate. DEFAULTS UNSET = existing campaigns byte-identical.
+BANK_LM=os.environ.get("SM_BANK_LM","")
+LM_FRAC=float(os.environ.get("SM_LM_FRAC","0.0"))
+SNR_FULL=os.environ.get("SM_INJ_SNR_FULL","0")=="1"
 NET_SNR_GRID=[float(x) for x in os.environ.get("SM_SNR_GRID","8,10,12,15,20,25").split(",")]  # default = original campaign grid, bit-identical
-N_PER=int(os.environ.get("SM_INJ_NPER","300")); UM_FRAC=0.5; NGRID=3            # score +-1 grid window around the injection -> peak
+N_PER=int(os.environ.get("SM_INJ_NPER","300")); UM_FRAC=float(os.environ.get("SM_UM_FRAC","0.5")); NGRID=3            # score +-1 grid window around the injection -> peak
 # SM_INJ_CNN=1 -> also score each injection's peak window with the HM/LM specialists, so the injection
 # set can be pushed through the CNN glitch gate (and the local-ASD veto) exactly as real candidates are.
 # Default OFF: the campaign is byte-identical to the accepted one.
@@ -120,7 +136,9 @@ def score_block(pipe,arms,X,det):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--event",required=True); a=ap.parse_args(); name=a.event
-    pipe=MassiveEventPipeline(calib_path=f"{SC}/massive_calibration_BA.json",prep=O4A,device=DEV)
+    # SM_CALIB: alternative calibration JSON (model_path + sigma_norm [+ latent_channels]); default = the frozen BA calibration, byte-identical.
+    pipe=MassiveEventPipeline(calib_path=os.environ.get("SM_CALIB",f"{SC}/massive_calibration_BA.json"),prep=O4A,device=DEV)
+    if os.environ.get("SM_CALIB"): print(f"[inj] calibration override: {os.environ['SM_CALIB']} -> model {pipe.calib['model_path']}",flush=True)
     arms=[DS.GlitchArm().to(DEV) for _ in range(5)]
     for i,arm in enumerate(arms): arm.load_state_dict(torch.load(f"{LRD}/p1v42/arm_deploy_seed{i}.pt",map_location=DEV)); arm.eval()
     asd=pipe.asd                      # whitening/gating ASD -- frozen, never swapped
@@ -132,6 +150,19 @@ def main():
     pb=ip.load_o1_signal_bank(BANK_SIG); ub=ip.load_o1_signal_bank(BANK_UM)
     banks={"sig":(pb["H1"],pb["L1"],pb.get("total_mass",[np.nan]*len(pb["H1"]))),
            "um":(ub["H1"],ub["L1"],ub.get("total_mass",[np.nan]*len(ub["H1"])))}
+    ratio={}                                        # per-bank full/crop SNR, 1.0 where unknown
+    if BANK_LM:
+        lb=ip.load_o1_signal_bank(BANK_LM)
+        banks["lm"]=(lb["H1"],lb["L1"],lb.get("total_mass",[np.nan]*len(lb["H1"])))
+        if SNR_FULL:
+            import csv as _csv, glob as _glob      # noqa: PLC0415
+            r=[]
+            for c in sorted(_glob.glob(os.path.join(BANK_LM,"**","signals_*.csv"),recursive=True)):
+                with open(c,newline="") as fh: r+= [float(x["snr_full_over_crop"]) for x in _csv.DictReader(fh)]
+            assert len(r)==len(lb["H1"]), f"lm bank: {len(r)} csv rows vs {len(lb['H1'])} waveforms"
+            ratio["lm"]=np.asarray(r,np.float64)     # same order load_o1_signal_bank concatenates
+        print(f"[inj] low-mass stratum: {len(lb['H1'])} sources, frac {LM_FRAC:.0%}"
+              f"{' , scaling to FULL-signal SNR' if SNR_FULL else ''}",flush=True)
     print(f"[inj] {name}: sig {len(pb['H1'])} / UM {len(ub['H1'])} sources; blind, {UM_FRAC:.0%} UM",flush=True)
     if name not in EVENTS or name not in SEG:
         print(f"[inj] {name} not in pruned event configs (no strain / DQ gap) -- skipping",flush=True); return
@@ -145,11 +176,16 @@ def main():
     for snr in NET_SNR_GRID:
         XH=[];XL=[];meta=[]
         for _ in range(N_PER):
-            um=int(rng.random()<UM_FRAC); WH,WL,MT=banks["um" if um else "sig"]; k=int(rng.integers(0,len(WH)))
+            _u=rng.random()
+            if BANK_LM and _u<LM_FRAC: _tag="lm"; um=0
+            else: um=int((_u-LM_FRAC)/(1.0-LM_FRAC) < UM_FRAC) if BANK_LM else int(_u<UM_FRAC); _tag="um" if um else "sig"
+            WH,WL,MT=banks[_tag]; k=int(rng.integers(0,len(WH)))
             wH=np.asarray(WH[k],np.float32); wL=np.asarray(WL[k],np.float32); L=len(wH)
             s0=np.sqrt(ip.compute_optimal_snr(wH,norm_asd["H1"])**2+ip.compute_optimal_snr(wL,norm_asd["L1"])**2)
             if s0<=0: continue
-            sc=np.float32(snr/s0); off=int(rng.integers(0,STEP))     # sub-stride offset
+            # target is the FULL-signal SNR: crop SNR must be snr / (full/crop)
+            _r=float(ratio[_tag][k]) if _tag in ratio else 1.0
+            sc=np.float32((snr/_r)/s0); off=int(rng.integers(0,STEP))     # sub-stride offset
             while True:
                 base=int(rng.integers(STEP,len(rawH)-REG-STEP)); cg=t0+(base+STEP+WN//2)/FS
                 if abs(cg-gps0)>10: break

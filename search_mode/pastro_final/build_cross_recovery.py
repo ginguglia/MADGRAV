@@ -25,7 +25,7 @@ Sources (all local):
                 (Hz). cWB has no O3 xmls -> covered by the CSV column.
 
 Out: cross_recovery_matrix.{json,csv} + summary table on stdout.
-Run: madgrav-venv python build_cross_recovery.py   (login-light, ~minutes)
+Run: python build_cross_recovery.py   (login-light, ~minutes)
 """
 import csv
 import glob

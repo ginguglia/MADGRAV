@@ -34,7 +34,7 @@ PART 3  Epoch-resolved BNS-range gate (successor of prep_sanity_gate.py):
         monthly PSDs, vs the single implied range of the as-run and release
         references, vs the local-Welch ranges of the two PART-1 segments.
 
-Run: madgrav-venv python o4ars_epoch_diagnosis.py   (login node, ~2 min)
+Run: python o4ars_epoch_diagnosis.py   (login node, ~2 min)
 """
 import glob
 import gzip

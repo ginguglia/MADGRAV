@@ -24,7 +24,7 @@ TARGET POPULATION (analytic, KS-verified at startup - abort on failure):
 
 ESTIMATOR: identical skeleton/gates to the accepted step-2 scripts;
 N_eff >= 300 enforced AFTER reweighting (widen rule).
-Run: madgrav-venv python vt_pipelines_target.py
+Run: python vt_pipelines_target.py
 Output: vt_pipelines_target.json + printed target/release-mixture ratios.
 """
 import os

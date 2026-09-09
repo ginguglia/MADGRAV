@@ -24,13 +24,14 @@ import re
 import numpy as np
 import torch
 
-SC = MADGRAV_SCRATCH
-MG = MADGRAV_ROOT
-import importlib.util
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
+SC = MADGRAV_SCRATCH
+MG = MADGRAV_ROOT
+import importlib.util
 
 _spec = importlib.util.spec_from_file_location("ip", f"{MG}/improved/improved_pipeline.py")
 ip = importlib.util.module_from_spec(_spec)
@@ -43,7 +44,6 @@ DEV = "cuda:0" if torch.cuda.is_available() else "cpu"
 BATCH = 256
 N_NOISE = 6000          # same noise-calibration size score_real_events.py uses
 
-
 def load_model(path):
     sd = torch.load(path, map_location="cpu")
     if isinstance(sd, dict) and "state_dict" in sd:
@@ -52,7 +52,6 @@ def load_model(path):
     m = ip.BaselineCAE(latent_channels=k)
     m.load_state_dict(sd, strict=True)
     return m.to(DEV).eval(), k
-
 
 def _batched(model, arr, mode):
     out = np.empty(len(arr), dtype=np.float64)
@@ -69,7 +68,6 @@ def _batched(model, arr, mode):
             out[i:i + BATCH] = v.cpu().numpy()
     return out
 
-
 def metrics(model, noise, sig, mode):
     n = _batched(model, noise, mode)
     s = _batched(model, sig, mode)
@@ -77,7 +75,6 @@ def metrics(model, noise, sig, mode):
     if sd <= 0:
         return dict(n3=0, sep=float("nan"))
     return dict(n3=int((s > mu + 3.0 * sd).sum()), sep=float((s.mean() - mu) / sd))
-
 
 def main():
     caches = {}
@@ -152,7 +149,6 @@ def main():
         print("  A high rho means the two read-outs agree and the mismatch is harmless;")
         print("  a low or negative rho means selection was effectively blind to the deployed score.")
     print(f"\n-> {MG}/search_mode/pastro_final/recon_vs_clf.json")
-
 
 if __name__ == "__main__":
     main()

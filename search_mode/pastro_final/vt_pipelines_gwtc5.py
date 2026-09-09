@@ -51,7 +51,7 @@ N_eff rule (specification): per bin N_eff = (sum w)^2 / sum w^2 over detected
 weights; bins with N_eff < 300 are WIDENED (merged rightward), not plotted.
 
 Output: vt_pipelines_gwtc5.json (same structure as vt_pipelines_gwtc.json).
-Run: madgrav-venv python vt_pipelines_gwtc5.py [--validate-only]
+Run: python vt_pipelines_gwtc5.py [--validate-only]
 """
 import os
 for v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):

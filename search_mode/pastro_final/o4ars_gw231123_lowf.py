@@ -8,7 +8,7 @@ rescan whitening, plus the whitening-error ratio S_local/S_ref per 4-Hz
 bin. If the global ~2-10x low-f under-estimate of the run-median ref is
 the mechanism killing late-run events, it must show here.
 
-Run: madgrav-venv python o4ars_gw231123_lowf.py   (login node, ~1 min)
+Run: python o4ars_gw231123_lowf.py   (login node, ~1 min)
 """
 import json
 

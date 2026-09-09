@@ -15,15 +15,16 @@ import os, sys, csv
 import numpy as np
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 MG = MADGRAV_ROOT
 sys.path.insert(0, f"{MG}/search_mode")
 import successor_stat as S
 import driver_streams as DS
 from massive_pipeline import MassiveEventPipeline
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 DET = f"{MG}/details/successor_statistic"
 FS = 4096; WN = 4 * FS; NETMAX = 10.6
@@ -32,13 +33,11 @@ NGAL = int(os.environ.get("SM_GAL_N", "16"))
 KE = {'O3a': 8.91, 'O3b': 9.46, 'O4a': 2.83, 'O4b': 5.50}[RUN]
 STR = f"{MADGRAV_SCRATCH}/strain_{RUN.lower()}_full"
 
-
 def window(seg, gps, det):
     z = np.load(f"{STR}/{seg}_{det}.npz")
     t0 = float(z["gps_start"]); x = z["strain"]
     i = int(round((gps - 2.0 - t0) * FS))
     return x[i:i + WN].astype(np.float32) if 0 <= i and i + WN <= len(x) else None
-
 
 def main():
     bg = S.Background(RUN, f"{DET}/bg_veto_{RUN.lower()}.npz", verbose=False)
@@ -100,7 +99,6 @@ def main():
     out = f"{MG}/figures/far_glitches_{RUN.lower()}.png"
     fig.savefig(out, dpi=150, bbox_inches="tight")
     print("->", out)
-
 
 if __name__ == "__main__":
     main()

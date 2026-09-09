@@ -22,7 +22,7 @@ Operational definitions (stated per the gate deliverable spec):
                   incident entry (protocol).
 
 Out: gate_ratio_table.{json,txt}; markers campaign/step4e_gate.{pass,fail}.
-Run: madgrav-venv python gate_ratio_vs_matrix.py
+Run: python gate_ratio_vs_matrix.py
 """
 import json
 import os

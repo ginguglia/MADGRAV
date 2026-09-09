@@ -30,7 +30,9 @@ def main():
     for run in RUNS:
         ri = np.load(f"{HERE}/relabel_inj_{run.lower()}{SUF}.npz")
         zi = np.load(f"{HERE}/inj_scored_{run.lower()}{SUF}.npz")
-        w0 = np.asarray(zi["w0"], float)
+        # prefer the relabel layer's effective w0 (carries SM_VT_COMOVING_PRIOR); fall back
+
+        w0 = np.asarray(ri["w0"] if "w0" in ri.files else zi["w0"], float)
         det = np.asarray(zi["det_frac"], float)
         sb, db = ri["src_bin"], ri["det_bin"]
         eff_src, eff_det, n = [], [], []

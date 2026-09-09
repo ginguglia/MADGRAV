@@ -27,7 +27,7 @@ Gates: G1 vectorized rho == compute_optimal_snr (sampled); G2 raw order ==
 inj_scored; G3 100% template match; G5 Vc(D) -> (4pi/3)D^3 in the
 Euclidean limit (<1% at 100 Mpc).
 
-Run: madgrav-venv python vt_relabel_comoving.py (env SM_RUNS to restrict)
+Run: python vt_relabel_comoving.py (env SM_RUNS to restrict)
 Out: vt_relabel_comoving_successor.json + per-run tables on stdout.
 """
 import glob

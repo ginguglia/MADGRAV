@@ -17,6 +17,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
 FIGDIR = f"{MG}/figures/vt_search"
@@ -30,10 +35,6 @@ rel = json.load(open(f"{HERE}/vt_relabel_comoving{SUF}.json"))
 # support mask: the CNN campaign recomputes its own N_eff (extended O3a); otherwise the
 # harmonized cross-pipeline file supplies it.
 import os.path as _op
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 _nf = f"{HERE}/neff_srcframe{SUF}.json"
 cmp_ = json.load(open(_nf)) if _op.exists(_nf) else json.load(open(f"{HERE}/vt_compare_pipelines.json"))

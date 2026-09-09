@@ -1,9 +1,3 @@
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
-
 #!/usr/bin/env python
 """Per-pipeline VT(Mtot) from the LVK injection releases, on MADGRAV's bins.
 
@@ -47,7 +41,7 @@ weights; bins with N_eff < 300 are WIDENED (merged rightward) not plotted.
 
 Outputs: vt_pipelines_gwtc.json (+ caption_vt_compare.txt) ; figure step comes
 from vt_compare_pipelines.py v3 which reads this json.
-Run: madgrav-venv python vt_pipelines_gwtc.py [--validate-only]
+Run: python vt_pipelines_gwtc.py [--validate-only]
 """
 import os
 for v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
@@ -58,13 +52,24 @@ import glob
 import h5py
 import numpy as np
 
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
+
 D = MADGRAV_EXTDATA + "/gwtc5_sensitivity"
 MG = MADGRAV_ROOT
 SC = MADGRAV_SCRATCH
 HERE = f"{MG}/search_mode/pastro_final"
 YR = 3.1557e7
 FAR_THR = 1.0                                  # 1/yr
-MASS_EDGES = np.array([20., 40., 60., 80., 100., 130., 160., 200., 260., 330., 400.])
+# SM_VT_MASS_EDGES (same switch as vt_relabel_comoving.py, so numerator and comparator
+# always move together). Default is the adopted 20-400 set; the comparator rebuilds
+# byte-identically under it. The O3 bbhpop release covers Mtot down to 3, so bins below
+# 20 are supported on this side too (imbhpop starts at 90 and contributes nothing there).
+MASS_EDGES = np.array([float(x) for x in os.environ.get(
+    "SM_VT_MASS_EDGES", "20,40,60,80,100,130,160,200,260,330,400").split(",")])
 NEFF_MIN = 300
 
 # ---------- cosmology ----------

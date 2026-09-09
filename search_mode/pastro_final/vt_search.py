@@ -31,17 +31,17 @@ Outputs: vt_search.json + figures/vt_search/vt_vs_mass_search.{pdf,png}
 import os, sys, json
 import numpy as np
 
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 MG = MADGRAV_ROOT
 SC = MADGRAV_SCRATCH
 HERE = f"{MG}/search_mode/pastro_final"
 FIGDIR = f"{MG}/figures/vt_search"
 sys.path.insert(0, f"{MG}/improved")
 import improved_pipeline as ip
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 RUNS = ["O3a", "O3b", "O4a", "O4b"]
 RHO_TH = 5.0                       # injection-grid support floor (5-7 extension) = detectability threshold
@@ -52,7 +52,6 @@ STYLE = {"O3a": dict(c="#0072B2", m="o"), "O3b": dict(c="#009E73", m="s"),
          "O4a": dict(c="#E69F00", m="D"), "O4b": dict(c="#D55E00", m="^")}
 
 BANKS = [f"{MG}/data/o1_o3_signal_bank_projected_2s_x10", f"{MG}/data/ultramassive_bank"]
-
 
 def horizons(run):
     """Per-mass-bin mean Euclidean horizon volume (Mpc^3, net SNR RHO_TH)
@@ -87,7 +86,6 @@ def horizons(run):
         v_m[tag] = vm
     return v_m
 
-
 def load_is_um(run):
     """Rebuild the per-injection is_um flag in inj_scored order (pastro_final
     concatenates the raw npz files sorted per directory, one fold each)."""
@@ -102,7 +100,6 @@ def load_is_um(run):
         for f in sorted(glob.glob(f"{d}/*_inj.npz")):
             parts.append(np.load(f)["is_um"].astype(bool))
     return np.concatenate(parts)
-
 
 def main():
     os.makedirs(FIGDIR, exist_ok=True)

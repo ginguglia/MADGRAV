@@ -38,12 +38,12 @@ Outputs (this directory):
 import os, json, glob, csv
 import numpy as np
 from scipy.stats import chi2
+from scipy.optimize import minimize
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
-from scipy.optimize import minimize
 
 SC = MADGRAV_SCRATCH
 MG = MADGRAV_ROOT
@@ -146,7 +146,20 @@ LRM = np.load(f"{SC}/o3a_frozen_lr_off200.npz")
 MDL = {0: (LRM["mu0"], LRM["sd0"], LRM["be0"]), 1: (LRM["mu1"], LRM["sd1"], LRM["be1"])}
 FLOOR, NETSIG_FLOOR, NET_CUT, GCLIP = 4.0, 4.0, 4.0, 6.0   # o*_far_merge launchers (f40)
 DET_FAR = 1.0
+# SM_FAR_SWEEP="0.01,0.02,..." (2026-09-05): also record, per injection, the pair-averaged
+# detected fraction at each of these CALIBRATED FAR thresholds, using the identical rule as
+# det_frac. Enables V(FAR) at fixed population for comparison with pipelines that publish
+# sensitive volume versus FAR (Aframe). Default off: nothing changes without the variable.
+_SW = os.environ.get("SM_FAR_SWEEP", "")
+FAR_SWEEP = np.array([float(x) for x in _SW.split(",")]) if _SW else None
 SNR_GRID = np.array([5., 6., 7., 8., 10., 12., 15., 20., 25.])   # original grid + low-SNR extension
+# SM_SNR_GRID_EXT="30,40,60,80" -> append high-SNR levels so w_snr_of has keys for the
+# injhi campaign. DEFAULT UNSET = byte-identical to the adopted runs. Setting it changes the
+# rho^-4 population weights (more of the grid is sampled), so any output produced with it MUST
+# carry a distinct SM_SUF_EXTRA and must never overwrite an adopted artifact.
+_SGX = os.environ.get("SM_SNR_GRID_EXT", "")
+if _SGX:
+    SNR_GRID = np.unique(np.concatenate([SNR_GRID, np.array([float(x) for x in _SGX.split(",")])]))
 MASS_EDGES = np.array([0., 50., 80., 120., 180., 1e9])
 FAR_EDGES = np.array([0., 0.005, 0.012, 0.025, 0.05, 0.1, 0.2, 0.4, 0.7, 1.0])
 EV_GPS = {"GW190521": 1242442967}   # o3a inj event not among detections
@@ -307,6 +320,7 @@ def main():
             assert fl, f"{run}: no injection files in {d}"
             files += fl
         far_mat = []; det_mat = []       # (npair, ninj) blocks per event/fold
+        sweep_mat = []                   # (nF, npair, ninj) blocks, only with SM_FAR_SWEEP
         inj_mtot = []; inj_snr = []; inj_w0 = []; inj_ev = []
         for f in files:
             ev = os.path.basename(f)[:-8]
@@ -337,6 +351,7 @@ def main():
             if NETMAX is not None:          # sigma_net upper veto, same rule as candidates
                 trig = trig & (net < NETMAX)
                 fblk = np.empty((npair, len(x))); dblk = np.empty((npair, len(x)), bool)
+                swblk = (np.empty((len(FAR_SWEEP), npair, len(x)), bool) if FAR_SWEEP is not None else None)
                 for pi, (phm, plm) in enumerate(pairs):
                     nlrh = RunBG.n_at(cur["lr"][("hm", phm)], x, strict=True)
                     nlrl = RunBG.n_at(cur["lr"][("lm", plm)], x, strict=True)
@@ -348,12 +363,34 @@ def main():
                     if DET_RULE == "and":
                         det = det & (ul * _ke < DET_FAR)
                     fblk[pi] = far; dblk[pi] = det
+                    if swblk is not None:
+                        _base = trig & np.isfinite(far)
+                        for fi, Fs in enumerate(FAR_SWEEP):
+                            _d = _base & (far * _ke < Fs)
+                            if DET_RULE == "and":
+                                _d = _d & (ul * _ke < Fs)
+                            swblk[fi, pi] = _d
                 far_mat.append(fblk); det_mat.append(dblk)
+                if swblk is not None: sweep_mat.append(swblk)
                 inj_mtot.append(mtot); inj_snr.append(snr); inj_ev.append(np.full(len(x), f"{ev}:f{g}"))
                 inj_w0.append(w0 / len(folds))
         far_mat = np.concatenate(far_mat, axis=1); det_mat = np.concatenate(det_mat, axis=1)
         inj_mtot = np.concatenate(inj_mtot); inj_snr = np.concatenate(inj_snr)
         inj_w0 = np.concatenate(inj_w0); inj_ev = np.concatenate(inj_ev)
+        # SM_PASTRO_W0_FROM=<relabel suffix> (2026-09-05): replace the grid rho^-4 weights
+        # (uniform in EUCLIDEAN volume) with the relabel layer's effective per-injection
+        # weights, which carry the comoving Jacobian J(z_i) when that layer was built with
+        # SM_VT_COMOVING_PRIOR=1. relabel_inj_<run><suf>.npz is 1:1 aligned with the
+        # injection list assembled above (asserted). Default off: adopted rebuilds unchanged.
+        _w0src = os.environ.get("SM_PASTRO_W0_FROM", "")
+        if _w0src:
+            _rp = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               f"relabel_inj_{run.lower()}{_w0src}.npz")
+            _w0e = np.load(_rp)["w0"]
+            assert _w0e.shape == inj_w0.shape, f"{run}: relabel w0 {_w0e.shape} vs {inj_w0.shape}"
+            print(f"[{run}] p_astro weights from {os.path.basename(_rp)}: "
+                  f"median ratio {np.median(_w0e / inj_w0):.3f}", flush=True)
+            inj_w0 = _w0e
         mbins = np.clip(np.digitize(inj_mtot, MASS_EDGES) - 1, 0, len(MASS_EDGES) - 2)
 
         def ps_of(pair_ix, w_inj):
@@ -407,6 +444,8 @@ def main():
         np.savez(f"{HERE}/inj_scored_{run.lower()}{SUF}.npz",
                  far_mean=np.nanmean(np.where(np.isfinite(far_mat), far_mat, np.nan), axis=0),
                  det_frac=det_mat.mean(axis=0), mtot=inj_mtot, net_snr=inj_snr,
+                 **({"det_frac_sweep": np.concatenate(sweep_mat, axis=2).mean(axis=1),
+                     "far_sweep": FAR_SWEEP} if sweep_mat else {}),
                  w0=inj_w0, ev=inj_ev, npair=npair)
 
     json.dump(results, open(f"{HERE}/pastro_final{SUF}.json", "w"), indent=1)

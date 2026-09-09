@@ -18,12 +18,17 @@ band edges. Expected per the decision: single-bin passes at the lower
 edge; pooled marginal within the band.
 
 Out: vt_o3a_band.json, gate_ratio_table_band.{json,txt}
-Run: madgrav-venv python gate_band_mode.py
+Run: python gate_band_mode.py
 """
 import json
 import sys
 
 import numpy as np
+
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
@@ -32,14 +37,8 @@ from gate_preview_corrected import rebuild_numerator
 from gate_ratio_vs_matrix import (MASS_EDGES, NEFF_MIN, PIPEMAP,
                                   count_ratio_ci, pipe_hit)
 from vt_relabel_comoving import comoving_machinery
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 NB = len(MASS_EDGES) - 1
-
 
 def main():
     far = json.load(open(f"{HERE}/pilot3d_far_report.json"))
@@ -140,7 +139,6 @@ def main():
     with open(f"{HERE}/gate_ratio_table_band.txt", "w") as fh:
         fh.write("\n".join(lines) + "\n")
     print("\n".join(lines))
-
 
 if __name__ == "__main__":
     main()

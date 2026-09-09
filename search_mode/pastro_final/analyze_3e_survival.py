@@ -20,7 +20,7 @@ band). With --exact and cen_<seg>_<variant>.npz files present (step-3g GPU
 job), exact centroids are used instead.
 
 Out: pilot3e_survival.{json,txt}
-Run: madgrav-venv python analyze_3e_survival.py [--exact]
+Run: python analyze_3e_survival.py [--exact]
 """
 import glob
 import json
@@ -29,28 +29,26 @@ import sys
 
 import numpy as np
 
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
 SM = f"{MG}/search_mode"
 OUT = f"{SM}/pilot3e_bg_out"
 sys.path.insert(0, HERE)
 import pastro_final as PF
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 FLOOR = 4.0
 NET_CUT = 4.0
 CEN_SD_BAND = 1.0
 
-
 def seg_fold(run):
     bg = np.load(f"{PF.RUNS[run.capitalize()]['out']}/bg_cache_{run}.npz")
     names = [str(n) for n in bg["seg_names"]]
     return {n: int(f) for n, f in zip(names, bg["seg_fold"])}
-
 
 def loglr_fixed_cen(z, g, cen_shift_sd=0.0, cen=None):
     mu, sd, be = PF.MDL[1 - g]                     # cross-fit convention
@@ -70,7 +68,6 @@ def loglr_fixed_cen(z, g, cen_shift_sd=0.0, cen=None):
                          PF.gate(z["gH"], z["sigH"]),
                          PF.gate(z["gL"], z["sigL"])])
     return PF.loglr_of(F, 1 - g)
-
 
 def main():
     exact = "--exact" in sys.argv
@@ -177,7 +174,6 @@ def main():
     with open(f"{HERE}/pilot3e_survival.txt", "w") as fh:
         fh.write("\n".join(lines) + "\n")
     print("\n".join(lines))
-
 
 if __name__ == "__main__":
     main()

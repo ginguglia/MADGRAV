@@ -66,7 +66,7 @@ variant everywhere; mid-band-matched is copied into the JSON as a robustness
 cross-check only (not_for_figures=true) - it rescales invalid refs and
 inherits their shape.
 
-Run: madgrav-venv python vt_relabel_release.py   (env SM_RUNS to restrict)
+Run: python vt_relabel_release.py   (env SM_RUNS to restrict)
 Output: vt_relabel_release.json (+ per-run tables on stdout for the mail)
 """
 import glob

@@ -14,18 +14,18 @@ Caption sentences are assembled into figures/vt_fourepoch/caption_fourepoch.txt:
  (c) O3 high-mass thinness (PyCBC-BBH-only above ~200, q-support 74%),
  (d) O4 as-run low-frequency whitening caveat (relabel, not rescan).
 
-Run: madgrav-venv python fig_fourepoch_ratio.py [--allow-partial]
+Run: python fig_fourepoch_ratio.py [--allow-partial]
 """
 import json
 import os
 import sys
 
 import numpy as np
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
@@ -48,6 +48,12 @@ PSTYLE = {"cWB": dict(c="#0072B2", m="o"), "GstLAL": dict(c="#009E73", m="s"),
 # fig_vt_frames.py does. "" = the 2026-08-19 successor build (historical); "_x1cnnadoptveto" =
 # the adopted criterion frozen 2026-08-31. Outputs carry the suffix so builds never collide.
 SUF = os.environ.get("SM_VT_SUF", "")
+# SM_VT_TGT_SUF selects the COMPARATOR build. Empty = the accepted rho_th=5
+# vt_pipelines_target_zc.json. Set it (e.g. "_snr10", from vt_pipelines_target_rho.py) when
+# the numerator was built at a non-default SM_RHO_TH, so that both sides carry the same
+# H1+L1 optimal-SNR restriction; otherwise only the numerator is cut and the ratio is not a
+# like-for-like comparison. The title below states which of the two cases is on the page.
+TGT_SUF = os.environ.get("SM_VT_TGT_SUF", "")
 
 
 def main():
@@ -59,7 +65,7 @@ def main():
     rel = json.load(open(f"{HERE}/vt_relabel_comoving{SUF}.json"))
     # z-consistent denominator (approved 2026-08-12): the pipeline side
     # reweighted to the population as injected, p(m_src|z) = p_bank((1+z)m_src)
-    tgt = json.load(open(f"{HERE}/vt_pipelines_target_zc.json"))
+    tgt = json.load(open(f"{HERE}/vt_pipelines_target_zc{TGT_SUF}.json"))
     edges = np.array(rel["mass_edges"], float)
     assert np.allclose(edges, np.array(tgt["mass_edges"], float)), \
         "mass grids differ between relabel and target JSONs"
@@ -91,7 +97,7 @@ def main():
         # O3a asymmetric downward systematic band (caveat branch
         # 2026-08-12): lower edge = numerator / measured O3a-vs-O3b
         # trigger-to-FAR conversion contrast (upper-bound in-sample term)
-        # O3a systematic band REMOVED 2026-09-01: it was measured under the superseded
+        # O3a systematic band REMOVED 2026-09-01 : it was measured under the superseded
         # as-run statistic and never re-measured, and only one of four panels carried it. The
         # in-sample effect is now quoted directly in the text from the count-vs-efficiency ratio.
         band_lower = None
@@ -144,10 +150,28 @@ def main():
     if hh:
         fig.legend(hh, ll, frameon=False, fontsize=9, ncol=len(ll),
                    loc="lower center", bbox_to_anchor=(0.5, -0.02))
-    fig.suptitle("MADGRAV blind search vs LVK pipelines at matched "
-                 r"FAR$<1\,{\rm yr}^{-1}$, our population "
-                 "(comoving, release-absolute PSDs, $N_{\\rm eff}\\geq300$)",
-                 fontsize=10)
+    # A non-default SNR horizon restricts the MADGRAV numerator only, so the two sides are no
+    # longer matched; the title must say so rather than claim a like-for-like comparison.
+    _rth = float(rel.get("rho_th", 5.0))
+    _tth = tgt.get("rho_th_hl")
+    _tail = r"(comoving, release-absolute PSDs, $N_{\rm eff}\geq300$)"
+    if abs(_rth - 5.0) < 1e-9 and _tth is None:
+        _title = ("MADGRAV blind search vs LVK pipelines at matched "
+                  r"FAR$<1\,{\rm yr}^{-1}$, our population " + _tail)
+    elif _tth is not None and abs(_tth - _rth) < 1e-9:
+        _title = ("MADGRAV vs LVK pipelines at matched "
+                  r"FAR$<1\,{\rm yr}^{-1}$ and matched "
+                  + r"$\rho_{\rm H1+L1}>%g$" % _rth + "\n" + "both sides restricted "
+                  "to the same injection population " + _tail)
+    else:
+        _title = ("MADGRAV at " + r"$\rho_{\rm net}>%g$" % _rth +
+                  " vs LVK pipelines at " + r"FAR$<1\,{\rm yr}^{-1}$" + "\n"
+                  "NUMERATOR ONLY is SNR-restricted \u2014 the two sides are NOT matched "
+                  + _tail)
+    # SM_FIG_NOTITLE=1 drops the suptitle for the paper build, where the caption
+    # carries the same information; diagnostic builds keep it.
+    if os.environ.get("SM_FIG_NOTITLE") != "1":
+        fig.suptitle(_title, fontsize=10)
     fig.tight_layout(rect=(0, 0.045, 1, 1))
     # WITHHELD by default; SM_FIG_CLEARED=1 (set only by the clearance
     # finisher after the analysis lead's explicit clearance) drops the prefix.

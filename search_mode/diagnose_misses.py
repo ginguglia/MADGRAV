@@ -16,10 +16,6 @@ import driver_blindscan as B
 import improved_pipeline as ip
 from gwpy.timeseries import TimeSeries
 from scipy.ndimage import zoom
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 FS = 4096; WIN = 4.0; WN = int(WIN * FS)
 
@@ -29,9 +25,13 @@ if not os.path.exists(_CAT_PATH):
     _CAT_PATH = "/tmp/gwtc_test.json"  # legacy fallback
 CAT = json.load(open(_CAT_PATH))["events"]
 BYNAME = {(v.get("commonName") or k): v for k, v in CAT.items()}
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 RUNS = [("O3a", ["search_mode/o3a_events_full.json", "search_mode/o3a_events.json"], MADGRAV_SCRATCH + "/strain_o3a_full"),
         ("O3b", ["search_mode/o3b_events.json"], MADGRAV_SCRATCH + "/strain_o3b_full")]
-
 
 def build_qt(pipe, wh):
     qi = ip.center_crop_waveforms(wh, sample_rate=FS, context_seconds=pipe.ctx)
@@ -39,19 +39,16 @@ def build_qt(pipe, wh):
     return ip.min_max_norm(np.stack([zoom(m, (256 / m.shape[0], 128 / m.shape[1]), order=1)
                                      for m in mags]).astype(np.float32)).astype(np.float32)
 
-
 def sig(pipe, win, det):
     mu, sd = (pipe.norm["muH"], pipe.norm["sdH"]) if det == "H1" else (pipe.norm["muL"], pipe.norm["sdL"])
     wh = pipe._whiten(win[None, :].astype(np.float32), det)
     return float((pipe._recon(build_qt(pipe, wh)).reshape(-1)[0] - mu) / sd)
-
 
 def seg_index(strdir):
     segs = []
     for f in sorted(glob.glob(strdir + "/*_H1.npz")):
         d = np.load(f); segs.append((float(d["gps_start"]), float(d["gps_end"]), os.path.basename(f)[:-7]))
     return segs
-
 
 def run():
     pipe = B.cpipe()   # frozen reference ASD = o3a_search_prep
@@ -109,7 +106,6 @@ def run():
             for r in sorted(hi, key=lambda x: -x["netSNR"]):
                 print(f"      {r['name']:20s} SNR={r['netSNR']:.1f} Mtot={r['mtot']} netσloc={r['net_loc']:.2f} split={r['split']:.2f}", flush=True)
     print("\nDONE -> search_mode/diagnose_misses.json", flush=True)
-
 
 if __name__ == "__main__":
     run()

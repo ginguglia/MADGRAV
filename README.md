@@ -65,9 +65,19 @@ search_mode/                 the search: triggers, streams, background, ranking
   apply_asd_veto.py            local-spectrum consistency veto
 search_mode/pastro_final/    calibration, p_astro, sensitivity
   pastro_final.py              FGMC p_astro on the FAR axis
-  vt_relabel_comoving.py       comoving sensitive volume-time
+  vt_relabel_comoving.py       comoving sensitive volume-time (source-frame rebin)
   build_inj_veto.py            folds the veto into injection scoring
-improved/improved_pipeline.py  the CAE training script
+  build_neff.py, build_eff_srcframe.py   N_eff and efficiency per source-frame mass bin
+  vt_pipelines_gwtc.py, vt_pipelines_target_zc.py   LVK sensitivity releases reweighted to our population
+  vt_compare_pipelines.py, fig_fourepoch_ratio.py   cross-pipeline VT and the four-epoch ratio figure
+  *_x1cnnadopt48f*.json        adopted products (inj_fixed2 campaign, Sec. 5)
+  *_x1cnnfullveto*.json        corrected products (inj_full campaign, Sec. 6)
+search_mode/inject.py          injection engine (SNR grid, mass strata, CNN gate, ASD veto)
+spectrogram_cascade/           the deployed scoring cascade and its frozen BA calibration
+improved/improved_pipeline.py  the CAE training script and Q-transform tile cache
+tools/                         waveform-bank builders (stellar / ultramassive / low-mass strata; needs pycbc)
+launchers/                     shell and SLURM chains that produced the committed products
+                               (account/partition are placeholders; paths resolve from MADGRAV_ROOT)
 assets/models/, lr_cascade/    deployed network weights
 ```
 
@@ -110,12 +120,48 @@ Key switches: `SM_LR_ONLY` ranks on the lnLambda channel alone; `SM_NETMAX` appl
 veto to candidates and injections alike; `SM_KE` supplies the calibration factors; `SM_DET_RULE`
 sets the injection admission rule so the signal model matches the detection list.
 
-## 6. Data not in this repository
+## 6. Sensitive volume on the unified injection campaign (2026-09-05)
+
+The adopted chain above draws its injections from `inj_fixed2`, a two-stratum campaign on a
+network-SNR grid capped at rho = 25. Two corrections were identified and implemented on
+2026-09-05; both are switches that default **off**, so every adopted product rebuilds
+byte-identically, and the corrected products are committed under their own tag:
+
+* **`inj_full` campaign** (`launchers/run_injfull.sh`): one campaign, 321,750 injections, 13 SNR
+  levels over rho 5-80 and three mass strata (low-mass 10-22, stellar, ultramassive). The rho^-4
+  population weights are built with midpoint bin widths and renormalised over the grid, so on
+  the capped grid the dropped high-SNR tail was redistributed onto low-SNR levels where the
+  efficiency is ~0, biasing VT low. `SM_SNR_GRID_EXT` extends the grid; `SM_BANK_LM`,
+  `SM_LM_FRAC`, `SM_INJ_SNR_FULL` add the third stratum and label it by full-signal SNR.
+* **Comoving prior** (`SM_VT_COMOVING_PRIOR=1` in `vt_relabel_comoving.py`): the grid weights are
+  uniform in Euclidean volume while the reference volume is comoving with (1+z) dilation; the
+  Jacobian J(z_i) puts both in the same measure. The effective per-injection weight is stored in
+  `relabel_inj_<run><suffix>.npz["w0"]` and read back by `build_neff.py`, `build_eff_srcframe.py`
+  and `vt_compare_pipelines.py`. `SM_PASTRO_W0_FROM=<suffix>` routes the same weights into
+  `pastro_final.py` (product `pastro_final_x1cnnfullcp.json`; effect on p_astro is negligible).
+* **Mass grid**: `SM_VT_MASS_EDGES` sets the source-frame bin edges in both the numerator
+  (`vt_relabel_comoving.py`) and the comparator (`vt_pipelines_gwtc.py`) from one switch;
+  `SM_VT_OUT_SUF` / `SM_VT_TGT_SUF` name the outputs so nothing adopted is overwritten.
+
+Products: `vt_relabel_comoving_x1cnnfullveto_m20.json` (20-400 grid, the cross-pipeline ratio
+numerator), `vt_relabel_comoving_x1cnnfullveto.json` (10-400 grid, MADGRAV-only frames figure),
+the matching `eff_srcframe_*`, `neff_srcframe_*`, `vt_compare_pipelines_*` files, the 13-edge
+comparator `vt_pipelines_target_zc_lm10.json`, and `pastro_final_x1cnnfullcp.{json,csv}` /
+`pastro_final_x1cnnfullsw.{json,csv}` (the latter adds `det_frac_sweep`, detected fraction per
+calibrated-FAR threshold via `SM_FAR_SWEEP`). Bins below 20 Msun are not usable for the
+cross-pipeline ratio: the comparator releases give N_eff below the 300 cut there, and the
+source-frame rebin and the release's native source-frame binning treat the bin boundary
+differently.
+
+`launchers/run_vt_full_chain.sh` re-states the full sequence with these switches;
+`launchers/injfull_score.sh` is the scoring step that precedes it.
+
+## 7. Data not in this repository
 
 Training sets, injection campaigns, strain and background caches are hundreds of GB and live on
 `$MADGRAV_SCRATCH`. Strain is public via GWOSC (https://gwosc.org). The LVK sensitivity-injection
 releases used for the pipeline comparison are on Zenodo (GWTC-3: 10.5281/zenodo.5546676).
 
-## 7. Citation
+## 8. Citation
 
 See `CITATION.cff`.

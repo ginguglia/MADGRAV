@@ -22,7 +22,7 @@ Outputs (originals untouched):
 
 Env knobs (smoke tests): SM_NWIN (default 4000/det), SM_MAXFILES (default 400
 evenly-strided files/det), SM_PSD_OUT (redirect output prep root), SM_RUNS.
-Run: madgrav-venv python build_release_psds_o3.py
+Run: python build_release_psds_o3.py
 """
 import glob
 import json

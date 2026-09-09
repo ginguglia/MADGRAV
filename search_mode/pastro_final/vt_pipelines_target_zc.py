@@ -28,7 +28,7 @@ Gates: identical to the accepted run (analytic-law KS, P(B) quadrature vs
 bank samples, f_um, cosmology dL, weights-vs-month, z-law) - imported.
 N_eff >= 300 enforced AFTER reweighting per SOURCE bin (widen rule).
 
-Run: madgrav-venv python vt_pipelines_target_zc.py
+Run: python vt_pipelines_target_zc.py
 Out: vt_pipelines_target_zc.json (schema of vt_pipelines_target.json)
 """
 import os
@@ -38,12 +38,12 @@ import json
 import sys
 
 import h5py
+import numpy as np
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
-import numpy as np
 
 MG = MADGRAV_ROOT
 HERE = f"{MG}/search_mode/pastro_final"
@@ -234,8 +234,9 @@ def main():
                                             b["vt_gpc3yr"], b["neff"])]
             print(f"  {run} {p:>12}: " + " ".join(rr))
 
-    json.dump(res, open(f"{HERE}/vt_pipelines_target_zc.json", "w"), indent=1)
-    print(f"[done] -> {HERE}/vt_pipelines_target_zc.json")
+    _sfx = os.environ.get("SM_VT_TGT_SUF", "")   # output-only; keeps the adopted target intact
+    json.dump(res, open(f"{HERE}/vt_pipelines_target_zc{_sfx}.json", "w"), indent=1)
+    print(f"[done] -> {HERE}/vt_pipelines_target_zc{_sfx}.json")
 
 
 if __name__ == "__main__":

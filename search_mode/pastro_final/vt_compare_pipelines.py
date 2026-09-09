@@ -29,12 +29,6 @@ same for O3 from the GWTC-3 release (zenodo 5546676, DIFFERENT schema).
 AMENDMENT 2026-08-15 (logged; supersedes the 2026-08-11 figure, archived in
 campaign/archive/vt_compare_pre_relabel/): the MADGRAV numerator is now read
 from vt_relabel_comoving.json (vt_comoving_srcframe_gpc3yr) - the SAME
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
-
 numerator as the four-epoch figure of record - instead of being recomputed
 here. This carries the three 2026-08-12 corrections: (a) float64 masks (the
 float32 underflow guard in horizons_comoving() culled 11.5% of the sig bank,
@@ -44,7 +38,7 @@ the O4 contribution is no longer "relative"; (c) SOURCE-frame Mtot axis,
 matching the comparators. The legacy in-script recompute is kept ONLY as
 --legacy-asrun (float32-guard, detector-frame, as-run O4) for provenance.
 
-Run: nice -n 10 madgrav-venv python vt_compare_pipelines.py [--plot-only|--legacy-asrun]
+Run: python vt_compare_pipelines.py [--plot-only|--legacy-asrun]
   default      -> numerator from vt_relabel_comoving.json (fast, no bank I/O)
   --plot-only  re-renders the figure from the saved json
   --legacy-asrun  the pre-2026-08-15 recompute path (writes *_legacy.json only)
@@ -56,6 +50,12 @@ for v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
 import sys
 import json
 import numpy as np
+
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+MADGRAV_EXTDATA = _os.environ.get("MADGRAV_EXTDATA") or _os.path.dirname(MADGRAV_ROOT)
 
 MG = MADGRAV_ROOT
 SC = MADGRAV_SCRATCH
@@ -224,9 +224,13 @@ def from_relabel():
     NEFF_MIN = 300.0
     out["neff_srcframe"] = {}
     for run in RUNS:
-        ri = np.load(f"{HERE}/relabel_inj_{run.lower()}.npz")
-        zi = np.load(f"{HERE}/inj_scored_{run.lower()}.npz")
-        w0, det = zi["w0"], zi["det_frac"]
+        # BUGFIX 2026-09-05: these were unsuffixed, so the support mask came from a
+        # different (older, smaller) campaign than the VT above -- and once SM_VT_MASS_EDGES
+        # existed, from a different BINNING too, misaligning src_bin against `edges`.
+        ri = np.load(f"{HERE}/relabel_inj_{run.lower()}{SUF}.npz")
+        zi = np.load(f"{HERE}/inj_scored_{run.lower()}{SUF}.npz")
+        w0 = ri["w0"] if "w0" in ri.files else zi["w0"]   # effective w0 from relabel layer
+        det = zi["det_frac"]
         db, sb, kept = ri["det_bin"], ri["src_bin"], ri["kept"]
         W = np.zeros_like(w0)
         for b in range(len(edges) - 1):
@@ -316,7 +320,10 @@ def make_figure(out):
             label="MADGRAV O3 (O3a in-sample + O3b blind, FAR<1/yr)")
     ax.plot(mids, vt_tot, color="0.25", lw=1.6, marker="", ls="-",
             label=r"MADGRAV O3+O4 total (O4 relabeled)")
-    ax.set_xlim(20, 400)
+    # Left edge follows the numerator's own grid: the extended campaign carries bins below
+    # 20, and clipping at 20 would hide coverage the curve actually has. The benchmarks
+    # stop where their own support stops, so no comparator is implied below its last point.
+    ax.set_xlim(min(20.0, float(edges[0])), 400)
     ax.set_yscale("log")
     ax.set_xlabel(r"$M_{\rm tot}$ (source frame) [$M_\odot$]")
     ax.set_ylabel(r"$\langle VT\rangle$ [Gpc$^3$ yr, comoving]")

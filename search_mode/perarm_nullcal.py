@@ -16,13 +16,13 @@ Usage: perarm_nullcal.py [n_sample_per_fold]
 """
 import json, os, sys
 import numpy as np
-sys.path.insert(0, MADGRAV_ROOT + "/search_mode")
-import successor_stat as S
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
+sys.path.insert(0, MADGRAV_ROOT + "/search_mode")
+import successor_stat as S
 
 DET = MADGRAV_ROOT + "/details/successor_statistic"
 XS = [1.0, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
@@ -41,7 +41,6 @@ _PR = os.environ.get("SM_NETMAX_PERRUN", "")
 PERRUN = json.load(open(_PR)) if _PR else None
 CSVDET = MADGRAV_ROOT + "/figures/catalog_o3o4/madgrav_far_final_x1.csv"
 RNG = np.random.default_rng(20260831)
-
 
 def perarm_counts(bg, f, p, extra=None, nm=None):
     """Arm-conditioned per-arm counts for pseudo-candidate p against fold f, OWN-PAIR exclusion."""
@@ -75,7 +74,6 @@ def perarm_counts(bg, f, p, extra=None, nm=None):
         out["net_hm"] = int((bg.hm[rr] >= hm_q).sum())
         out["net_lm"] = int((bg.lm[rr] >= lm_q).sum())
     return out
-
 
 def main():
     res = {"xs": XS, "ns": NS, "n_sample_per_fold": NSAMP, "runs": {}}
@@ -138,7 +136,6 @@ def main():
     tag = ('_excldet' if EXCL_DET else '') + ('_netmax' if (NETMAX or PERRUN) else '') + ('_lronly' if LR_ONLY else '')
     json.dump(res, open(f"{DET}/perarm_nullcal{tag}.json", "w"), indent=1)
     print(f"\n-> {DET}/perarm_nullcal.json")
-
 
 if __name__ == "__main__":
     main()

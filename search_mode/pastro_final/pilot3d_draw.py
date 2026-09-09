@@ -26,7 +26,7 @@ Outputs:
   search_mode/pilot3d_<run>_segs.json     {name: {"coincident_lock": [t0]}}
   pastro_final/pilot3d_manifest.json      full draw record (strata, r301 flags)
 
-Run: madgrav-venv python pilot3d_draw.py   (idempotent; seeded rng 20260812)
+Run: python pilot3d_draw.py   (idempotent; seeded rng 20260812)
 """
 import csv
 import json

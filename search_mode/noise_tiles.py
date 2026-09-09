@@ -8,15 +8,16 @@ import os, sys
 import numpy as np
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
 MG = MADGRAV_ROOT
 sys.path.insert(0, f"{MG}/search_mode")
 import successor_stat as S
 import driver_streams as DS
 from massive_pipeline import MassiveEventPipeline
-import os as _os
-MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
-    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
 FS = 4096; WN = 4 * FS
 RUN = os.environ.get("SM_TILE_RUN", "O3a")
@@ -53,7 +54,6 @@ def counts_veto(bg, p):
     if LR_ONLY:
         out["net_hm"] = out["net_lm"] = 10**9      # channel removed from the minimum
     return out
-
 
 def window(segname, gps, det):
     z = np.load(f"{STR}/{segname}_{det}.npz")
@@ -128,7 +128,6 @@ def main():
     out = f"{MG}/figures/noise_tiles_{('lronly' if LR_ONLY else 'survivors') if NETMAX else 'passing'}_{RUN.lower()}_s{SEED}.png"
     fig.savefig(out, dpi=170, bbox_inches="tight")
     print("->", out)
-
 
 if __name__ == "__main__":
     main()

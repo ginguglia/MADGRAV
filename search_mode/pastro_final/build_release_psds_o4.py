@@ -14,7 +14,7 @@ Diagnostics printed: (i) current/release PSD ratio at 20-60 Hz per run+det
 event-clustered bias); (ii) median vs our-exposure-weighted-mean spread
 (months are weighted equally by the median; this bounds what weighting could
 change).
-Run: madgrav-venv python build_release_psds_o4.py
+Run: python build_release_psds_o4.py
 """
 import glob
 import gzip
