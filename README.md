@@ -14,7 +14,9 @@ MADGRAV is a cascade of convolutional networks — anomaly detection, glitch cla
 coherence and signal ranking — operating on 
 Q-transform tiles. **No waveform template bank is
 matched-filtered against the data.** Waveform models enter only through the training distribution
-and through the injection campaigns used for calibration and sensitivity estimation.
+and through the injection campaigns used for calibration and sensitivity estimation. 
+
+**MADGRAV currently operates on a 2-detector configuration, a single-detector version and one including Virgo are in preparation.**
 
 ---
 
