@@ -16,7 +16,7 @@ Q-transform tiles. **No waveform template bank is
 matched-filtered against the data.** Waveform models enter only through the training distribution
 and through the injection campaigns used for calibration and sensitivity estimation. 
 
-**MADGRAV currently operates on a 2-detector configuration, a single-detector version and one including Virgo are in preparation.**
+**MADGRAV currently operates on a 2-detector configuration including LIGO detectors, a single-detector version and a three-detector connfiguration including LIGO and Virgo are in preparation.**
 
 ---
 
