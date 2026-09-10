@@ -17,7 +17,7 @@ matched-filtered against the data.** Waveform models enter only through the trai
 and through the injection campaigns used for calibration and sensitivity estimation. 
 
 >[!Important]
->**MADGRAV currently operates on a 2-detector configuration including LIGO detectors, a single-detector version and a three-detector configuration including LIGO and Virgo are in preparation.**
+>**MADGRAV currently operates on a 2-detector configuration including LIGO detectors (MADGRAV-2D), a single-detector (MADGRAV) version and a three-detector configuration including LIGO and Virgo (MADGRAV-3D) are in preparation.**
 
 ---
 
