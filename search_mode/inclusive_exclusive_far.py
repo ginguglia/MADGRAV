@@ -43,6 +43,19 @@ PERRUN = __import__("json").load(open(_PR)) if _PR else None
 # The sigma_net>4 TRIGGER is unchanged; only the FAR channel set changes.
 LR_ONLY = os.environ.get("SM_LR_ONLY", "0") == "1"
 UL90 = 2.302585
+# SM_GNET (2026-09-09): glitch-arm gate g_net >= threshold, applied to the background (via
+# successor_stat.Background.gpass) AND to every candidate (its own g_net, looked up from the cached streams).
+SCR = MADGRAV_SCRATCH
+
+
+def cand_gnet(run, seg, gps):
+    g = []
+    for det in ("H1", "L1"):
+        m = np.load(f"{SCR}/streams_{run.lower()}_full/{seg}_{det}_meta.npz")
+        i = int(np.argmin(np.abs(m["gps"] - gps))); assert abs(float(m["gps"][i]) - gps) < 0.51, (seg, det, gps)
+        g.append(float(m["g"][i]))
+    return (g[0] + g[1]) / np.sqrt(2.0), g[0], g[1]
+
 
 def counts(bg, cand, touch=None, netmax=None):
     """Production per-arm counting (whole-segment self-exclusion), optionally with extra pairs removed."""
@@ -53,6 +66,7 @@ def counts(bg, cand, touch=None, netmax=None):
         keep &= bg.net < nm
     if touch is not None:
         keep &= ~touch
+    keep &= bg.gpass                    # glitch-arm gate (all-True unless SM_GNET is set)
     m = (bg.fold == f) & keep
     ll, hm, lm, net = cand["loglr"], cand["cnn_hm"], cand["cnn_lm"], cand["net"]
     mm = m & (bg.ll > ll)
@@ -63,15 +77,18 @@ def counts(bg, cand, touch=None, netmax=None):
         rk &= bg.net[rep] < nm
     if touch is not None:
         rk &= ~touch[rep]
+    rk &= bg.gpass[rep]
     rr = rep[rk]
     n_net = min(int((bg.hm[rr] >= hm).sum()), int((bg.lm[rr] >= lm).sum()))
     if LR_ONLY:
         n_net = 10**9          # channel removed from the minimum
     return n_lr, n_net, float(F["T"])
 
+
 def far_of(n_lr, n_net, T):
     N = min(n_lr, n_net)
     return (TRIALS * N / T, TRIALS * (N + UL90) / T, N)
+
 
 def main():
     rows = [r for r in csv.DictReader(open(CSV))]
@@ -97,15 +114,22 @@ def main():
             ref = float(r["far"])
             if NETMAX is None and PERRUN is None and not LR_ONLY and TRIALS == 1.0 and abs(fi - ref) > max(1e-9, 1e-6 * abs(ref)):
                 bad.append(f"{r['name']}: inclusive {fi:.6g} != table {ref:.6g}")
+            gn, gH, gL = cand_gnet(run, r["seg"], float(r["gps"]))
+            gpass = True if S.GNET is None else bool(gn >= S.GNET)
             out.append(dict(run=run, name=r["name"], N_incl=Ni, far_incl=fi, ul90_incl=ui,
                             N_excl=Ne, far_excl=fe, ul90_excl=ue,
-                            ratio=(fi / fe if fe > 0 else float("inf"))))
+                            ratio=(fi / fe if fe > 0 else float("inf")),
+                            gnet=gn, gH=gH, gL=gL, gnet_pass=int(gpass)))
+            if not gpass:
+                print(f"    {r['name']}: FAILS the glitch-arm gate (g_net {gn:.2f} < {S.GNET})")
     if bad:
         print("\nGATE FAILED -- inclusive column does not reproduce madgrav_far_final_x1.csv:")
         for b in bad[:10]:
             print("   ", b)
         raise SystemExit(1)
     print(f"\nGATE PASS: inclusive column reproduces all {len(out)} table FARs exactly\n")
+    if S.GNET is not None:
+        print(f"glitch-arm gate g_net >= {S.GNET}: {sum(o['gnet_pass'] for o in out)}/{len(out)} candidates pass")
     with open(OUT, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(out[0])); w.writeheader(); w.writerows(out)
     fi = np.array([r["far_incl"] for r in out]); fe = np.array([r["far_excl"] for r in out])
@@ -115,6 +139,7 @@ def main():
     r = fi / np.where(fe > 0, fe, np.nan)
     print(f"FAR ratio incl/excl: median {np.nanmedian(r):.2f}, max {np.nanmax(r):.2f}")
     print(f"-> {OUT}")
+
 
 if __name__ == "__main__":
     main()

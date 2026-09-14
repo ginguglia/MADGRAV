@@ -27,7 +27,7 @@ import successor_stat as S
 DET = MADGRAV_ROOT + "/details/successor_statistic"
 XS = [1.0, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
 NS = [1.0, 1.5, 1.869, 2.0, 3.0, 4.0]
-RUNS = ["O3a", "O3b", "O4a", "O4b"]
+RUNS = os.environ.get("SM_RUNS", "O3a,O3b,O4a,O4b").split(",")   # SM_RUNS: subset, for per-run parallel jobs
 NSAMP = int(sys.argv[1]) if len(sys.argv) > 1 else 4000
 # SM_EXCL_DET=1 -> remove every background pair within +/-4 s of a detection (same segment) from BOTH
 # the ranking background and the pseudo-foreground population. Tests whether real signals leaking into
@@ -42,6 +42,7 @@ PERRUN = json.load(open(_PR)) if _PR else None
 CSVDET = MADGRAV_ROOT + "/figures/catalog_o3o4/madgrav_far_final_x1.csv"
 RNG = np.random.default_rng(20260831)
 
+
 def perarm_counts(bg, f, p, extra=None, nm=None):
     """Arm-conditioned per-arm counts for pseudo-candidate p against fold f, OWN-PAIR exclusion."""
     F = bg.F[f]; gi = F["gi"]
@@ -54,6 +55,7 @@ def perarm_counts(bg, f, p, extra=None, nm=None):
         msk &= bg.net[gi] < nm
     if extra is not None:
         msk &= ~extra[gi]
+    msk &= bg.gpass[gi]                 # glitch-arm gate on the background (all-True unless SM_GNET)
     k = gi[msk]
     out = {}
     if np.isfinite(ll_q) and ll_q >= S.LR_FLOOR:
@@ -70,10 +72,12 @@ def perarm_counts(bg, f, p, extra=None, nm=None):
             sel &= bg.net[rep] < nm
         if extra is not None:
             sel &= ~extra[rep]
+        sel &= bg.gpass[rep]
         rr = rep[sel]
         out["net_hm"] = int((bg.hm[rr] >= hm_q).sum())
         out["net_lm"] = int((bg.lm[rr] >= lm_q).sum())
     return out
+
 
 def main():
     res = {"xs": XS, "ns": NS, "n_sample_per_fold": NSAMP, "runs": {}}
@@ -99,6 +103,7 @@ def main():
                 pop = pop[bg.net[pop] < nmv]     # a vetoed family cannot be a candidate either
             if touch is not None:
                 pop = pop[~touch[pop]]          # and drop them from the pseudo-fg population itself
+            pop = pop[bg.gpass[pop]]             # gate: a gate-failing family cannot be a candidate either
             T = float(z["T"])
             frac = 1.0
             if len(pop) > NSAMP:
@@ -134,8 +139,11 @@ def main():
         print(f"  trials n={n:<6} K/E(1/yr) = {ke[0]:6.2f}   {'PASS' if 0.5<=ke[0]<=1.5 else 'FAIL'}"
               f"   grid " + " ".join(f"{v:.2f}" for v in ke))
     tag = ('_excldet' if EXCL_DET else '') + ('_netmax' if (NETMAX or PERRUN) else '') + ('_lronly' if LR_ONLY else '')
+    tag += ('_gnet' if S.GNET is not None else '')
+    tag += os.environ.get('SM_TAG_EXTRA', '')
     json.dump(res, open(f"{DET}/perarm_nullcal{tag}.json", "w"), indent=1)
     print(f"\n-> {DET}/perarm_nullcal.json")
+
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,9 @@
 
 This repository contains the pipeline configuration that produced **48 candidates above the
 detection threshold, of which 47 have a calibrated false-alarm rate below 1 yr⁻¹**, in a search
-over O3a, O3b, O4a and O4b Hanford–Livingston data.
+over O3a, O3b, O4a and O4b Hanford–Livingston data. This is the **final version** of the
+pipeline: the detection statistic of Sec. 4 (with the injection-set glitch-arm gate) and the
+products it selects are the ones the paper reports.
 
 MADGRAV is a cascade of convolutional networks — anomaly detection, glitch classification,
 coherence and signal ranking — operating on 
@@ -65,6 +67,9 @@ search_mode/                 the search: triggers, streams, background, ranking
   successor_stat.py            the adopted ranking statistic
   inclusive_exclusive_far.py   FAR against inclusive / foreground-excluded background
   perarm_nullcal.py            null calibration: measures the K factors
+  build_bg_g.py                glitch-arm scores of every cached background pair (bg_g_<run>.npz)
+  gnet_threshold.py            glitch-arm gate threshold from the injection population
+  merge_nullcal_runs.py, make_ke_gnet.py   per-run null calibration -> ke_gnet.json
   apply_asd_veto.py            local-spectrum consistency veto
 search_mode/pastro_final/    calibration, p_astro, sensitivity
   pastro_final.py              FGMC p_astro on the FAR axis
@@ -73,8 +78,14 @@ search_mode/pastro_final/    calibration, p_astro, sensitivity
   build_neff.py, build_eff_srcframe.py   N_eff and efficiency per source-frame mass bin
   vt_pipelines_gwtc.py, vt_pipelines_target_zc.py   LVK sensitivity releases reweighted to our population
   vt_compare_pipelines.py, fig_fourepoch_ratio.py   cross-pipeline VT and the four-epoch ratio figure
-  *_x1cnnadopt48f*.json        adopted products (inj_fixed2 campaign, Sec. 5)
-  *_x1cnnfullveto*.json        corrected products (inj_full campaign, Sec. 6)
+  *_x1cnnadopt48fg*.{json,csv} final p_astro products (inj_fixed2 campaign, gated; Sec. 5)
+  *_x1cnnfullgveto_m20.json    final sensitive-volume products (inj_full campaign, gated; Sec. 6)
+  *_x1cnnadopt48f*.json, *_x1cnnfullveto*.json   the same products before the gate (superseded)
+  *_text_numbers.py, body_to_tables.py   digests of the quoted numbers and LaTeX tables
+figures/catalog_o3o4/          detection list: adopted_set.py, far_lronly_g106_gnet.csv (final FAR table),
+                               plot_far_final_adopt.py (FAR vs mass figure)
+paper_search/                  make_table_adopted.py -> detections_table_gnet.tex (the paper's table)
+details/successor_statistic/   gnet_threshold.json, ke_gnet.json, null-calibration outputs
 search_mode/inject.py          injection engine (SNR grid, mass strata, CNN gate, ASD veto)
 spectrogram_cascade/           the deployed scoring cascade and its frozen BA calibration
 improved/improved_pipeline.py  the CAE training script and Q-transform tile cache
@@ -88,12 +99,25 @@ assets/models/, lr_cascade/    deployed network weights
 
 A candidate is a detection when its **calibrated** false-alarm rate is below 1 yr⁻¹:
 
-    sigma_net > 4 trigger  ->  CNN glitch gate  ->  sigma_net < 10.6 veto
+    sigma_net > 4 trigger  ->  CNN glitch gate  ->  sigma_net < 10.6 veto  ->  glitch-arm gate
       ->  lnLambda-channel per-arm FAR against the foreground-excluded time-slide background
       ->  multiplied by the per-run null-calibration factor K
 
-`K = 5.54, 4.54, 2.34, 5.46` for O3a, O3b, O4a, O4b, measured by scoring every gate-passing
-background family as a pseudo-foreground candidate (`perarm_nullcal.py`; `ke_adopted.json`).
+Both selections after the CNN gate are set on the injection population alone and applied
+identically to candidates and to the time-slide background:
+
+* **sigma_net < 10.6**: the 99.9th percentile of gate-passing injections.
+* **glitch-arm gate** `g_net = (gH + gL)/sqrt(2) >= -4.02`: the 1st percentile of `g_net` over the
+  57,641 gate-passing, triggering injections of the `inj_fixed2` campaign, pooled over the four
+  runs (`gnet_threshold.py` -> `gnet_threshold.json`). `g` is the deploy-arm glitch logit already
+  cached per 1-s window per detector; it enters lnLambda as a ramped feature and here also as a
+  gate. The gate removes 37% of the 532 background families that set the detection FARs and
+  keeps all 47 detections.
+
+`K = 5.60, 4.59, 1.43, 3.62` for O3a, O3b, O4a, O4b, measured by scoring every gate-passing
+background family as a pseudo-foreground candidate (`perarm_nullcal.py` with `SM_GNET`;
+`ke_gnet.json`). The pre-gate values `K = 5.54, 4.54, 2.34, 5.46` (`ke_adopted.json`,
+`far_lronly_g106.csv`) select the same 47 events and are kept for reference.
 
 The 90% upper limit is reported per event but is not part of the criterion.
 
@@ -105,25 +129,44 @@ cd figures/catalog_o3o4
 python -c "import adopted_set; print(len(adopted_set.load()))"    # -> 47
 ```
 
-The full chain, given the background caches and injection campaigns in `$MADGRAV_SCRATCH`:
+`adopted_set.py` reads `far_lronly_g106_gnet.csv` and `ke_gnet.json` by default; `SM_FAR_LR_CSV`
+and `SM_KE_JSON` select other tables (e.g. the pre-gate ones).
+
+The full chain, given the background caches, stream caches and injection campaigns in
+`$MADGRAV_SCRATCH`:
 
 ```bash
-SM=search_mode/pastro_final
-SM_TRIALS_OFF=1 SM_INJ_CNN_GATE=1 SM_LR_ONLY=1 SM_NETMAX=10.6 \
-SM_KE=details/successor_statistic/ke_adopted.json \
-SM_INJ_DIR=inj_fixed2 SM_SUF_EXTRA=adopt48f \
+DET=details/successor_statistic; SM=search_mode/pastro_final
+python search_mode/build_bg_g.py                       # glitch-arm scores of the background pairs
+python search_mode/gnet_threshold.py                   # -> $DET/gnet_threshold.json  (-4.02)
+launchers/run_perarm_nullcal_gnet_parallel.sh          # null calibration per run, with the gate
+python search_mode/merge_nullcal_runs.py excldet_netmax_lronly_gnet
+python search_mode/make_ke_gnet.py                     # -> $DET/ke_gnet.json
+SM_GNET=-4.02 SM_LR_ONLY=1 SM_NETMAX=10.6 SM_EXCL_DET=1 \
+  python search_mode/inclusive_exclusive_far.py        # -> figures/catalog_o3o4/far_lronly_g106_gnet.csv
+launchers/run_vt_47_gnet_chain.sh                      # p_astro on inj_fixed2 -> *_x1cnnadopt48fg
+launchers/injfull_score_gnet.sh                        # recovery, efficiency, VT on inj_full -> *_x1cnnfullgveto_m20
+python paper_search/make_table_adopted.py              # -> paper_search/detections_table_gnet.tex
+```
+
+The p_astro step inside the chains is
+
+```bash
+SM_TRIALS_OFF=1 SM_INJ_CNN_GATE=1 SM_LR_ONLY=1 SM_NETMAX=10.6 SM_INJ_BG_NETMAX=1 \
+SM_GNET=-4.02 SM_KE=$DET/ke_gnet.json SM_FAR_LR_CSV=figures/catalog_o3o4/far_lronly_g106_gnet.csv \
+SM_INJ_DIR=inj_fixed2 SM_SUF_EXTRA=adopt48fg \
 SM_ADOPTED_AXIS=1 SM_AXIS_COL=far_excl SM_ADMIT=all SM_DET_RULE=far \
   python $SM/pastro_final.py
-SM_VETO_SRC=inj_fixed2 SM_VETO_SUF=_x1cnnadopt48f SM_VETO_REF=inj_cnn python $SM/build_inj_veto.py
-SM_VT_SUF=_x1cnnadopt48fveto SM_INJ_CAMPAIGN=inj_fixed2 SM_VT_FIXED_ASD=1 SM_ASD_TAG=fixed2 \
-  python $SM/vt_relabel_comoving.py
 ```
 
 Key switches: `SM_LR_ONLY` ranks on the lnLambda channel alone; `SM_NETMAX` applies the sigma_net
-veto to candidates and injections alike; `SM_KE` supplies the calibration factors; `SM_DET_RULE`
-sets the injection admission rule so the signal model matches the detection list.
+veto to candidates and injections alike, and `SM_INJ_BG_NETMAX=1` applies it also to the
+background the injections are counted against (the same background the candidates see);
+`SM_GNET` is the glitch-arm gate threshold; `SM_KE` supplies the calibration factors;
+`SM_DET_RULE` sets the injection admission rule so the signal model matches the detection list.
+All gate switches default **off**, so the pre-gate products rebuild unchanged.
 
-## 6. Sensitive volume on the unified injection campaign (2026-09-05)
+## 6. Sensitive volume on the unified injection campaign
 
 The adopted chain above draws its injections from `inj_fixed2`, a two-stratum campaign on a
 network-SNR grid capped at rho = 25. Two corrections were identified and implemented on
@@ -158,6 +201,14 @@ differently.
 
 `launchers/run_vt_full_chain.sh` re-states the full sequence with these switches;
 `launchers/injfull_score.sh` is the scoring step that precedes it.
+
+**Final products (2026-09-09).** `launchers/injfull_score_gnet.sh` runs the same chain with the
+glitch-arm gate and `SM_INJ_BG_NETMAX=1`, producing `vt_relabel_comoving_x1cnnfullgveto_m20.json`,
+`eff_srcframe_x1cnnfullgveto_m20.json`, `neff_srcframe_x1cnnfullgveto_m20.json` and
+`figures/vt_fourepoch/vt_fourepoch_ratio_x1cnnfullgveto_m20.json`; these are the numbers the paper
+quotes. Relative to the `_x1cnnfullveto_m20` products the O3 efficiencies and VT rise; that
+change comes almost entirely from counting the injections against the vetoed background, as the
+candidates are, not from the gate itself.
 
 ## 7. Data not in this repository
 

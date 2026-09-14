@@ -10,16 +10,20 @@ so a table row and a plotted point can never disagree.
 """
 import csv
 import json
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "../.."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
 
-
 MG = MADGRAV_ROOT
 CAT = f"{MG}/figures/catalog_o3o4"
 NETMAX = 10.6
-KE = json.load(open(f"{MG}/details/successor_statistic/ke_adopted.json"))
+import os
+# Final statistic (glitch-arm gate, 2026-09-09): defaults = the gated products; SM_FAR_LR_CSV / SM_KE_JSON select
+# others (e.g. the pre-gate far_lronly_g106.csv + ke_adopted.json).
+FAR_LR_CSV = os.environ.get("SM_FAR_LR_CSV", f"{CAT}/far_lronly_g106_gnet.csv")
+KE = json.load(open(os.environ.get("SM_KE_JSON", f"{MG}/details/successor_statistic/ke_gnet.json")))
 
 
 def flt(x):
@@ -30,11 +34,13 @@ def flt(x):
 def load():
     """-> list of dicts, one per adopted detection, sorted run-then-calibrated-FAR."""
     base = list(csv.DictReader(open(f"{CAT}/madgrav_far_final_x1.csv")))
-    far = {(r["run"], r["name"]): r for r in csv.DictReader(open(f"{CAT}/far_lronly_g106.csv"))}
+    far = {(r["run"], r["name"]): r for r in csv.DictReader(open(FAR_LR_CSV))}
     out = []
     for b in base:
         k = (b["run"], b["name"])
         if flt(b["net"]) >= NETMAX or k not in far:
+            continue
+        if "gnet_pass" in far[k] and int(float(far[k]["gnet_pass"])) == 0:   # glitch-arm gate
             continue
         ke = KE[b["run"].lower()]
         f = far[k]

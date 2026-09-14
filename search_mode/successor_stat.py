@@ -38,11 +38,11 @@ per-arm counting (whole-segment exclusion) on the same arrays -- a plumbing regr
 import os, sys, json, time, hashlib
 import numpy as np
 from scipy.stats import chi2
+
 import os as _os
 MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
     _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
-
 
 MG = MADGRAV_ROOT
 DET = f"{MG}/details/successor_statistic"
@@ -52,6 +52,10 @@ RUNS = {"O3a": f"{SC}/search_out_o3a_far_f40", "O3b": f"{SC}/search_out_o3b_far_
 MAIN_RUNS = ["O3a", "O3b", "O4a", "O4b"]
 GATE = 0.5; LR_FLOOR = 4.0; NET_FLOOR = 4.0; EXCL_S = 4.0; MERGE_S = 4.0
 EXCL_MODE = "own_pair"; EXCL_TOL = 0.51   # A2: exclude only the candidate's own pair (window match within one 1-s stride)
+# Glitch-arm gate (2026-09-09). SM_GNET=<threshold> -> a pair (or candidate) passes iff
+# g_net = (gH+gL)/sqrt(2) >= threshold, threshold set on injections by gnet_threshold.py. Unset -> no gate
+# (every accepted product rebuilds unchanged). Scores per pair come from build_bg_g.py (bg_g_<run>.npz).
+GNET = float(os.environ["SM_GNET"]) if os.environ.get("SM_GNET") else None
 XS = [1.0, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
 UL90_N0 = float(chi2.ppf(0.90, 2) / 2)          # 2.3026 (one-sided 90% Poisson UL on a zero count)
 X_MAX = 2.0; NEFF_PRIOR = 2.0                    # top-M rule: M = ceil(X_MAX * T_f * NEFF_PRIOR) = ceil(4 T_f)
@@ -121,6 +125,19 @@ class Background:
         self.evaluated = ev
         self.cnn_vet = ev & (np.maximum(self.hm_loc, self.lm_loc) < GATE)
         self.net_vet = self.cnn_vet | (ev & np.isfinite(self.net_loc) & (self.net_loc < NET_FLOOR))
+        # glitch-arm scores per pair (gate): optional file; required when the gate is on
+        gp = f"{DET}/bg_g_{run.lower()}.npz"
+        if os.path.exists(gp):
+            zg = np.load(gp, allow_pickle=False); assert int(zg["n"]) == n, (gp, int(zg["n"]), n)
+            self.gH = zg["gH"].astype(np.float64); self.gL = zg["gL"].astype(np.float64)
+            self.gnet = (self.gH + self.gL) / np.sqrt(2.0)
+        else:
+            self.gH = self.gL = self.gnet = None
+        if GNET is None:
+            self.gpass = np.ones(n, bool)
+        else:
+            assert self.gnet is not None, f"SM_GNET set but {gp} missing (run build_bg_g.py)"
+            self.gpass = self.gnet >= GNET
         self.F = {f: self._build_fold(f) for f in (0, 1)}
         if verbose:
             for f in (0, 1):

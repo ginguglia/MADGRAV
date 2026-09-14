@@ -88,6 +88,16 @@ INJDIR = os.environ.get("SM_INJ_DIR", "inj_cnn")
 LR_ONLY = os.environ.get("SM_LR_ONLY", "0") == "1"
 NETMAX = float(os.environ.get("SM_NETMAX", "0")) or None
 _KE = os.environ.get("SM_KE", "")
+# SM_GNET (2026-09-09): glitch-arm gate g_net=(gH+gL)/sqrt(2) >= threshold, applied to
+# injections exactly as to candidates (threshold from details/successor_statistic/gnet_threshold.json).
+# SM_FAR_LR_CSV: the per-arm FAR table that puts the candidates on the adopted axis (default far_lronly_g106.csv;
+# the gated recount is far_lronly_g106_gnet.csv). Both default to the accepted products.
+GNET = float(os.environ["SM_GNET"]) if os.environ.get("SM_GNET") else None
+# SM_INJ_BG_NETMAX=1 (2026-09-09): apply the sigma_net<NETMAX veto to the BACKGROUND the injections are scored
+# against (RunBG.curves), as inclusive_exclusive_far.py does for the candidates. Default off: the accepted
+# products were built with the veto on injections and candidates only, not on the injection-side background.
+INJ_BG_NETMAX = os.environ.get("SM_INJ_BG_NETMAX", "0") == "1"
+FAR_LR_CSV = os.environ.get("SM_FAR_LR_CSV", f"{MG}/figures/catalog_o3o4/far_lronly_g106.csv")
 KEMAP = json.load(open(_KE)) if _KE else None
 SUF = ("_x1cnn" if INJCNN else "_x1") if X1 else ("_cnn" if INJCNN else "")
 SUF += os.environ.get("SM_SUF_EXTRA", "")
@@ -126,7 +136,7 @@ ADOPTED = {}
 if ADOPTED_AXIS:
     _kem = json.load(open(os.environ["SM_KE"]))
     _lr = {(r["run"], r["name"]): r for r in
-           csv.DictReader(open(f"{MG}/figures/catalog_o3o4/far_lronly_g106.csv"))}
+           csv.DictReader(open(FAR_LR_CSV))}
     _base = {(r["run"], r["name"]): r for r in
              csv.DictReader(open(f"{MG}/figures/catalog_o3o4/madgrav_far_final_x1.csv"))}
     _f = lambda x: float(x) if str(x).strip() not in ("", "nan") else float("nan")
@@ -187,6 +197,13 @@ class RunBG:
         order = np.lexsort((-self.z["net"], key))
         ks = key[order]; first = np.ones(len(ks), bool); first[1:] = ks[1:] != ks[:-1]
         self.rep = order[first]                     # famN representatives
+        # glitch-arm gate on the background the injections are scored against (same file order as
+        # successor_stat.Background: bg_cache_<run>.npz), so injections and candidates see one background.
+        self.gpass = None
+        if GNET is not None:
+            zg = np.load(f"{MG}/details/successor_statistic/bg_g_{run.lower()}.npz", allow_pickle=False)
+            assert int(zg["n"]) == len(self.z["fam"]), "bg_g_<run>.npz does not match bg_cache"
+            self.gpass = ((zg["gH"] + zg["gL"]) / np.sqrt(2.0)) >= GNET
 
     def curves(self, six, g, qs_hm, qs_lm):
         """Counting curves for one event segment (six, -1 = none) in fold g:
@@ -194,11 +211,19 @@ class RunBG:
         and cumulative famN-rep counts vs net (net channel)."""
         z = self.z
         m = (z["fold"] == g) & (z["hseg"] != six) & (z["lseg"] != six)
+        if self.gpass is not None:
+            m &= self.gpass
+        if INJ_BG_NETMAX and NETMAX is not None:
+            m &= z["net"] < NETMAX
         ll = z["loglr"][m]; fam = z["fam"][m]; hm = z["cnn_hm"][m]; lm = z["cnn_lm"][m]
         o = np.argsort(-ll)
         ll, fam, hm, lm = ll[o], fam[o], hm[o], lm[o]
         rep = self.rep
         rm = (z["fold"][rep] == g) & (z["hseg"][rep] != six) & (z["lseg"][rep] != six)
+        if self.gpass is not None:
+            rm &= self.gpass[rep]
+        if INJ_BG_NETMAX and NETMAX is not None:
+            rm &= z["net"][rep] < NETMAX
         rnet = z["net"][rep][rm]; rhm = z["cnn_hm"][rep][rm]; rlm = z["cnn_lm"][rep][rm]
         ro = np.argsort(-rnet)
         rnet, rhm, rlm = rnet[ro], rhm[ro], rlm[ro]
@@ -350,6 +375,9 @@ def main():
                 trig = trig & (np.maximum(z["cnn_hm"], z["cnn_lm"]) > GLITCH_THRESH)
             if NETMAX is not None:          # sigma_net upper veto, same rule as candidates
                 trig = trig & (net < NETMAX)
+            if GNET is not None:            # glitch-arm gate, same rule as candidates
+                trig = trig & (((z["gH"] + z["gL"]) / np.sqrt(2.0)) >= GNET)
+            if True:                        # scoring block (was nested under the NETMAX veto, which production always sets)
                 fblk = np.empty((npair, len(x))); dblk = np.empty((npair, len(x)), bool)
                 swblk = (np.empty((len(FAR_SWEEP), npair, len(x)), bool) if FAR_SWEEP is not None else None)
                 for pi, (phm, plm) in enumerate(pairs):

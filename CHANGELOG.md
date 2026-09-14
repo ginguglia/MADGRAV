@@ -1,5 +1,48 @@
 # Changelog
 
+## 2026-09-14 — final version: injection-set glitch-arm gate, consistent injection-side background
+
+Detection statistic (Sec. 4 of the README)
+- Glitch-arm gate `g_net = (gH + gL)/sqrt(2) >= -4.02` after the sigma_net < 10.6 veto. The
+  threshold is the 1st percentile of `g_net` over the gate-passing, triggering injections of the
+  adopted campaign (`search_mode/gnet_threshold.py` -> `details/successor_statistic/gnet_threshold.json`);
+  candidates, detections and background are not read when it is set. Applied identically to
+  candidates, background pairs and injections (`SM_GNET`; default off).
+- `search_mode/build_bg_g.py`: looks up the cached per-window glitch-arm logits for every
+  background pair (`bg_g_<run>.npz`, not committed: rebuilt from the stream caches).
+- `successor_stat.py` (`Background.gpass`), `inclusive_exclusive_far.py` (candidate `g_net`,
+  `gnet_pass` column), `perarm_nullcal.py` (`SM_RUNS`, `SM_TAG_EXTRA` for per-run jobs, gate on
+  background and pseudo-candidates), `merge_nullcal_runs.py`, `make_ke_gnet.py`.
+- Null calibration with the gate: `K = 5.60, 4.59, 1.43, 3.62` (`ke_gnet.json`; per-run and merged
+  outputs committed). Same 47 detections; summed background count over them 843 -> 508.
+- `figures/catalog_o3o4/adopted_set.py` and `paper_search/make_table_adopted.py` now default to
+  the gated table and calibration (`far_lronly_g106_gnet.csv`, `ke_gnet.json`,
+  `pastro_final_x1cnnadopt48fg.csv`); `SM_FAR_LR_CSV`, `SM_KE_JSON`, `SM_PASTRO_CSV`,
+  `SM_TABLE_OUT` select others. The pre-gate files are kept.
+
+p_astro and sensitivity (`search_mode/pastro_final/`)
+- `pastro_final.py`: `SM_GNET` on injections and on the background they are scored against;
+  `SM_INJ_BG_NETMAX=1` applies the sigma_net < 10.6 veto to that background as well, so injections
+  and candidates are counted against the same background (previously the veto acted on injections
+  and candidates only). `SM_FAR_LR_CSV` selects the candidate FAR table. Fix: the scoring block
+  was nested under the veto branch; production always set the veto, so accepted products are
+  unaffected.
+- Products: `pastro_final_x1cnnadopt48fg.{json,csv}` (all 47 with p_astro > 0.90, 42 >= 0.99),
+  `vt_relabel_comoving_x1cnnfullgveto_m20.json`, `eff_srcframe_x1cnnfullgveto_m20.json`,
+  `neff_srcframe_x1cnnfullgveto_m20.json`, `figures/vt_fourepoch/vt_fourepoch_ratio_x1cnnfullgveto_m20.json`
+  (+ caption), `paper_search/detections_table_gnet.tex`.
+- Helpers: `vt_text_numbers.py`, `pastro_text_numbers.py`, `comparison_text_numbers.py`,
+  `body_to_tables.py`; `figures/catalog_o3o4/plot_far_final_adopt.py` (`SM_FIG_OUT`).
+
+Launchers
+- `run_perarm_nullcal_gnet.sh`, `run_perarm_nullcal_gnet_parallel.sh`, `run_gnet_after_nullcal.sh`,
+  `run_vt_47_gnet_chain.sh`, `injfull_score_gnet.sh` (site settings as placeholders).
+
+Inputs previously missing from the repository
+- `search_mode/o3a_events.json` (the five O3a seed events) and
+  `figures/catalog_o3o4/hl_snr_o3o4.json` (catalogue H1/L1 SNR per event), read by the table
+  builder, the demo and the miss diagnostics.
+
 ## 2026-09-09 — corrected sensitive volume, unified injection campaign, pipeline fixes
 
 Code (`search_mode/pastro_final/`)

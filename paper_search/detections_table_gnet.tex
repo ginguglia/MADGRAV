@@ -1,0 +1,91 @@
+\begin{table*}
+\caption{\label{tab:detections}The \NDET{} MADGRAV detections at calibrated
+$\FAR<1\,{\rm yr}^{-1}$. Of the \NCAND{} candidates passing the raw threshold, these are the ones
+that remain below $1\,{\rm yr}^{-1}$ once the measured null calibration is applied. The ranking
+statistic is the per-arm false-alarm rate on the $\ln\Lambda$ channel,
+$\FAR=\min(N^{\rm HM},N^{\rm LM})/T_{\rm bg}$, evaluated against the time-slide background with the
+zero-lag foreground removed and multiplied by the per-run calibration factor $\mathcal{K}$
+measured on the full pseudo-foreground population (Sec.~\ref{sec:nullcal};
+$\mathcal{K}=5.60$, $4.59$, $1.43$, $3.62$ for O3a--O4b). $\FAR_{\rm incl}$ is the same quantity
+against the background inclusive of the foreground; the two agree except where a detection's own
+windows enter its background. Candidates with $\sigma_{\rm net}\geq10.6$ are vetoed
+(Sec.~\ref{sec:method}); none of the \NCAND{} is affected. $M_{\rm tot}$ is the published
+source-frame total mass and $\rho_{\rm net}$ the published network matched-filter SNR
+\cite{gwtc21,gwtc3,gwtc40,gwtc50}, over the full observing network; $\rho_{\rm H1+L1}$ is
+the H1+L1-only value of Eq.~(\ref{eq:snrhl}), the quantity this coincident search could
+reach and the axis of Fig.~\ref{fig:population}. The two differ only where Virgo also
+observed. $\sigma_{\rm net}$ is the MADGRAV network excess
+significance. Events with no louder background family ($N=0$) carry a $90\%$ upper limit.
+$p_{\rm astro}$ is a per-run Poisson-mixture (FGMC) fit on the foreground-excluded FAR axis:
+signal density from the injection campaign of this same criterion, noise density uniform in FAR,
+and the noise count pinned to $\FAR_{\rm det}\times T_{\rm fg}$ rather than fitted. The two events
+above $0.1\,{\rm yr}^{-1}$ fall in the last populated injection bin, so their values rest on sparse
+support and should be read as indicative. The last column marks
+candidates also identified by cWB at ${\rm FAR}<1\,{\rm yr}^{-1}$. Events marked $^{\dagger}$ are
+O3a development seed events (Sec.~\ref{sec:method}).}
+\begin{ruledtabular}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{llrrrrccccc}
+Event & Run & $M_{\rm tot}$ [$M_\odot$] & $\rho_{\rm net}$ & $\rho_{\rm H1+L1}$ & $\sigma_{\rm net}$ & $N$ & $\FAR$ [yr$^{-1}$] & $\FAR_{\rm incl}$ & $p_{\rm astro}$ & cWB \\
+\hline
+GW190412$^{\dagger}$ & O3a & 37 & 19.8 & 19.4 & 6.1 & 3 & $0.041$ & $0.041$ & $1.00$ & \checkmark \\
+GW190828\_063405$^{\dagger}$ & O3a & 57 & 16.5 & 16.3 & 6.7 & 3 & $0.045$ & $0.045$ & $1.00$ & \checkmark \\
+GW190513\_205428 & O3a & 54 & 12.5 & 11.9 & 5.9 & 6 & $0.083$ & $0.083$ & $1.00$ &  \\
+GW190706\_222641 & O3a & 113 & 13.4 & 13.2 & 8.2 & 10 & $0.138$ & $0.138$ & $1.00$ & \checkmark \\
+GW190521\_074359$^{\dagger}$ & O3a & 76 & 25.9 & 25.9 & 8.1 & 10 & $0.151$ & $0.151$ & $1.00$ & \checkmark \\
+GW190519\_153544 & O3a & 106 & 15.9 & 15.7 & 7.5 & 20 & $0.276$ & $0.276$ & $1.00$ & \checkmark \\
+GW190602\_175927 & O3a & 116 & 13.2 & 12.6 & 8.8 & 19 & $0.288$ & $0.288$ & $1.00$ & \checkmark \\
+GW190727\_060333 & O3a & 69 & 11.7 & 11.3 & 6.5 & 27 & $0.409$ & $0.409$ & $1.00$ & \checkmark \\
+GW190408\_181802$^{\dagger}$ & O3a & 43 & 14.6 & 14.4 & 5.8 & 30 & $0.454$ & $0.454$ & $1.00$ & \checkmark \\
+GW200129\_065458 & O3b & 63 & 26.8 & 26.0 & 8.5 & 0 & $<0.037$ & $<0.037$ & $1.00$ &  \\
+GW200224\_222234 & O3b & 72 & 20.0 & 19.0 & 10.1 & 1 & $0.016$ & $0.016$ & $1.00$ & \checkmark \\
+GW200311\_115853 & O3b & 62 & 17.8 & 16.3 & 8.1 & 5 & $0.086$ & $0.086$ & $1.00$ & \checkmark \\
+GW191222\_033537 & O3b & 79 & 12.5 & 12.5 & 7.3 & 7 & $0.121$ & $0.121$ & $1.00$ & \checkmark \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}
+\caption{\label{tab:detections-o4}Continuation of Table~\ref{tab:detections} for the O4a and O4b runs. Columns, statistic and conventions are as in that table.}
+\begin{ruledtabular}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{llrrrrccccc}
+Event & Run & $M_{\rm tot}$ [$M_\odot$] & $\rho_{\rm net}$ & $\rho_{\rm H1+L1}$ & $\sigma_{\rm net}$ & $N$ & $\FAR$ [yr$^{-1}$] & $\FAR_{\rm incl}$ & $p_{\rm astro}$ & cWB \\
+\hline
+GW231226\_101520 & O4a & 75 & 34.7 & 34.7 & 9.2 & 0 & $<0.007$ & $<0.007$ & $1.00$ & \checkmark \\
+GW231123\_135430 & O4a & 236 & 21.8 & 21.8 & 9.1 & 0 & $<0.006$ & $<0.006$ & $1.00$ & \checkmark \\
+GW230927\_153832 & O4a & 38 & 20.3 & 20.3 & 5.8 & 0 & $<0.006$ & $<0.006$ & $1.00$ & \checkmark \\
+GW230919\_215712 & O4a & 49 & 16.8 & 16.8 & 4.7 & 1 & $0.002$ & $0.002$ & $1.00$ & \checkmark \\
+GW230627\_015337 & O4a & 14 & 28.7 & 28.7 & 6.2 & 1 & $0.002$ & $0.002$ & $1.00$ & \checkmark \\
+GW230628\_231200 & O4a & 59 & 16.4 & 16.4 & 6.8 & 1 & $0.002$ & $0.002$ & $1.00$ & \checkmark \\
+GW231102\_071736 & O4a & 102 & 15.6 & 15.6 & 7.2 & 3 & $0.007$ & $0.007$ & $1.00$ & \checkmark \\
+GW231028\_153006 & O4a & 153 & 22.4 & 22.4 & 8.9 & 4 & $0.012$ & $0.012$ & $1.00$ & \checkmark \\
+GW231206\_233901 & O4a & 66 & 21.9 & 21.9 & 8.2 & 5 & $0.012$ & $0.012$ & $1.00$ & \checkmark \\
+GW230914\_111401 & O4a & 96 & 17.2 & 17.2 & 7.5 & 6 & $0.015$ & $0.015$ & $1.00$ & \checkmark \\
+GW230924\_124453 & O4a & 52 & 13.5 & 13.5 & 5.4 & 6 & $0.017$ & $0.017$ & $1.00$ & \checkmark \\
+GW230601\_224134 & O4a & 107 & 13.4 & 13.4 & 6.9 & 6 & $0.017$ & $0.017$ & $1.00$ & \checkmark \\
+GW230824\_033047 & O4a & 88 & 11.1 & 11.1 & 4.6 & 9 & $0.026$ & $0.029$ & $1.00$ & \checkmark \\
+GW230922\_040658 & O4a & 125 & 12.5 & 12.5 & 5.6 & 11 & $0.027$ & $0.027$ & $1.00$ & \checkmark \\
+GW230707\_124047 & O4a & 82 & 11.9 & 11.9 & 5.1 & 71 & $0.205$ & $0.323$ & $0.91$ & \checkmark \\
+GW240621\_195059 & O4b & 66 & 28.2 & 28.2 & 8.5 & 0 & $<0.013$ & $<0.013$ & $1.00$ & \checkmark \\
+GW240920\_124024 & O4b & 69 & 37.4 & 37.4 & 8.7 & 0 & $<0.013$ & $<0.013$ & $1.00$ & \checkmark \\
+GW241127\_061008 & O4b & 85 & 31.3 & 31.3 & 8.8 & 0 & $<0.016$ & $<0.016$ & $1.00$ & \checkmark \\
+GW250114\_082203 & O4b & 66 & 78.6 & 78.6 & 8.8 & 0 & $<0.013$ & $<0.013$ & $1.00$ & \checkmark \\
+GW240925\_005809 & O4b & 16 & 31.2 & 31.2 & 6.4 & 0 & $<0.016$ & $<0.016$ & $1.00$ & \checkmark \\
+GW240615\_113620 & O4b & 60 & 26.4 & 25.8 & 8.9 & 1 & $0.007$ & $0.007$ & $1.00$ & \checkmark \\
+GW241129\_021832 & O4b & 53 & 16.7 & 16.7 & 6.4 & 3 & $0.017$ & $0.017$ & $1.00$ & \checkmark \\
+GW241225\_082815 & O4b & 98 & 19.5 & 19.5 & 8.8 & 3 & $0.017$ & $0.017$ & $1.00$ & \checkmark \\
+GW241102\_124058 & O4b & 19 & 21.7 & 21.7 & 4.4 & 3 & $0.021$ & $0.021$ & $1.00$ & \checkmark \\
+GW240705\_053215 & O4b & 82 & 16.8 & 16.8 & 6.7 & 4 & $0.023$ & $0.023$ & $1.00$ & \checkmark \\
+GW250119\_025138 & O4b & 60 & 14.5 & 14.5 & 6.9 & 5 & $0.029$ & $0.041$ & $1.00$ & \checkmark \\
+GW240919\_061559 & O4b & 68 & 16.9 & 15.9 & 7.5 & 5 & $0.029$ & $0.029$ & $1.00$ & \checkmark \\
+GW241102\_144729 & O4b & 75 & 12.7 & 12.7 & 5.7 & 5 & $0.035$ & $0.035$ & $1.00$ & \checkmark \\
+GW250118\_170523 & O4b & 68 & 13.9 & 13.9 & 6.2 & 5 & $0.035$ & $0.035$ & $1.00$ & \checkmark \\
+GW240514\_121713 & O4b & 83 & 16.9 & 16.9 & 6.8 & 10 & $0.058$ & $0.070$ & $1.00$ & \checkmark \\
+GW241130\_034908 & O4b & 54 & 13.8 & 13.8 & 4.5 & 31 & $0.216$ & $0.313$ & $0.98$ & \checkmark \\
+GW241006\_015333 & O4b & 45 & 17.6 & 17.6 & 6.8 & 41 & $0.238$ & $0.424$ & $0.98$ & \checkmark \\
+GW250108\_152221 & O4b & 90 & 11.8 & 11.8 & 5.9 & 61 & $0.354$ & $0.697$ & $0.98$ & \checkmark \\
+GW240406\_062847 & O4b & \ldots & 11.3 & 11.3 & 4.2 & 66 & $0.383$ & $1.069$ & $0.95$ &  \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

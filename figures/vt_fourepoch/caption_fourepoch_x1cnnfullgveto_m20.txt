@@ -1,0 +1,22 @@
+(0) Volume law and mass axis: MADGRAV <VT> is COMOVING (FlatLambdaCDM 67.9/0.3065, V_max = int dVc/(1+z)), matching the release-derived pipeline convention, and is rebinned to SOURCE-frame total mass using each injection's implied redshift from the relabel layer (volume migrates strictly down-mass; the below-20 Msun sink is tabulated in vt_relabel_comoving.json). Pipeline points with N_eff < 300 after reweighting are not plotted.
+
+(a) Exposure convention: T is the wall-clock analyzed coincident livetime; the ANALYZED_FRAC=0.5 factor is a false-alarm-rate trials-denominator convention only and does not enter <VT> (registered 2026-08-11).
+
+(b) For O4b, 31 of 1086 analysed segments (3.60 of 114.14 d, 3.15% of the
+exposure, all predating the official O4b start) fall outside the GWTC-5
+injection coverage; the injection sum is therefore restricted to the covered
+110.54 d and rescaled by 1.0325 to full wall-clock exposure, which assumes
+run-average sensitivity in the excluded time - even a 100% sensitivity
+deviation there would shift the quoted O4b VT by <= 3.25%.
+
+(c) O3 high-mass thinness: above Mtot~200 the matched-FAR comparison columns are PyCBC-BBH-only for O3, and the q-support coverage of the release injection sets relative to our population is 74% (O3; 91% O4) after reweighting; O3 high-mass ratios are correspondingly thin.
+
+(d) O4 as-run whitening caveat: the as-run O4 reference ASDs were biased high at low frequency, suppressing the search's low-frequency response; the comparison is quoted for the AS-RUN configuration. Injection SNR/distance labels and horizon volumes are corrected to release run-median PSDs (relabel, not rescan); found/missed outcomes are as-run. Median label shifts and the probed fraction of the release-accessible volume per bin are tabulated in vt_relabel_release.json.
+
+(e) Two documented conservatisms on the MADGRAV side: the detection criterion is the AND of two FAR conditions (trials-corrected best FAR < 1/yr AND its 90% upper limit < 1/yr), stricter than the single-FAR threshold used for the pipeline columns; and MADGRAV FARs inherit the halved analyzed-time denominator convention (ANALYZED_FRAC = 0.5), overstating them by up to a factor 2. Both push MADGRAV efficiencies, and hence these ratios, DOWN.
+
+(f) Both sides are evaluated on the population as injected: detector-frame masses drawn from the bank law, uniform-random time placement, comoving distance law - equivalently, a z-dependent source-frame density p(m_src | z) ∝ p_bank((1+z)·m_src). Ratios are therefore defined on the identical population, mass frame, cosmology, volume law, threshold semantics, and exposure on both sides.
+
+(g) O3a's FAR calibration (background pairs and LR folds) derives from O3a data; the measured trigger-to-FAR conversion contrast against the out-of-sample O3b bounds the resulting in-sample systematic at 15-40% (mass-graded), shown as the asymmetric band on the O3a curve.
+
+(h) The pooled O3a-vs-cWB residual (1.24 at the band's lower edge vs a count-implied 90% upper limit of 1.06) is accepted as a characterized residual rather than corrected further: it is smaller than the delivered per-segment efficiency systematic in the bins where it concentrates, the segment-selection bias direction is measured to be conservative, every powered per-bin comparison passes at the band's lower edge against all pipelines, and no sharper external measurement exists short of O5 event counts. The uniform ~1.5-2x pooled counts-versus-VT overshoot across all comparator pipelines is consistent with, and provides a population-level quantification of, the previously characterized injection-to-real-event sensitivity gap (contrast floor); injection-based <VT> values in this work should be read with this end-to-end sky calibration alongside.
