@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Fig. 3/4/5 self-consistency (banked 2026-08-15; run by paper_search/build_paper.sh).
+"""Fig. 3/4/5 self-consistency (banked 2026-08-15).
 Verifies, from the JSON products the figures were drawn from, that
   F1  Fig.3 (vt_paper_numbers.json) per-run == Fig.5 (vt_compare_pipelines.json) per-run,
       values AND mask; both == vt_relabel_comoving.json:vt_comoving_srcframe_gpc3yr on unmasked bins;
@@ -9,7 +9,7 @@ Verifies, from the JSON products the figures were drawn from, that
   F4  the numerator-support mask (from vt_compare_pipelines.json neff_srcframe.support < 300) is a subset of
       Fig.4's unplotted set (no plotted Fig.4 point sits on a support-starved numerator bin);
   F5  identical mass edges, cosmology string, per-run T_obs across the three products.
-Exit 1 on any failure (build_paper.sh treats that as a hard stop).
+Exit 1 on any failure.
 """
 import json, sys, numpy as np
 import os as _os

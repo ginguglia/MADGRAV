@@ -5,8 +5,7 @@ lnLambda-channel per-arm FAR against the FOREGROUND-EXCLUDED time-slide backgrou
 multiplied by the per-run null-calibration factor K. A candidate is a detection when the
 calibrated FAR and its calibrated 90% UL are both below 1/yr.
 
-This is the same selection make_table_adopted.py implements for Table I; the figures import it
-so a table row and a plotted point can never disagree.
+The figures import this module so every plotted point comes from one selection.
 """
 import csv
 import json

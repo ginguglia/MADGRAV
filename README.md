@@ -84,7 +84,6 @@ search_mode/pastro_final/    calibration, p_astro, sensitivity
   *_text_numbers.py, body_to_tables.py   digests of the quoted numbers and LaTeX tables
 figures/catalog_o3o4/          detection list: adopted_set.py, far_lronly_g106_gnet.csv (final FAR table),
                                plot_far_final_adopt.py (FAR vs mass figure)
-paper_search/                  make_table_adopted.py -> detections_table_gnet.tex (the paper's table)
 details/successor_statistic/   gnet_threshold.json, ke_gnet.json, null-calibration outputs
 search_mode/inject.py          injection engine (SNR grid, mass strata, CNN gate, ASD veto)
 spectrogram_cascade/           the deployed scoring cascade and its frozen BA calibration
@@ -146,7 +145,6 @@ SM_GNET=-4.02 SM_LR_ONLY=1 SM_NETMAX=10.6 SM_EXCL_DET=1 \
   python search_mode/inclusive_exclusive_far.py        # -> figures/catalog_o3o4/far_lronly_g106_gnet.csv
 launchers/run_vt_47_gnet_chain.sh                      # p_astro on inj_fixed2 -> *_x1cnnadopt48fg
 launchers/injfull_score_gnet.sh                        # recovery, efficiency, VT on inj_full -> *_x1cnnfullgveto_m20
-python paper_search/make_table_adopted.py              # -> paper_search/detections_table_gnet.tex
 ```
 
 The p_astro step inside the chains is

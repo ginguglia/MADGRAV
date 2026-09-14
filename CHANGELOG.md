@@ -15,10 +15,9 @@ Detection statistic (Sec. 4 of the README)
   background and pseudo-candidates), `merge_nullcal_runs.py`, `make_ke_gnet.py`.
 - Null calibration with the gate: `K = 5.60, 4.59, 1.43, 3.62` (`ke_gnet.json`; per-run and merged
   outputs committed). Same 47 detections; summed background count over them 843 -> 508.
-- `figures/catalog_o3o4/adopted_set.py` and `paper_search/make_table_adopted.py` now default to
-  the gated table and calibration (`far_lronly_g106_gnet.csv`, `ke_gnet.json`,
-  `pastro_final_x1cnnadopt48fg.csv`); `SM_FAR_LR_CSV`, `SM_KE_JSON`, `SM_PASTRO_CSV`,
-  `SM_TABLE_OUT` select others. The pre-gate files are kept.
+- `figures/catalog_o3o4/adopted_set.py` now defaults to the gated table and calibration
+  (`far_lronly_g106_gnet.csv`, `ke_gnet.json`); `SM_FAR_LR_CSV`, `SM_KE_JSON` select others.
+  The pre-gate files are kept.
 
 p_astro and sensitivity (`search_mode/pastro_final/`)
 - `pastro_final.py`: `SM_GNET` on injections and on the background they are scored against;
@@ -30,7 +29,7 @@ p_astro and sensitivity (`search_mode/pastro_final/`)
 - Products: `pastro_final_x1cnnadopt48fg.{json,csv}` (all 47 with p_astro > 0.90, 42 >= 0.99),
   `vt_relabel_comoving_x1cnnfullgveto_m20.json`, `eff_srcframe_x1cnnfullgveto_m20.json`,
   `neff_srcframe_x1cnnfullgveto_m20.json`, `figures/vt_fourepoch/vt_fourepoch_ratio_x1cnnfullgveto_m20.json`
-  (+ caption), `paper_search/detections_table_gnet.tex`.
+  (+ caption).
 - Helpers: `vt_text_numbers.py`, `pastro_text_numbers.py`, `comparison_text_numbers.py`,
   `body_to_tables.py`; `figures/catalog_o3o4/plot_far_final_adopt.py` (`SM_FIG_OUT`).
 
