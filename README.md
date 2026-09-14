@@ -232,5 +232,3 @@ If you use this software, please cite the paper (a `CITATION.cff` is included, s
 The computational results have been achieved using the Austrian Scientific Computing (ASC) infrastructure
 and the project ÖAW-MUSICA-2026.
 
-Orchestration of the execution tasks and the agent-pool code review were carried out with
-[Claude Code](https://claude.com/claude-code) (Anthropic).
