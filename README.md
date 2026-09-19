@@ -204,9 +204,7 @@ differently.
 glitch-arm gate and `SM_INJ_BG_NETMAX=1`, producing `vt_relabel_comoving_x1cnnfullgveto_m20.json`,
 `eff_srcframe_x1cnnfullgveto_m20.json`, `neff_srcframe_x1cnnfullgveto_m20.json` and
 `figures/vt_fourepoch/vt_fourepoch_ratio_x1cnnfullgveto_m20.json`; these are the numbers the paper
-quotes. Relative to the `_x1cnnfullveto_m20` products the O3 efficiencies and VT rise; that
-change comes almost entirely from counting the injections against the vetoed background, as the
-candidates are, not from the gate itself.
+quotes.
 
 ## 7. Data not in this repository
 
