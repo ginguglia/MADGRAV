@@ -1,0 +1,671 @@
+{
+ "run": "o3b",
+ "n_segments": 556,
+ "n_windows": 8324511,
+ "variants": {
+  "SEG0.2": {
+   "frac_H1": 0.04824487588520215,
+   "frac_L1": 0.003097118857792368,
+   "frac_union": 0.05107254948669057,
+   "frac_inj_segs": 0.0,
+   "families_before": 34751,
+   "families_after": 24582,
+   "leverage": 5.729588117537536,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.293
+    ],
+    [
+     "o3b_1268533558",
+     0.059
+    ],
+    [
+     "o3b_1268825843",
+     0.27
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  },
+  "SEG0.3": {
+   "frac_H1": 0.038621127415171895,
+   "frac_L1": 0.00032037917902925467,
+   "frac_union": 0.038817415221146324,
+   "frac_inj_segs": 0.0,
+   "families_before": 34751,
+   "families_after": 27331,
+   "leverage": 5.500599001942912,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.289
+    ],
+    [
+     "o3b_1268533558",
+     0.058
+    ],
+    [
+     "o3b_1268825843",
+     0.266
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  },
+  "SEG0.5": {
+   "frac_H1": 0.02522190192312798,
+   "frac_L1": 0.0,
+   "frac_union": 0.02522190192312798,
+   "frac_inj_segs": 0.0,
+   "families_before": 34751,
+   "families_after": 28439,
+   "leverage": 7.201481530423455,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.285
+    ],
+    [
+     "o3b_1268533558",
+     0.057
+    ],
+    [
+     "o3b_1268825843",
+     0.263
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  },
+  "LOC0.2": {
+   "frac_H1": 0.04033966679844618,
+   "frac_L1": 0.02554144021192356,
+   "frac_union": 0.06359640824548132,
+   "frac_inj_segs": 0.01325155682279446,
+   "families_before": 34751,
+   "families_after": 20627,
+   "leverage": 6.390838074442796,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.253
+    ],
+    [
+     "o3b_1268533558",
+     0.045
+    ],
+    [
+     "o3b_1268825843",
+     0.217
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  },
+  "LOC0.3": {
+   "frac_H1": 0.035683056938719884,
+   "frac_L1": 0.00989391448939163,
+   "frac_union": 0.04468706930653344,
+   "frac_inj_segs": 0.0015196966546872988,
+   "families_before": 34751,
+   "families_after": 25418,
+   "leverage": 6.009966980738629,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.269
+    ],
+    [
+     "o3b_1268533558",
+     0.051
+    ],
+    [
+     "o3b_1268825843",
+     0.229
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  },
+  "LOC0.5": {
+   "frac_H1": 0.03074066452672115,
+   "frac_L1": 0.0010549568617303766,
+   "frac_union": 0.03172558724470422,
+   "frac_inj_segs": 0.0,
+   "families_before": 34751,
+   "families_after": 28006,
+   "leverage": 6.117936681704103,
+   "detections_lost": [],
+   "readmitted": [
+    "GW200219_094415",
+    "GW191230_180458",
+    "GW191127_050227"
+   ],
+   "noise_rows_surviving": [
+    [
+     "o3b_1262293167",
+     0.287
+    ],
+    [
+     "o3b_1268533558",
+     0.057
+    ],
+    [
+     "o3b_1268825843",
+     0.264
+    ]
+   ],
+   "count_test_p": 0.0003473108210179274,
+   "net_balance": 3
+  }
+ },
+ "rows": [
+  {
+   "variant": "SEG0.2",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.18251898521284127,
+   "n_louder": 23
+  },
+  {
+   "variant": "SEG0.2",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.023806824158196686,
+   "n_louder": 3
+  },
+  {
+   "variant": "SEG0.2",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007328889272977778,
+   "n_louder": 1
+  },
+  {
+   "variant": "SEG0.2",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.29315557091911115,
+   "n_louder": 40
+  },
+  {
+   "variant": "SEG0.2",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.058631114183822226,
+   "n_louder": 8
+  },
+  {
+   "variant": "SEG0.2",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.2698106737928958,
+   "n_louder": 34
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.18019185745874355,
+   "n_louder": 23
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.02350328575548829,
+   "n_louder": 3
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007235445505394001,
+   "n_louder": 1
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.28941782021576007,
+   "n_louder": 40
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.05788356404315201,
+   "n_louder": 8
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.2663705718955339,
+   "n_louder": 34
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.17767866927867654,
+   "n_louder": 23
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.023175478601566504,
+   "n_louder": 3
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007134530645099394,
+   "n_louder": 1
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.2853812258039758,
+   "n_louder": 40
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.05707624516079515,
+   "n_louder": 8
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.26265542415108706,
+   "n_louder": 34
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.16083484480538343,
+   "n_louder": 20
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.016083484480538344,
+   "n_louder": 2
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007426908946248801,
+   "n_louder": 1
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.25251490417245925,
+   "n_louder": 34
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.044561453677492806,
+   "n_louder": 6
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.21712704048726764,
+   "n_louder": 27
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.1576513009676481,
+   "n_louder": 20
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.015765130096764807,
+   "n_louder": 2
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007279901683998747,
+   "n_louder": 1
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.2693563623079536,
+   "n_louder": 37
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.05095931178799123,
+   "n_louder": 7
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.2285943864030897,
+   "n_louder": 29
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "GW200219_094415",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0136383771033004,
+   "far0": 0.17319727530829787,
+   "far_mask": 0.17887209764786857,
+   "n_louder": 23
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "GW191230_180458",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 4.441184420251402,
+   "far0": 0.022590948953256244,
+   "far_mask": 0.023331143171461118,
+   "n_louder": 3
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "GW191127_050227",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": false,
+   "masked": false,
+   "net": 3.1323626171950467,
+   "far0": 0.020863752638703437,
+   "far_mask": 0.007182451711298832,
+   "n_louder": 1
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "o3b_1262293167",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 3.0146970962790167,
+   "far0": 0.5494121528191905,
+   "far_mask": 0.28729806845195327,
+   "n_louder": 40
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "o3b_1268533558",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 5.380077342486344,
+   "far0": 0.07650042634191259,
+   "far_mask": 0.057459613690390654,
+   "n_louder": 8
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "o3b_1268825843",
+   "kind": "noncat",
+   "catalogue": false,
+   "in_set": false,
+   "masked": false,
+   "net": 4.096677254437965,
+   "far0": 0.2560307548035708,
+   "far_mask": 0.2644196226098927,
+   "n_louder": 34
+  }
+ ],
+ "validation": [
+  [
+   "GW200219_094415",
+   3.0136383771033004,
+   0.17319727530829787,
+   0.17319727530829787,
+   23
+  ],
+  [
+   "GW191230_180458",
+   4.441184420251402,
+   0.022590948953256244,
+   0.022590948953256244,
+   3
+  ],
+  [
+   "GW191127_050227",
+   3.1323626171950467,
+   0.020863752638703437,
+   0.020863752638703437,
+   3
+  ],
+  [
+   "o3b_1262293167",
+   3.0146970962790167,
+   0.5494121528191905,
+   0.5494121528191905,
+   79
+  ],
+  [
+   "o3b_1268533558",
+   5.380077342486344,
+   0.02781833685160458,
+   0.07650042634191259,
+   11
+  ],
+  [
+   "o3b_1268825843",
+   4.096677254437965,
+   0.2560307548035708,
+   0.2560307548035708,
+   34
+  ]
+ ]
+}

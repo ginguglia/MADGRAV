@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#SBATCH --account=${SLURM_ACCOUNT} --partition=${PARTITION_CPU} --qos=${QOS_CPU} --cpus-per-task=32 --mem=240G --time=04:00:00
+#SBATCH --job-name=m2-gx-rows-o4b --output=${MADGRAV_ROOT}/launchers/logs_m2/gx_rows_o4b_coh_%j.log
+set -uo pipefail
+export SM_RUN=o4b MADGRAV_ROOT=${MADGRAV_ROOT} SCRATCH=${MADGRAV_SCRATCH} PYTHON=${PY:-python} SM_STREAMS=${MADGRAV_SCRATCH}/madgrav2/streams_o4b_full_cat2 SM_PREP=${MADGRAV_ROOT}/data/o4b_search_prep SM_STRAIN=${MADGRAV_SCRATCH}/strain_o4b_full SM_BGJSON=${MADGRAV_SCRATCH}/o4b_full_coincident.json SM_VETO=${MADGRAV_SCRATCH}/madgrav2/dq/veto_mask_o4b.json SM_SERIESCACHE=${MADGRAV_SCRATCH}/madgrav2/o4b-fast_full/_seriescache SM_COH_REWHITEN=1 SM_COHREF_DIR=${MADGRAV_SCRATCH}/madgrav2/o4b-fast_full/_seriescache/_cohref SM_COH_GUARD_HZ=50 SM_COH_GUARD_FLOOR=0.115 SM_GX=1 SM_GX_CAP=15 SM_ARM_V2=1 SM_ARM_V2_DIR=${MADGRAV_SCRATCH}/madgrav2/arm/models SM_ARM_V2_TAG=_def SM_OUT=${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2 SM_SHARD_DIR=${MADGRAV_SCRATCH}/madgrav2/_o4b_m2_far_shards SM_LR_INJ_GLOB=${MADGRAV_SCRATCH}/madgrav2/inj_o4b_m2/*/*_inj.npz SM_LR_OUT=${MADGRAV_SCRATCH}/madgrav2/lr_o4b_m2.npz SM_LR_MODEL=${MADGRAV_SCRATCH}/madgrav2/lr_o4b_m2.npz SM_EVENTSJSON=${MADGRAV_ROOT}/search_mode/events_gwtc_all.json SM_CAND_FLOOR=3.0 SM_NETSIG_FLOOR=3.0 SM_NET_CUT=3.0 SM_N_CNN_CANDIDATES=1000000 SM_FG_MAXNET=1000000 SM_BLIND_FLOOR=1 SM_SURV_ABORT=60000000 SM_NSHARD=96
+export SM_STREAMS=${MADGRAV_SCRATCH}/madgrav2/streams_o4b_full   # the coherence run's streams (no CAT2): its shards index THESE segments
+export SM_DEV=cpu OMP_NUM_THREADS=1 SM_GX=1 NPROC=32
+export SHARDS=${MADGRAV_SCRATCH}/madgrav2/_o4b_coh_far_shards TRIGJSON=${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_far/blindscan.json OUTNPZ=${MADGRAV_SCRATCH}/madgrav2/coh_study/gx_rows_o4b_coh.npz
+cd $MADGRAV_ROOT; echo "start $(date '+%F %T') host $(hostname)"; $PYTHON m2/gx/gx_rows_from_shards.py; echo "rc=$? end $(date '+%F %T')"

@@ -1,0 +1,661 @@
+{
+ "cae_trigger": {
+  "${MADGRAV_ROOT}/spectrogram_cascade/massive_calibration_BA.json": {
+   "sha256": "aaf08457e44197ee6f59257508fc84c74053c87ca7bf4ed4ff1e24fd72e1038f",
+   "bytes": 2592
+  },
+  "${MADGRAV_ROOT}/assets/models/baseline_cae_weaksup_best.pt": {
+   "sha256": "e4557b52b2c671266c89e342bc9c2fdaf3f1bf392e86c0aff7b19c22592498b6",
+   "bytes": 1019952
+  }
+ },
+ "cnn_gate": {
+  "${MADGRAV_ROOT}/search_mode/hm_native_seed0.pt": {
+   "sha256": "37a57c50bb1f92ccdf9e507285ed5a56932c21635b3274512b39d634abe966f5",
+   "bytes": 436037
+  },
+  "${MADGRAV_ROOT}/search_mode/lm_native_seed0.pt": {
+   "sha256": "91996c07503f88c18f7ea92f7db154b3bd70be358994f47c4cb79b9859354ea1",
+   "bytes": 436037
+  }
+ },
+ "glitch_arm_p1v42": {
+  "${MADGRAV_ROOT}/lr_cascade/p1v42/arm_deploy_seed0.pt": {
+   "sha256": "ef91bf5a57cd1e6ca80a89ef34dd3205c09dcafb540b61a7ddeb2ad1c0acaebf",
+   "bytes": 434757
+  }
+ },
+ "arm_off5": {
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s0.pt": {
+   "sha256": "2666ca8d988a7bf92ebb73145f2bbd541eb6e3b4ec7e1afe221bf42a23f54a47",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s1.pt": {
+   "sha256": "c42f82a9dfc10e6d08f3617da7e1fe87935e58a46946cb425fb0a6959a069bd7",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s2.pt": {
+   "sha256": "fe342004f2ca339f7e9615a0abd19b212ec8aefa329e4cc9404bb6d4394a1bc7",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s3.pt": {
+   "sha256": "38a173299e7cc7f8ec42004df793dcea85fa452a69e132e3bea2c4d858359297",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s4.pt": {
+   "sha256": "f538fc819003f497c890c7bbd6af3be2cf04c9c5e0a73e0cf5fdd15b3848d99b",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s0.pt": {
+   "sha256": "11d7d8580e6964686fedd8f2dbb09a8cc4bc6c7465bdd4776e2cc6dea1a51077",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s1.pt": {
+   "sha256": "de5dc0f31817fe3759eebb6cf872bd0588efa7c5279a70f9e349519f7f6ba663",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s2.pt": {
+   "sha256": "4e71be5a4dcea02b4c720883a6866d4beccd68a5f5ccc7a87d0e3cd1bf1f6737",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s3.pt": {
+   "sha256": "cb3f36dca52670b5b9f4cdcf1dcffb998db94cb54bdaa2efb6ab9c3bf2ce6688",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s4.pt": {
+   "sha256": "13e6d12ff7918c877fca3b6278e674dd3ed7b0c29254a696c2cf7b1f11ea9102",
+   "bytes": 4855809
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s0.json": {
+   "sha256": "82a9b611a3b2c03220aa99b25a5d96f49248d9bc7ece5ff52938b174b32af684",
+   "bytes": 11431
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s1.json": {
+   "sha256": "a3651b55c5649047c118fadea70c81331f2f473aeb873c2b3ef4bb71bbd878fb",
+   "bytes": 11104
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s2.json": {
+   "sha256": "336c05c5f345091a0907deb8f0727558814d7deacb0c3bdce394ea0e8a08873d",
+   "bytes": 9477
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s3.json": {
+   "sha256": "7d2c1c13e04d80b009daeefab08415c525a14df53971479946e772769d7dc344",
+   "bytes": 13463
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f0_s4.json": {
+   "sha256": "c12ffda67dad5cba048ccfb73f028ed957a11f7515733c8c853b10f4bf01d0fe",
+   "bytes": 11479
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s0.json": {
+   "sha256": "0a95d130892c5463593548bc2fc3f2974b1535d7136f9bd7e608588e4125975f",
+   "bytes": 10358
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s1.json": {
+   "sha256": "1b27db06e5d2980141b3b6c38bc290197d9d3f362cbc4ad53184920bd2a46a13",
+   "bytes": 10784
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s2.json": {
+   "sha256": "db400f11245577f6f8b1f28a2c145f25344a4a772a858dbc6e97caa42ad8c7b9",
+   "bytes": 12692
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s3.json": {
+   "sha256": "e4e27bc89061317a189bc13484a025d8faaf2b54ce795dc7b36828d27dce0200",
+   "bytes": 9111
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/arm/models/arm_off5_f1_s4.json": {
+   "sha256": "f53742e50bf30abb2bdcbb967c7b55846c3966b59f9afed2544bc63aa9ff1fba",
+   "bytes": 10206
+  }
+ },
+ "lr_models": {
+  "${MADGRAV_SCRATCH}/madgrav2/lr_o3a_m2_gx_off5.npz": {
+   "sha256": "951f5488c0044929a27e158f112d7edd822f51c310938f042254125042ca2997",
+   "bytes": 4086124
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/lr_o3b_m2_gx_off5.npz": {
+   "sha256": "b50783533090048384e27a1e6852417eab14fc806f1ed8d2369b3e18f75543d1",
+   "bytes": 2984452
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/lr_o4a_m2_gx_off5.npz": {
+   "sha256": "e162feba86b0cba52fe641b32200c038e7e3c456992a7a82a8f6f61b5dfaedb3",
+   "bytes": 2781052
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/lr_o4b_m2_gx_off5.npz": {
+   "sha256": "ac0f9ec2367644915fb33cf06ef2a184d61654579360f5f6286a9dbc5ca733ac",
+   "bytes": 2964868
+  }
+ },
+ "s3_specialists": {
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n100k.json": {
+   "sha256": "4e2cf6bb4e81dd1f2bed28553726ca4faf3b16dde83fdc4d7e56d4be31434f4e",
+   "bytes": 15391
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n100k.pt": {
+   "sha256": "296d762a1f7d59d104c76cc378b2c7f3ae4deb837dee15e8eff8659ec8b9b0fc",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n100k_heldout.npz": {
+   "sha256": "81741247471fc5d11672b3343020ac86d5d172942b90ae7a9c061d9f7fdcc9ee",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n25k.json": {
+   "sha256": "48a71b2d998e63ce6b306b4ac77c1a37d8a86de0201fc626935f05d5c314322b",
+   "bytes": 9613
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n25k.pt": {
+   "sha256": "578a3f0d03d9725f8e5c3f76985d4326458ed238273023a5df5b6e9a8a6df2aa",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n25k_heldout.npz": {
+   "sha256": "de65ca12b102833115b9036c3c7d0390be7fc5cc54cb9e298837328ac4a24084",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n50k.json": {
+   "sha256": "f50d5919a88d39918299dde0386c2bd9226feb976e36c7579baaaebf4577753b",
+   "bytes": 13219
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n50k.pt": {
+   "sha256": "c99721e507d3738164fdf1299f89542249c22e1b870e7e4d99be7a6533244e5d",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_n50k_heldout.npz": {
+   "sha256": "2bbf6c5a944f63513ba55cf7a960d0e1122b9391fc27c57ab570cc0f390b0d03",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_nfull.json": {
+   "sha256": "72116f3caf1df7e9b811ee5b27a7bee3ed3be865f1599bde6d6809af1dc8faba",
+   "bytes": 15985
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_nfull.pt": {
+   "sha256": "9e4a81491e48b4ac5c1a48b8c4836d3958b46507714d00fe83662547827654e0",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s0_nfull_heldout.npz": {
+   "sha256": "bdcf42935ac48140dabb57cdf1172ddc71519a76cca8b9c955c2cce1e959a994",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s1_nfull.json": {
+   "sha256": "68a354cde652c4169b022da271a5ef8831425da962568fd4bc141fc2857302e0",
+   "bytes": 14379
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s1_nfull.pt": {
+   "sha256": "10e89d4c2c11c7f46cef127ef0c3c37c4c56e5c0de66e8f236470b74a9d9e1bc",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s1_nfull_heldout.npz": {
+   "sha256": "496f6576371f6607073857f5ca63dcaa30bb2aaf0af02ff46c998f04faa1a1de",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s2_nfull.json": {
+   "sha256": "9ddf64df83b9c9f0e34028cc8b09d5f22c1475906067e20e088ecdb9bdca6301",
+   "bytes": 17157
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s2_nfull.pt": {
+   "sha256": "7214571e04bc075571ca0aea0224e1f85209e95a7146a5e957e791ec13313f8f",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s2_nfull_heldout.npz": {
+   "sha256": "58774daa40b6dfc93cbff2357705d54c64556082aa7d51d758ca75c3f4e81e37",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s3_nfull.json": {
+   "sha256": "0fb214d3c49c91304087e469b8ab7df39a5e338857beca81c792f479f58f3d0f",
+   "bytes": 15963
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s3_nfull.pt": {
+   "sha256": "8a41267ebeb3e3f9139dbfd2aef5c8de45ecb4ecf50c9f202a0ea7040e806b77",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s3_nfull_heldout.npz": {
+   "sha256": "7b972342adcca51817c4714bc07df8d5144e983329fedbcf3a999aa4dc3ddf8f",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s4_nfull.json": {
+   "sha256": "b55f42a2cd7304613f6ba09a7d04ae7d2d1b990451d177cecf7d57b781d41186",
+   "bytes": 16521
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s4_nfull.pt": {
+   "sha256": "d1fd4b5813572f03d158573589b5b1c477ef3b633636a5108b415da10817cc2b",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f0_s4_nfull_heldout.npz": {
+   "sha256": "ee4897515060f339d41badaca1d70089e3c1cea604979ae48473c40b1fb691b7",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s0_nfull.json": {
+   "sha256": "d625d6ebb6e9bb9e312adb4ba9f553aa4195b8171799ba71985ba08edb0eeec3",
+   "bytes": 12950
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s0_nfull.pt": {
+   "sha256": "55de6f2888c8e2a13ba1a6905c49df9fec792066e85faf321a2bfedcb16846a6",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s0_nfull_heldout.npz": {
+   "sha256": "1c5f0fd12e4de0aa26c9766eeefa8e978ecf03889e056e40bbe730a8c83551b5",
+   "bytes": 951766
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s1_nfull.json": {
+   "sha256": "a198a67b6d581efb1baaa480217576ba61e9d4f576369628cf3af238861149ed",
+   "bytes": 16941
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s1_nfull.pt": {
+   "sha256": "1a258da5d8ca340e40a5597c63d29cc3c85e04fe3084962a9f2b352297022a45",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s1_nfull_heldout.npz": {
+   "sha256": "96c45f5e009f2fd6aec21d8cc67b018e834cec38422ec5f851ea06aa30b8596a",
+   "bytes": 951766
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s2_nfull.json": {
+   "sha256": "590ca1055638abc34eb717705246ced65a980f6f4791e4cbf92fda952e67aebc",
+   "bytes": 10812
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s2_nfull.pt": {
+   "sha256": "fb22a546de0d9b92bb23fd81a4efaedff99b3dabf56de69c16838e0ea47b95d2",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s2_nfull_heldout.npz": {
+   "sha256": "a5e9536efdcbccaa18732e810713972e0fb64fc7c69bc3798530edef103fb71e",
+   "bytes": 951766
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s3_nfull.json": {
+   "sha256": "6702364c00b000edd62f5cd4c7f9ccdf88147278346687ad038dfef58f004944",
+   "bytes": 18474
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s3_nfull.pt": {
+   "sha256": "76ffb1df988ee47f36efc5122c29be85f85ad16896095a787452adb4a36422b7",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s3_nfull_heldout.npz": {
+   "sha256": "a205751f91cd7df175b738f228c9ee74736f547f3bf0ecab201fe1561afd9b54",
+   "bytes": 951766
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s4_nfull.json": {
+   "sha256": "931c245eeeaa27c89e29e78f651c81c0d130647289cfc3d490e8115f9acb53d1",
+   "bytes": 18162
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s4_nfull.pt": {
+   "sha256": "ab412f098b08556b2061c929d2f87022e348b7faa81f84ed6011071246c8d05e",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_hm_f1_s4_nfull_heldout.npz": {
+   "sha256": "82a0e4c99b5f2a2b7d09276bf93fe112b4ab68cd2a2597e8d674bf249295c87e",
+   "bytes": 951766
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n100k.json": {
+   "sha256": "cd5f81d02b3fd8c7cb7def678e504d93feea4d46d91fd9641e471696d9b163cf",
+   "bytes": 9879
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n100k.pt": {
+   "sha256": "ef6cc2654402f04a7070a020f930452bee164bc691995b17deb60c6d42f62ba5",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n100k_heldout.npz": {
+   "sha256": "3b4036698b331a7576d5991fa614a7ea460ccb31a6006a9b483517ebcddaebdb",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n25k.json": {
+   "sha256": "fb05eed145d3093e6cc68f40380777095713a1b1d66da45526b58a131374ff94",
+   "bytes": 9532
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n25k.pt": {
+   "sha256": "c0a0f3ddddb0c5119e26ec3560e5c5f941ef093ba52e57ceee947d9eb9943d8a",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n25k_heldout.npz": {
+   "sha256": "9d963b3cd4b4b5ac241c8fbfab787203c62d3d4ddb1212c7ef96046771f12e7c",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n50k.json": {
+   "sha256": "bea028413b823ca3794943b78a74fc4f3a8e78fa237f34917f22895b43723fd6",
+   "bytes": 11040
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n50k.pt": {
+   "sha256": "393fea3d491bf38515332e9bb4ead7f5352bd02f109ba99c811446b1b1016568",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_lm_f0_s0_n50k_heldout.npz": {
+   "sha256": "e06f2d912d6f4d66a7c35cf97f39d387e733a300d06311d7419ca8be292adbc7",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n100k.json": {
+   "sha256": "eb8a26e49c8445884ebff65e409287a59db767a628faf4dd346ebf2d554880b3",
+   "bytes": 18109
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n100k.pt": {
+   "sha256": "b3836751f842b9ed18a9c1a186a81802baf7d166f9997fbfb62faf89df79fad1",
+   "bytes": 438100
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n100k_heldout.npz": {
+   "sha256": "ac6a21321de1ccb374be04ac210a148e8a6dd34ba8dd50315b7b8eaaee1df4e1",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n25k.json": {
+   "sha256": "1bad34af879dcd541c5a07546ae48d4a207b7b6779791abcafff84915ff1f287",
+   "bytes": 7466
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n25k.pt": {
+   "sha256": "f5be3097a8a12e3f49a7c4b9e2d213262235abfaaee913a0c3a1fa748031af33",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n25k_heldout.npz": {
+   "sha256": "0252b60263dcba9bb15a9a74ba419af6d38aacc8fc252d854d0a56b3788978d1",
+   "bytes": 982722
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n50k.json": {
+   "sha256": "07f26ed85459153ddb7b9c1f8567cda5cc31d51d8a6632d538337309fed09d3b",
+   "bytes": 14755
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n50k.pt": {
+   "sha256": "324e5f9c6f96a5323b4a0ea090cdfde2331f8ff9ae73f286a21309c201243720",
+   "bytes": 438061
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/models/spec_s2_f0_s0_n50k_heldout.npz": {
+   "sha256": "46132b4e6c35a976b684063841e440df4a48a80d4df0ffac2ef5291a0d57795b",
+   "bytes": 982722
+  }
+ },
+ "s3_threshold": {
+  "${MADGRAV_ROOT}/m2/rank/s3_threshold.json": {
+   "sha256": "c368627c7b3cb8c50124df68e1061021a5e10344b6b29d0502e58ef0827eea6d",
+   "bytes": 287
+  }
+ },
+ "ranker": {
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank/models_o3a.joblib": {
+   "sha256": "663fae35257120400b739ad5a41aa78211b7080f4115ac8aa8dae8a30f368a6e",
+   "bytes": 8044066
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank/models_o3b.joblib": {
+   "sha256": "390888875e4569cddc8ad82317d8a66bef451edf51f1e82faed92ae4db0ca72b",
+   "bytes": 7396770
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank/models_o4a.joblib": {
+   "sha256": "904192ee154e6e35a084ae8ad4e517a4a7fcb90f70afec3cc3c011194e3dabfd",
+   "bytes": 7429346
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank/models_o4b.joblib": {
+   "sha256": "63798569f2348d2381d8f5fceeeec0828bef9062412e7879c595722343d7b6bc",
+   "bytes": 8188714
+  }
+ },
+ "s3_bank_crop": {
+  "${MADGRAV_SCRATCH}/madgrav2_spec/s3_crop/s3_o3a.npz": {
+   "sha256": "e908ebcc1c133dbbd3ac4ec88563758c41cee728aae8c4ffaaa244043a411b23",
+   "bytes": 111185398
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/s3_crop/s3_o3b.npz": {
+   "sha256": "25ecd8e8814e41b0dc9eeffaeb6ced2ae8417cb4c9d388ba62e2423d001b78dc",
+   "bytes": 37213206
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/s3_crop/s3_o4a.npz": {
+   "sha256": "4e532241b90300caaf943eb8930c82356204d211b1c6ead3d67ed5351be63794",
+   "bytes": 129998710
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/s3_crop/s3_o4b.npz": {
+   "sha256": "3d0686086eb559ff02f6a3e3ef1ae874520fc2edefaea8cc406f224f641dacf8",
+   "bytes": 44763350
+  }
+ },
+ "stat_crop": {
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank_crop/stat_o3a.npz": {
+   "sha256": "361b2eb790a3f9184dcf544366183849e2241128696e876fed108930d55d121f",
+   "bytes": 76988594
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank_crop/stat_o3b.npz": {
+   "sha256": "1eb4b2ac0222ef565dbce54158171d7f337fa1a33532c9feb4eefd7d1f80ff94",
+   "bytes": 26071882
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank_crop/stat_o4a.npz": {
+   "sha256": "f66654854181a1d518871d00489a90f2947a7b75083a42414d892564aeb99a6b",
+   "bytes": 88490698
+  },
+  "${MADGRAV_SCRATCH}/madgrav2_spec/rank_crop/stat_o4b.npz": {
+   "sha256": "b86e610002fa3c61476012e96d69fe1cf45a1479a3f36d7c54058f2170bebf87",
+   "bytes": 30538946
+  }
+ },
+ "asd_plateau": {
+  "${MADGRAV_ROOT}/m2/asdveto/plateau_o3a.json": {
+   "sha256": "8fc1f3534e351501fc659ca77f8c483c2de351cc33dc5f24f76cb3b0dfa02796",
+   "bytes": 410
+  },
+  "${MADGRAV_ROOT}/m2/asdveto/plateau_o3b.json": {
+   "sha256": "5fcba48d7cd7136e4877a381eb39408ee30eb0583c89bff24a2d564956af748a",
+   "bytes": 411
+  },
+  "${MADGRAV_ROOT}/m2/asdveto/plateau_o4a.json": {
+   "sha256": "b25df4e4e401362074e0183e0256d739096f30d458074c1582dcbb297a220d12",
+   "bytes": 413
+  },
+  "${MADGRAV_ROOT}/m2/asdveto/plateau_o4b.json": {
+   "sha256": "be307c1f0f7670b283a61aa577116e05cfecda813f9bad86c91ed24d015f8eb4",
+   "bytes": 423
+  }
+ },
+ "veto_masks": {
+  "${MADGRAV_SCRATCH}/madgrav2/dq/veto_mask_o3a_hw.json": {
+   "sha256": "5aa42046176f166c33186f0f6734c25ba7862ec5be38e88ac6051213d9c589dc",
+   "bytes": 1495833
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/dq/veto_mask_o3b_hw.json": {
+   "sha256": "51ac0f3f65937cc43700e2301c0042042e334c95732b3be1d05686dee8e8abd2",
+   "bytes": 761353
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/dq/veto_mask_o4a_hw.json": {
+   "sha256": "3459867e72a2d49504f0fd2b74c6513f8cc5287fcc3b98938601ab9dcb75dcb2",
+   "bytes": 295329
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/dq/veto_mask_o4b_hw.json": {
+   "sha256": "7a2b984196cd01d60867b048f0d10750ccc096f7ed822aa956f04df40a90cc29",
+   "bytes": 180324
+  }
+ },
+ "prep": {
+  "${MADGRAV_ROOT}/data/o3a_search_prep/reference_psd_H1.npz": {
+   "sha256": "9b61fd97abc62e4e420d570564b836d69ac2737d48ba7238dd72fd46eed1f64c",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o3a_search_prep/reference_psd_L1.npz": {
+   "sha256": "db82ef0b18a1479bc58a656c61e293ad42e53c635b20d8d62bf26f5ce1c728d3",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o3b_search_prep/reference_psd_H1.npz": {
+   "sha256": "73d4859a5780d51d2b46235a041f2473aa37010f859c3e475e3d7e500d33b6f3",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o3b_search_prep/reference_psd_L1.npz": {
+   "sha256": "f47520e3625403b2ee32f9d6e6818def143e131d97a1650b29653d993eed9770",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o4a_search_prep/reference_psd_H1.npz": {
+   "sha256": "0622fa788847d4ae2ad72c86a0cdd19f335bf2394e70931c4ae0d10109df9462",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o4a_search_prep/reference_psd_L1.npz": {
+   "sha256": "dd93a329b92ec0b9143915da4ce1f8441932a6d522983df5b7bf5595b152ac5d",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o4b_search_prep/reference_psd_H1.npz": {
+   "sha256": "3f235880511bcdfede72b8d9c3ed401f7b8ed648324bc6df7cd6be10500a1f32",
+   "bytes": 8708
+  },
+  "${MADGRAV_ROOT}/data/o4b_search_prep/reference_psd_L1.npz": {
+   "sha256": "d14e47670f65c3c1ff25387ed3e93edb29efa05f3728cd09ad570b704eff7080",
+   "bytes": 8708
+  }
+ },
+ "merge_driver": {
+  "${MADGRAV_ROOT}/m2/rank/driver_blindscan_merge_hook.py": {
+   "sha256": "aa7c5719fc2cf14186d1414bcbf5949a9b8b5e692c321fced14c541ab1f5ba37",
+   "bytes": 39633
+  },
+  "${MADGRAV_ROOT}/search_mode/driver_blindscan_merge.py": {
+   "sha256": "2e34c886b23d10b06750f329016286f97e9f2d72174cf6bbc0ee2b679def9ecc",
+   "bytes": 30344
+  },
+  "${MADGRAV_ROOT}/search_mode/driver_blindscan.py": {
+   "sha256": "6c18ae8d21d3e9eed464e75cc108eb941e04c335e284f84d59e42e3d4496b0e3",
+   "bytes": 57726
+  },
+  "${MADGRAV_ROOT}/search_mode/_pb_cnn_precompute.py": {
+   "sha256": "34f0562120179c068bf66c4ac7f2fa4651aeb65caa960eccd5fb54f8d230dda2",
+   "bytes": 17458
+  },
+  "${MADGRAV_ROOT}/search_mode/arm_v2.py": {
+   "sha256": "2717ba5f74641e188821ed09ba944f5ab6f872b8155122997dd8d1b585c7379a",
+   "bytes": 3159
+  },
+  "${MADGRAV_ROOT}/search_mode/inject.py": {
+   "sha256": "69e29ba6551512cb4cbc1904124e718c80c2fd223f9384bd59f1e820434789aa",
+   "bytes": 23097
+  }
+ },
+ "post_hoc_rules": {
+  "${MADGRAV_ROOT}/m2/popb_cap/occlusion/chain/netsig_guard.py": {
+   "sha256": "13dcf9fb0d5c867b60ee62adb18d1425fa26ce24b96be67064894b25242909e9",
+   "bytes": 4579
+  },
+  "${MADGRAV_ROOT}/m2/popb_cap/occlusion/chain/crop_chain.sh": {
+   "sha256": "fcc627aaac1d9c8aaa68cde91ed9d0f1ae10a278930fa0d9564491257e9a3767",
+   "bytes": 6093
+  },
+  "${MADGRAV_ROOT}/m2/popb_cap/occlusion/chain/stageB_crop.sbatch": {
+   "sha256": "d2afb0647229a67282abfd5554f1a5ceb5490fc6461342850a1778e3b8fbdf26",
+   "bytes": 3760
+  }
+ },
+ "outputs": {
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3a_m2_gx_off5_crop/detections_v2.json": {
+   "sha256": "7eed789fb4e31bef4f9918f6d44e5869941a15d9e5eb7e347a366611e24dd4a2",
+   "bytes": 19570
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3a_m2_gx_off5_crop/detections_v2_nsguard.json": {
+   "sha256": "8bd5108c38a7e982e7fc816e8f4a7d9460718a7db9fefe5e44132f8a18d40444",
+   "bytes": 14436
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3a_m2_gx_off5_crop/audit_v2.json": {
+   "sha256": "a90f1922656864fb1fe97ce5008f851f20160ae653452be0b51163bf32d84261",
+   "bytes": 5347
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3b_m2_gx_off5_crop/detections_v2.json": {
+   "sha256": "b0e3056c3c639202f809e77543867d3c15316ab39d0d75c12b1976363fb46370",
+   "bytes": 10840
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3b_m2_gx_off5_crop/detections_v2_nsguard.json": {
+   "sha256": "2c12f567813c116c606869fb91742f8c5f8d9e3860beeb85687adb4bab1e4aa4",
+   "bytes": 7615
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3b_m2_gx_off5_crop/audit_v2.json": {
+   "sha256": "f22d7fd96ab252a2cdc184e89c92ead8d1db206a101205162551452b631c53b8",
+   "bytes": 3661
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4a_m2_gx_off5_crop/detections_v2.json": {
+   "sha256": "274b86770d49fe443d989aaa08c59f9e77020e4d3c0bda96e05924e817e080a2",
+   "bytes": 27580
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4a_m2_gx_off5_crop/detections_v2_nsguard.json": {
+   "sha256": "27b3b2002311276855f62657238bad477319896539d98eb2942185bfb0adf89e",
+   "bytes": 27756
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4a_m2_gx_off5_crop/audit_v2.json": {
+   "sha256": "2d7f3ac7ce8efefb3e91cf32f5b82024c194dda56d9de36ccbdf9ef6c779572a",
+   "bytes": 5994
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2_gx_off5_crop/detections_v2.json": {
+   "sha256": "9372f5ba46fbd66341b839dfd6c95d2817915ed1e233f4547464cac1f8d70ded",
+   "bytes": 33582
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2_gx_off5_crop/detections_v2_nsguard.json": {
+   "sha256": "d6204b807bdebe37a2e082627cdeea1d882d7fa57e341396a30e0153fae39e29",
+   "bytes": 31735
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2_gx_off5_crop/audit_v2.json": {
+   "sha256": "be9cc14721bbe3ea8791f9693f2ddfb0f8da9982176059b6ca3e35326b3c1b65",
+   "bytes": 7634
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/figures_m2/hl_snr_o3o4_m2_crop96.json": {
+   "sha256": "2f46d32250f2d42f1e225e397796d2aaa6ed17febb6ade5dc6ef90ea20ea0bab",
+   "bytes": 71600
+  }
+ },
+ "far_shards": {
+  "${MADGRAV_SCRATCH}/madgrav2/_o3a_m2_gx_off5_nf275_far_shards": {
+   "n_files": 64,
+   "bytes": 5380772840,
+   "sha256_of_names_sizes": "e6b07f2bc073750e5ab4157668ddc843822479366be901de28e235f6ecffe6a9"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/_o3b_m2_gx_off5_nf275_far_shards": {
+   "n_files": 48,
+   "bytes": 3097426344,
+   "sha256_of_names_sizes": "258bfe37e8f2867ff9980af0d22cfac2e92a189c958f52bd1e32606537d8f320"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/_o4a_m2_gx_off5_nf275_far_shards": {
+   "n_files": 64,
+   "bytes": 7104461088,
+   "sha256_of_names_sizes": "1526c95b97c58a8c4f1df8e13882a04d6b98bcf464d8e26e59123308d7873d2e"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/_o4b_m2_gx_off5_nf275_far_shards": {
+   "n_files": 96,
+   "bytes": 4489710592,
+   "sha256_of_names_sizes": "60720686a417fcff7f4b35a4a45318e3c75208cb3d34f8d1d033439b08ff39e1"
+  }
+ },
+ "cnn_cache": {
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3a_m2_gx_off5_crop": {
+   "n_files": 65,
+   "bytes": 135208688,
+   "sha256_of_names_sizes": "deb7d759c507d8111519c591d22c51b8468ef1fb75367e351cf57fd80c35ed37"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o3b_m2_gx_off5_crop": {
+   "n_files": 49,
+   "bytes": 106013104,
+   "sha256_of_names_sizes": "30ff047613e4524172e05fc745c496dd5590ea60716864adf42109571dd58e53"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4a_m2_gx_off5_crop": {
+   "n_files": 65,
+   "bytes": 160937792,
+   "sha256_of_names_sizes": "4ec3677f88ed1569024b40bbc3e4be422a8e7003c3f48f63a12b33f61118a3a5"
+  },
+  "${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2_gx_off5_crop": {
+   "n_files": 97,
+   "bytes": 126463360,
+   "sha256_of_names_sizes": "1e08a47123c2e9e63f03ba297ce11ae89f3f8ad24d0d75538ed4a85c5ca12a9c"
+  }
+ },
+ "_git": {
+  "${MADGRAV_ROOT}": {
+   "head": "3abdcc8bafce9f19f8f374220793318bbfef608b",
+   "branch": "madgrav2",
+   "dirty_tracked": [
+    "figures/catalog_o3o4/plot_mtot_snr_smooth_m2.py",
+    "improved/improved_pipeline.py",
+    "improved/punzi_finetune.py",
+    "m2/arm/assemble.py",
+    "m2/arm/pair_rule.py",
+    "m2/asdveto/DECISIONS_ASDVETO.md",
+    "m2/positives/gen_positives_m2.py",
+    "m2/rank/driver_blindscan_merge_hook.py",
+    "spectrogram_cascade/massive_pipeline.py"
+   ]
+  },
+  "${MADGRAV_ROOT}": {
+   "head": "89615e51a3df086ae8b61344673868a336429bf3",
+   "branch": "guided-excess",
+   "dirty_tracked": [
+    "dev_v2/glitch_arm/PREP_CONVENTION.json",
+    "improved/improved_pipeline.py",
+    "launchers/m2_inject_run.sbatch",
+    "search_mode/_pb_cnn_precompute.py",
+    "search_mode/coh_rewhiten.py",
+    "search_mode/driver_blindscan.py",
+    "search_mode/driver_blindscan_merge.py",
+    "search_mode/driver_search_multi.py",
+    "search_mode/driver_streams.py",
+    "search_mode/driver_streams_bg.py",
+    "search_mode/driver_streams_bg_shard.py",
+    "spectrogram_cascade/massive_pipeline.py"
+   ]
+  }
+ }
+}

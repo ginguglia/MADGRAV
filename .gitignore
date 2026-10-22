@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+site.conf
+scratch/madgrav2/search_out_*/cnn_cache*
+*.log

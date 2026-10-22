@@ -1,0 +1,18 @@
+{
+ "run": "o4b",
+ "streams_dir": "${MADGRAV_SCRATCH}/madgrav2/streams_o4b_full_cat2_off5",
+ "sigma_thresh": 2.0,
+ "plateau_frac_thresh": 0.2,
+ "min_windows": 100,
+ "H1": {
+  "n_segments": 1038,
+  "n_windows": 9855850,
+  "plateau_livetime_frac": 0.0028307046069085875
+ },
+ "L1": {
+  "n_segments": 1038,
+  "n_windows": 9855850,
+  "plateau_livetime_frac": 0.00041193808753177045
+ },
+ "max_frac": 0.0028307046069085875
+}

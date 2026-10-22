@@ -1,0 +1,283 @@
+{
+ "run": "o3a",
+ "tag": "_v2",
+ "out": "${MADGRAV_SCRATCH}/madgrav2/search_out_o3a_m2_gx_off5_crop",
+ "s3_thr": 0.5356733202934265,
+ "detections": [
+  {
+   "name": "GW190412",
+   "gps": 1239082262.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190602_175927",
+   "gps": 1243533585.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190727_060333",
+   "gps": 1248242632.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190828_063405",
+   "gps": 1251009264.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190521_074359",
+   "gps": 1242459857.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190513_205428",
+   "gps": 1241816087.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190519_153544",
+   "gps": 1242315362.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190706_222641",
+   "gps": 1246487219.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190408_181802",
+   "gps": 1238782700.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190521",
+   "gps": 1242442967.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190503_185404",
+   "gps": 1240944862.0,
+   "channel": "loglr",
+   "best_far": 0.005410259167454424,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190512_180714",
+   "gps": 1241719652.0,
+   "channel": "loglr",
+   "best_far": 0.010820518334908848,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190413_134308",
+   "gps": 1239198207.0,
+   "channel": "net-sigma",
+   "best_far": 0.021641036669817697,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190421_213856",
+   "gps": 1239917954.0,
+   "channel": "loglr",
+   "best_far": 0.027051295837272123,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1252361589.0,
+   "channel": "net-sigma",
+   "best_far": 0.03949008900447226,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1247834283.0,
+   "channel": "net-sigma",
+   "best_far": 0.14315157264121195,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1248418140.0,
+   "channel": "net-sigma",
+   "best_far": 0.20017958919581372,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1246381442.0,
+   "channel": "net-sigma",
+   "best_far": 0.2921539950425389,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1248747486.0,
+   "channel": "net-sigma",
+   "best_far": 0.32461555004726544,
+   "flags": [],
+   "edge_flags": [
+    "H1_BURST_CAT2",
+    "H1_BURST_CAT3"
+   ],
+   "mask_good": true
+  },
+  {
+   "name": "GW190926_050336",
+   "gps": 1253509434.0,
+   "channel": "net-sigma",
+   "best_far": 0.42741047422889955,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1242618860.0,
+   "channel": "net-sigma",
+   "best_far": 0.4837535903047852,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW190707_093326",
+   "gps": 1246527224.0,
+   "channel": "net-sigma",
+   "best_far": 0.5034986348070213,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1239946750.0,
+   "channel": "net-sigma",
+   "best_far": 0.6979234326016207,
+   "flags": [],
+   "edge_flags": [
+    "L1_CBC_CAT2",
+    "L1_BURST_CAT2",
+    "L1_CBC_CAT3",
+    "L1_BURST_CAT3"
+   ],
+   "mask_good": true
+  }
+ ],
+ "s3_overrules_cnn": [
+  {
+   "name": null,
+   "gps": 1240240024.0,
+   "net": 5.558863162232225,
+   "s3": 0.5422488957643509,
+   "cnn_hm": 0.0031375132966786623,
+   "far_lr_perarm": 3.2191042046353826,
+   "detection": false,
+   "flags": []
+  },
+  {
+   "name": null,
+   "gps": 1249032413.0,
+   "net": 3.3962610812143756,
+   "s3": 0.6801588654518127,
+   "cnn_hm": 0.15202924609184265,
+   "far_lr_perarm": 0.6302951930084405,
+   "detection": false,
+   "flags": []
+  }
+ ],
+ "cnn_pass_s3_reject": [
+  {
+   "name": "GW190926_050336",
+   "gps": 1253509434.0,
+   "net": 3.4848074625797367,
+   "s3": 0.4357819199562073
+  },
+  {
+   "name": null,
+   "gps": 1252361589.0,
+   "net": 6.201640241093033,
+   "s3": 0.14526849687099458
+  },
+  {
+   "name": null,
+   "gps": 1249561841.0,
+   "net": 6.424624177285019,
+   "s3": 0.010560635779984295
+  },
+  {
+   "name": null,
+   "gps": 1247834283.0,
+   "net": 7.190235696800536,
+   "s3": 0.3122352957725525
+  },
+  {
+   "name": null,
+   "gps": 1240985361.0,
+   "net": 5.042849667186132,
+   "s3": 0.29171795547008517
+  },
+  {
+   "name": null,
+   "gps": 1247781273.0,
+   "net": 5.983956580696773,
+   "s3": 0.33544396609067917
+  }
+ ]
+}

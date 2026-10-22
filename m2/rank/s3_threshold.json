@@ -1,0 +1,10 @@
+{
+ "threshold": 0.5356733202934265,
+ "target_eff": 0.92,
+ "eff_at_thr": 0.9199993451068568,
+ "bg_pass_as_drawn": 0.050849830500565,
+ "n_pos": 183236,
+ "n_neg": 300001,
+ "eff_at_0628": 0.9076273221419372,
+ "rule": "8th percentile of cross-fitted held-out injection ensemble scores (A6)"
+}

@@ -1,0 +1,309 @@
+{
+ "run": "o4a",
+ "tag": "_v2",
+ "out": "${MADGRAV_SCRATCH}/madgrav2/search_out_o4a_m2_gx_off5_crop",
+ "s3_thr": 0.5356733202934265,
+ "detections": [
+  {
+   "name": "GW230628_231200",
+   "gps": 1372029138.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231206_233901",
+   "gps": 1385941159.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230924_124453",
+   "gps": 1379594712.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231102_071736",
+   "gps": 1382944674.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230824_033047",
+   "gps": 1376883066.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230919_215712",
+   "gps": 1379195850.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231028_153006",
+   "gps": 1382542224.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231226_101520",
+   "gps": 1387620938.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230927_153832",
+   "gps": 1379864331.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230914_111401",
+   "gps": 1378725260.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230627_015337",
+   "gps": 1371866036.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231123_135430",
+   "gps": 1384782889.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230811_032116",
+   "gps": 1375759294.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230805_034249",
+   "gps": 1375242188.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230922_040658",
+   "gps": 1379390836.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230601_224134",
+   "gps": 1369694512.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231001_140220",
+   "gps": 1380204159.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231213_111417",
+   "gps": 1386501276.0,
+   "channel": "loglr",
+   "best_far": 0.001823755518340507,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230814_061920",
+   "gps": 1376029178.0,
+   "channel": "net-sigma",
+   "best_far": 0.003647511036681014,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230606_004305",
+   "gps": 1370047404.0,
+   "channel": "loglr",
+   "best_far": 0.007295022073362028,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230707_124047",
+   "gps": 1372768865.0,
+   "channel": "net-sigma",
+   "best_far": 0.007295022073362028,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230928_215827",
+   "gps": 1379973525.0,
+   "channel": "net-sigma",
+   "best_far": 0.007295022073362028,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230819_171910",
+   "gps": 1376500768.0,
+   "channel": "net-sigma",
+   "best_far": 0.007295022073362028,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231223_032836",
+   "gps": 1387337334.0,
+   "channel": "net-sigma",
+   "best_far": 0.007511972230066849,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230608_205047",
+   "gps": 1370292665.0,
+   "channel": "loglr",
+   "best_far": 0.007511972230066849,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231108_125142",
+   "gps": 1383483120.0,
+   "channel": "net-sigma",
+   "best_far": 0.007511972230066849,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231008_142521",
+   "gps": 1380810340.0,
+   "channel": "loglr",
+   "best_far": 0.011267958345100273,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231206_233134",
+   "gps": 1385940713.0,
+   "channel": "net-sigma",
+   "best_far": 0.015023944460133698,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230922_020344",
+   "gps": 1379383443.0,
+   "channel": "loglr",
+   "best_far": 0.021885066220086083,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW231127_165300",
+   "gps": 1385139199.0,
+   "channel": "loglr",
+   "best_far": 0.021885066220086083,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240107_013215",
+   "gps": 1388626354.0,
+   "channel": "net-sigma",
+   "best_far": 0.022535916690200546,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW230609_064958",
+   "gps": 1370328616.0,
+   "channel": "net-sigma",
+   "best_far": 0.10942533110043041,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  }
+ ],
+ "s3_overrules_cnn": [
+  {
+   "name": "GW231213_111417",
+   "gps": 1386501276.0,
+   "net": 3.8170710704351265,
+   "s3": 0.7459049820899963,
+   "cnn_hm": 0.06419942528009415,
+   "far_lr_perarm": 0.001823755518340507,
+   "detection": true,
+   "flags": []
+  }
+ ],
+ "cnn_pass_s3_reject": []
+}

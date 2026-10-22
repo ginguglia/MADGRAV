@@ -1,0 +1,157 @@
+"""Quote BOTH backgrounds for every detection: inclusive and exclusive of the zero-lag foreground.
+
+INCLUSIVE (the number of record): the time-slide background as built. It contains each detection's
+own Hanford and Livingston windows paired against other slides, so a real signal contributes to the
+noise estimate that ranks it. Conservative -- it can only raise a FAR.
+
+EXCLUSIVE: every background pair whose H1 or L1 window lies within +/-4 s of ANY detection's GPS in
+that detection's segment is removed before counting, and families are re-evaluated on what remains.
+This is the standard foreground-removed background; it is the less conservative of the two.
+
+Counting is the production single-counting statistic, unchanged:
+    FAR = min_c min(N_c^HM, N_c^LM) / T_f,  c in {lnLambda, sigma_net}
+with the as-run whole-segment self-exclusion, so the INCLUSIVE column must reproduce
+madgrav_far_final_x1.csv exactly. That reproduction is asserted as a gate before anything is
+written -- if the counting has drifted, this fails loud rather than quoting two numbers from two
+different pipelines.
+
+Usage: inclusive_exclusive_far.py [trials]      (default 1.0; pass the adopted factor to rescale both)
+"""
+import csv, os, sys
+import numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import successor_stat as S
+
+MG = os.environ.get("MADGRAV_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DET = f"{MG}/details/successor_statistic"
+CSV = f"{MG}/figures/catalog_o3o4/madgrav_far_final_x1.csv"
+OUT = os.environ.get("SM_OUT", f"{MG}/figures/catalog_o3o4/madgrav_far_incl_excl.csv")
+
+TRIALS = float(sys.argv[1]) if len(sys.argv) > 1 else 1.0
+# SM_NETMAX: veto background pairs at or above this sigma_net. Threshold set on the INJECTION
+# population (61,528 gate-passing injections: p99.9 = 10.6, max 12.2), never on the candidates.
+NETMAX = float(os.environ.get("SM_NETMAX", "0")) or None
+# SM_NETMAX_PERRUN: JSON path with per-run thresholds, e.g. {"o3a":10.77,...}. Overrides SM_NETMAX.
+_PR = os.environ.get("SM_NETMAX_PERRUN", "")
+PERRUN = __import__("json").load(open(_PR)) if _PR else None
+# SM_LR_ONLY=1 -> rank on the lnLambda channel alone (the channel that carries coherence).
+# The sigma_net>4 TRIGGER is unchanged; only the FAR channel set changes.
+LR_ONLY = os.environ.get("SM_LR_ONLY", "0") == "1"
+UL90 = 2.302585
+import os as _os
+MADGRAV_ROOT = _os.environ.get("MADGRAV_ROOT") or _os.path.abspath(
+    _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+MADGRAV_SCRATCH = _os.environ.get("MADGRAV_SCRATCH") or _os.path.join(MADGRAV_ROOT, "scratch")
+
+# SM_GNET (A5, 2026-09-09): glitch-arm gate g_net >= threshold, applied to the background (via
+# successor_stat.Background.gpass) AND to every candidate (its own g_net, looked up from the cached streams).
+SCR = MADGRAV_SCRATCH
+
+
+def cand_cen2(run, seg, gps):
+    """MADGRAV2: candidate centroid2 per detector from the cached streams (same lookup as cand_gnet)."""
+    c = []
+    for det in ("H1", "L1"):
+        m = np.load(f"{SCR}/streams_{run.lower()}_full/{seg}_{det}_meta.npz")
+        i = int(np.argmin(np.abs(m["gps"] - gps))); assert abs(float(m["gps"][i]) - gps) < 0.51, (seg, det, gps)
+        c.append(float(m["centroid2"][i]))
+    return c[0], c[1]
+def cand_gnet(run, seg, gps):
+    g = []
+    for det in ("H1", "L1"):
+        m = np.load(f"{SCR}/streams_{run.lower()}_full/{seg}_{det}_meta.npz")
+        i = int(np.argmin(np.abs(m["gps"] - gps))); assert abs(float(m["gps"][i]) - gps) < 0.51, (seg, det, gps)
+        g.append(float(m["g"][i]))
+    return (g[0] + g[1]) / np.sqrt(2.0), g[0], g[1]
+
+
+def counts(bg, cand, touch=None, netmax=None):
+    """Production per-arm counting (whole-segment self-exclusion), optionally with extra pairs removed."""
+    Sx = bg.seg_ix[cand["seg"]]; f = int(bg.seg_fold[Sx])
+    keep = (bg.hseg != Sx) & (bg.lseg != Sx)
+    nm = netmax if netmax is not None else NETMAX
+    if nm is not None:
+        keep &= bg.net < nm
+    if touch is not None:
+        keep &= ~touch
+    keep &= bg.gpass                    # A5 glitch-arm gate (all-True unless SM_GNET is set)
+    m = (bg.fold == f) & keep
+    ll, hm, lm, net = cand["loglr"], cand["cnn_hm"], cand["cnn_lm"], cand["net"]
+    mm = m & (bg.ll > ll)
+    n_lr = min(len(np.unique(bg.fam[mm & (bg.hm >= hm)])), len(np.unique(bg.fam[mm & (bg.lm >= lm)])))
+    F = bg.F[f]; rep = F["rep_net"]
+    rk = (bg.hseg[rep] != Sx) & (bg.lseg[rep] != Sx) & (bg.net[rep] >= net)
+    if nm is not None:
+        rk &= bg.net[rep] < nm
+    if touch is not None:
+        rk &= ~touch[rep]
+    rk &= bg.gpass[rep]
+    rr = rep[rk]
+    n_net = min(int((bg.hm[rr] >= hm).sum()), int((bg.lm[rr] >= lm).sum()))
+    if LR_ONLY:
+        n_net = 10**9          # channel removed from the minimum
+    return n_lr, n_net, float(F["T"])
+
+
+def far_of(n_lr, n_net, T):
+    N = min(n_lr, n_net)
+    return (TRIALS * N / T, TRIALS * (N + UL90) / T, N)
+
+
+def main():
+    rows = [r for r in csv.DictReader(open(CSV))]
+    print(f"[incl/excl] {len(rows)} detections, trials={TRIALS}")
+    out, bad = [], []
+    for run in ("O3a", "O3b", "O4a", "O4b"):
+        dr = [r for r in rows if r["run"] == run]
+        if not dr:
+            continue
+        bg = S.Background(run, f"{DET}/bg_veto_{run.lower()}.npz", verbose=False)
+        touch = np.zeros(len(bg.ll), bool)
+        for r in dr:
+            Sx = bg.seg_ix[r["seg"]]; g = float(r["gps"])
+            touch |= (bg.hseg == Sx) & (np.abs(bg.gpsH - g) <= 4.0)
+            touch |= (bg.lseg == Sx) & (np.abs(bg.gpsL - g) <= 4.0)
+        print(f"  {run}: {len(dr)} detections, {int(touch.sum())} background pairs touch a detection window")
+        for r in dr:
+            c = dict(seg=r["seg"], loglr=float(r["loglr"]), net=float(r["net"]),
+                     cnn_hm=float(r["cnn_hm"]), cnn_lm=float(r["cnn_lm"]))
+            nm = PERRUN[run.lower()] if PERRUN else None
+            fi, ui, Ni = far_of(*counts(bg, c, None, nm))
+            fe, ue, Ne = far_of(*counts(bg, c, touch, nm))
+            ref = float(r["far"])
+            if NETMAX is None and PERRUN is None and not LR_ONLY and TRIALS == 1.0 and abs(fi - ref) > max(1e-9, 1e-6 * abs(ref)):
+                bad.append(f"{r['name']}: inclusive {fi:.6g} != table {ref:.6g}")
+            gn, gH, gL = cand_gnet(run, r["seg"], float(r["gps"]))
+            gpass = True if S.GNET is None else bool(gn >= S.GNET)
+            if S.CEN2 is not None:
+                cH2, cL2 = cand_cen2(run, r["seg"], float(r["gps"])); cpass = not ((np.isfinite(cH2) and cH2 >= S.CEN2) or (np.isfinite(cL2) and cL2 >= S.CEN2))
+                gpass = gpass and cpass
+                if not cpass: print(f"    {r['name']}: FAILS morphology gate v2 (cH2 {cH2:.0f} / cL2 {cL2:.0f} >= {S.CEN2})")
+            out.append(dict(run=run, name=r["name"], N_incl=Ni, far_incl=fi, ul90_incl=ui,
+                            N_excl=Ne, far_excl=fe, ul90_excl=ue,
+                            ratio=(fi / fe if fe > 0 else float("inf")),
+                            gnet=gn, gH=gH, gL=gL, gnet_pass=int(gpass)))
+            if not gpass:
+                print(f"    {r['name']}: FAILS the glitch-arm gate (g_net {gn:.2f} < {S.GNET})")
+    if bad:
+        print("\nGATE FAILED -- inclusive column does not reproduce madgrav_far_final_x1.csv:")
+        for b in bad[:10]:
+            print("   ", b)
+        raise SystemExit(1)
+    print(f"\nGATE PASS: inclusive column reproduces all {len(out)} table FARs exactly\n")
+    if S.GNET is not None:
+        print(f"glitch-arm gate g_net >= {S.GNET}: {sum(o['gnet_pass'] for o in out)}/{len(out)} candidates pass")
+    with open(OUT, "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(out[0])); w.writeheader(); w.writerows(out)
+    fi = np.array([r["far_incl"] for r in out]); fe = np.array([r["far_excl"] for r in out])
+    ui = np.array([r["ul90_incl"] for r in out]); ue = np.array([r["ul90_excl"] for r in out])
+    di = int(((fi < 1) & (ui < 1)).sum()); de = int(((fe < 1) & (ue < 1)).sum())
+    print(f"detections: inclusive {di}, exclusive {de}")
+    r = fi / np.where(fe > 0, fe, np.nan)
+    print(f"FAR ratio incl/excl: median {np.nanmedian(r):.2f}, max {np.nanmax(r):.2f}")
+    print(f"-> {OUT}")
+
+
+if __name__ == "__main__":
+    main()

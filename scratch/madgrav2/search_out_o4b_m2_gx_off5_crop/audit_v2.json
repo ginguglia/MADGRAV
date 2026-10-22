@@ -1,0 +1,401 @@
+{
+ "run": "o4b",
+ "tag": "_v2",
+ "out": "${MADGRAV_SCRATCH}/madgrav2/search_out_o4b_m2_gx_off5_crop",
+ "s3_thr": 0.5356733202934265,
+ "detections": [
+  {
+   "name": "GW250114_082203",
+   "gps": 1420878141.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240920_124024",
+   "gps": 1410871243.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240621_195059",
+   "gps": 1403034677.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241225_082815",
+   "gps": 1419150514.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240919_061559",
+   "gps": 1410761777.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250119_025138",
+   "gps": 1421290317.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240705_053215",
+   "gps": 1404192754.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241129_021832",
+   "gps": 1416881931.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240514_121713",
+   "gps": 1399724252.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240513_183302",
+   "gps": 1399660401.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240925_005809",
+   "gps": 1411261108.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241127_061008",
+   "gps": 1416723026.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240511_031507",
+   "gps": 1399432526.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250108_152221",
+   "gps": 1420384960.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240615_113620",
+   "gps": 1402486599.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250118_170523",
+   "gps": 1421255141.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241102_124058",
+   "gps": 1414586477.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250119_190238",
+   "gps": 1421348576.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241102_144729",
+   "gps": 1414594068.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250104_015122",
+   "gps": 1419990700.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241111_111552",
+   "gps": 1415358971.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241210_060606",
+   "gps": 1417845985.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240622_004008",
+   "gps": 1403052026.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240630_101703",
+   "gps": 1403777841.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241006_015333",
+   "gps": 1412214831.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240501_033534",
+   "gps": 1398569753.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241231_054133",
+   "gps": 1419658912.0,
+   "channel": "loglr",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241114_024711",
+   "gps": 1415587650.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240922_142106",
+   "gps": 1411050084.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "",
+   "gps": 1417848088.0,
+   "channel": "net-sigma",
+   "best_far": 0.0,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241230_233618",
+   "gps": 1419636996.0,
+   "channel": "loglr",
+   "best_far": 0.00321049342000656,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240920_073424",
+   "gps": 1410852882.0,
+   "channel": "net-sigma",
+   "best_far": 0.00321049342000656,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241130_034908",
+   "gps": 1416973767.0,
+   "channel": "loglr",
+   "best_far": 0.007691231694447456,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240923_204006",
+   "gps": 1411159224.0,
+   "channel": "loglr",
+   "best_far": 0.007691231694447456,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW250109_010541",
+   "gps": 1420419959.0,
+   "channel": "loglr",
+   "best_far": 0.008026233550016401,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240406_062847",
+   "gps": 1396420146.0,
+   "channel": "loglr",
+   "best_far": 0.00963148026001968,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240924_000316",
+   "gps": 1411171415.0,
+   "channel": "net-sigma",
+   "best_far": 0.04494690788009184,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW240527_183429",
+   "gps": 1400870087.0,
+   "channel": "loglr",
+   "best_far": 0.04614739016668473,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241125_010116",
+   "gps": 1416531695.0,
+   "channel": "net-sigma",
+   "best_far": 0.057684237708355915,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  },
+  {
+   "name": "GW241007_082943",
+   "gps": 1412325001.0,
+   "channel": "loglr",
+   "best_far": 0.23650537460425924,
+   "flags": [],
+   "edge_flags": [],
+   "mask_good": true
+  }
+ ],
+ "s3_overrules_cnn": [
+  {
+   "name": "GW250109_010541",
+   "gps": 1420419959.0,
+   "net": 4.510851627291209,
+   "s3": 0.9739062786102295,
+   "cnn_hm": 0.3669497072696686,
+   "far_lr_perarm": 0.008026233550016401,
+   "detection": true,
+   "flags": []
+  },
+  {
+   "name": "GW241230_233618",
+   "gps": 1419636996.0,
+   "net": 3.2213134900956866,
+   "s3": 0.6816845059394836,
+   "cnn_hm": 0.02010359801352024,
+   "far_lr_perarm": 0.00321049342000656,
+   "detection": true,
+   "flags": []
+  },
+  {
+   "name": "GW240622_004008",
+   "gps": 1403052026.0,
+   "net": 2.9131881072976524,
+   "s3": 0.9842436194419861,
+   "cnn_hm": 0.4362054169178009,
+   "far_lr_perarm": 0.0,
+   "detection": true,
+   "flags": []
+  }
+ ],
+ "cnn_pass_s3_reject": []
+}

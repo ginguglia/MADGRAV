@@ -1,0 +1,174 @@
+{
+ "run": "o4b",
+ "n_segments": 1086,
+ "n_windows": 9858065,
+ "variants": {
+  "SEG0.2": {
+   "frac_H1": 0.002830068578367053,
+   "frac_L1": 0.0004154973618047761,
+   "frac_union": 0.003245565940171829,
+   "frac_inj_segs": 0.0,
+   "families_before": 20677,
+   "families_after": 20673,
+   "leverage": 0.05960490861445855,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  },
+  "SEG0.3": {
+   "frac_H1": 0.002408789148783255,
+   "frac_L1": 0.0001447545740467323,
+   "frac_union": 0.0025535437228299874,
+   "frac_inj_segs": 0.0,
+   "families_before": 20677,
+   "families_after": 20673,
+   "leverage": 0.07575811588287457,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  },
+  "SEG0.5": {
+   "frac_H1": 4.280758952187879e-05,
+   "frac_L1": 0.0,
+   "frac_union": 4.280758952187879e-05,
+   "frac_inj_segs": 0.0,
+   "families_before": 20677,
+   "families_after": 20677,
+   "leverage": 0.0,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  },
+  "LOC0.2": {
+   "frac_H1": 0.0048444598407496806,
+   "frac_L1": 0.0024626536749351928,
+   "frac_union": 0.007292100427416536,
+   "frac_inj_segs": 0.006227380367275814,
+   "families_before": 20677,
+   "families_after": 16268,
+   "leverage": 29.241519059296397,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  },
+  "LOC0.3": {
+   "frac_H1": 0.0033674965624592656,
+   "frac_L1": 0.0007891000921580452,
+   "frac_union": 0.004156596654617311,
+   "frac_inj_segs": 0.0034850989678745364,
+   "families_before": 20677,
+   "families_after": 20449,
+   "leverage": 2.6528300935625064,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  },
+  "LOC0.5": {
+   "frac_H1": 0.001017339609751001,
+   "frac_L1": 3.5706804530097944e-05,
+   "frac_union": 0.0010530464142810988,
+   "frac_inj_segs": 0.0004914883159823064,
+   "families_before": 20677,
+   "families_after": 20670,
+   "leverage": 0.3214866910181392,
+   "detections_lost": [],
+   "readmitted": [],
+   "noise_rows_surviving": [],
+   "count_test_p": 1.0,
+   "net_balance": 0
+  }
+ },
+ "rows": [
+  {
+   "variant": "SEG0.2",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.0740817859815196,
+   "n_louder": 23
+  },
+  {
+   "variant": "SEG0.3",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.07403038849398838,
+   "n_louder": 23
+  },
+  {
+   "variant": "SEG0.5",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.07384450976561337,
+   "n_louder": 23
+  },
+  {
+   "variant": "LOC0.2",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.01617038315797053,
+   "n_louder": 5
+  },
+  {
+   "variant": "LOC0.3",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.06447787692766556,
+   "n_louder": 20
+  },
+  {
+   "variant": "LOC0.5",
+   "name": "GW240924_000316",
+   "kind": "catalogue",
+   "catalogue": true,
+   "in_set": true,
+   "masked": false,
+   "net": 3.429405135936957,
+   "far0": 0.07384134866015088,
+   "far_mask": 0.07391918899707081,
+   "n_louder": 23
+  }
+ ],
+ "validation": [
+  [
+   "GW240924_000316",
+   3.429405135936957,
+   0.032104934200065605,
+   0.07384134866015088,
+   23
+  ]
+ ]
+}
