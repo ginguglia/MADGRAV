@@ -121,12 +121,6 @@ class Config:
     margin: float = 3.0
     latent_channels: int = 0        # 0 -> production overcomplete latent; k>0 -> compressive bottleneck k*32*16
     lambda_anom: float = 2.0
-    punzi_bins: str = "10,24,38,60,95,150,400"   # MADGRAV2 punzi mode: total-mass bin edges
-    punzi_active: int = 4096
-    punzi_b_target: int = 3
-    punzi_tau0: float = 1.0
-    punzi_tau1: float = 0.3
-    punzi_eff_floor: float = 1e-3
     freq_pool: int = 1                 # MADGRAV2 item 2: average-pool the tile's frequency axis by this factor at the model input
     freq_band: str = ""               # MADGRAV2: "20,500" -> crop the cached tile to this band at the model input (resampled to 256 rows)
     artifact_prefix: str = "o1"
@@ -3274,12 +3268,7 @@ def main():
     parser.add_argument("--detector-mode", choices=["both", "H1", "L1"], default="both")
     parser.add_argument("--latent-channels", type=int, default=0,
                         help="0 = production overcomplete latent (65,536); k>0 = compressive bottleneck of k*32*16")
-    parser.add_argument("--training-mode", choices=["joint", "two_stage_logit", "margin_loss", "punzi"], default="joint")
-    parser.add_argument("--punzi-bins", type=str, default="10,24,38,60,95,150,400")
-    parser.add_argument("--punzi-active", type=int, default=4096)
-    parser.add_argument("--punzi-b-target", type=int, default=3)
-    parser.add_argument("--punzi-tau0", type=float, default=1.0)
-    parser.add_argument("--punzi-tau1", type=float, default=0.3)
+    parser.add_argument("--training-mode", choices=["joint", "two_stage_logit", "margin_loss"], default="joint")
     parser.add_argument("--freq-pool", type=int, default=1)
     parser.add_argument("--freq-band", type=str, default="")
     parser.add_argument("--batch-size", type=int, default=64)
@@ -3351,8 +3340,7 @@ def main():
         noise_acc_early_stop_epochs=args.noise_acc_early_stop_epochs,
         margin=args.margin,
         lambda_anom=args.lambda_anom,
-        punzi_bins=args.punzi_bins, punzi_active=args.punzi_active, punzi_b_target=args.punzi_b_target,
-        punzi_tau0=args.punzi_tau0, punzi_tau1=args.punzi_tau1, freq_pool=args.freq_pool, freq_band=args.freq_band,
+        freq_pool=args.freq_pool, freq_band=args.freq_band,
         artifact_prefix=args.artifact_prefix,
         summary_label=args.summary_label,
         qt_cache_dir=args.qt_cache_dir,
@@ -3475,7 +3463,7 @@ def main():
             print(f"Saved {unsup_ckpt}", flush=True)
             unsup_eval_model = BaselineCAE(dropout=cfg.dropout, latent_channels=(cfg.latent_channels or None), freq_pool=cfg.freq_pool, freq_band=(tuple(float(v) for v in cfg.freq_band.split(',')) if cfg.freq_band else None)).to(device)
             unsup_eval_model.load_state_dict(torch.load(unsup_ckpt, map_location=device))
-        elif cfg.training_mode in ("two_stage_logit", "margin_loss", "punzi"):
+        elif cfg.training_mode in ("two_stage_logit", "margin_loss"):
             print("Training unsupervised baseline_cae...", flush=True)
             unsup_history = train_unsup_model(model, noise_train_loader, noise_val_loader, cfg, device)
             torch.save(model.state_dict(), unsup_ckpt)
@@ -3496,13 +3484,6 @@ def main():
                     val_benchmark_meta=data.get("sig_val_benchmark_meta"),
                     phase_tag="weaksup",
                     num_epochs=cfg.weaksup_epochs,
-                )
-            elif cfg.training_mode == "punzi":
-                import punzi_finetune as PZ
-                joint_history, weaksup_best_info = PZ.train_punzi_model(
-                    sys.modules[__name__], model, data["noise_qt_tr"], noise_val_loader, sig_train_tensor, sig_val_loader, cfg, device,
-                    cache_dir=cfg.qt_cache_dir, val_benchmark_loader=val_benchmark_loader,
-                    val_benchmark_meta=data.get("sig_val_benchmark_meta"), phase_tag="punzi", num_epochs=cfg.weaksup_epochs,
                 )
             else:
                 joint_history, weaksup_best_info = train_margin_model(
